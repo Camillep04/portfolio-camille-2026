@@ -1,0 +1,28 @@
+@media (min-width: 992px) {
+    .navbar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .navbar-collapse {
+        flex-grow: 0;
+    }
+    .navbar-collapse ul.navbar-nav {
+        margin-left: auto;
+    }
+}
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .navbar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .navbar-header .navbar-brand {
+        order: 1;
+    }
+    .navbar-header .navbar-toggle {
+        order: 2;
+    }
+}

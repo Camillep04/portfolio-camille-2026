@@ -1,0 +1,14 @@
+.appareil{
+  position: fixed;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+.pad-top{
+  padding-top: 100px;
+}
+
+.portfolio{
+  background-color: rgb(28, 28, 28);
+}

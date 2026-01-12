@@ -1,0 +1,12 @@
+.txt{
+    font-size: xx-large;
+}
+a svg {
+    fill: #999fb3;
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+a svg:hover {
+    fill: red;
+}
+  
