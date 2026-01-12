@@ -7,7 +7,7 @@
             <!-- Texte centré au-dessus de l'image -->
             <div class="col-md-12 text-center overlay-text">
                 <div class="header-text">
-                    <h2>J'aime m'amuser en :<span><h1 class="writing" id="text"></h1></span></h2>
+                    <h2 class="pb-5">J'aime m'amuser en :<span><h1 class="writing" id="text"></h1></span></h2>
                     <a href="/audiovisuel">VOIR MES PROJETS</a>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <h2 class="text-light pb-4">CV vidéo</h2>
                 </div>
 
-                <div class="ratio ratio-16x9 w-100">
+                <div class="ratio ratio-16x9 video-wrapper d-flex justify-content-center">
                     <iframe
                         src="https://www.youtube.com/embed/oq8p9SE9Dm8"
                         title="YouTube video player"
@@ -83,8 +83,6 @@
         
     </div>
 </section>
-<!--about end -->
-
 <!--clients start -->
 <section id="clients" class="clients pb-5 mb-5">
     <div class="section-heading text-center mb-5">
@@ -126,6 +124,12 @@
             <div class="slide">
                 <img src="img/code/php.png" height="100" width="100" alt="" />
             </div>
+            <div class="slide">
+                <img src="img/code/html.png" height="100" width="100" alt="" />
+            </div>
+            <div class="slide">
+                <img src="img/code/css.png" height="100" width="100" alt="" />
+            </div>
         </div>
     </div>
 </section>
@@ -141,22 +145,22 @@
             <h1 class="text-light"><span>TICKET</span> PROJET</h1>
             <div class="title">
                 <h2 class="text-uppercase"><b>Athlète quel est ton rêve ?</b></h2>
-                <span>film</span>
+                <span>Documentaire</span>
             </div>
             <div class="name">
                 <h2>Camille Prothin</h2>
                 <span>réalisateur</span>
             </div>
             <div class="seat">
-                <h2>156</h2>
-                <span>vues</span>
+                <h2>2024</h2>
+                <span>année</span>
             </div>
             
             </div>
             <div class="card cardRight">
             <div class="eye"></div>
             <div class="number">
-                <h3>156</h3>
+                <h3>356</h3>
                 <span>vues</span>
             </div>
             </div>
@@ -169,14 +173,14 @@
             <h1 class="text-light"><span>TICKET</span> PHOTO</h1>
             <div class="title">
                 <h2 class="text-uppercase"><b>Ma passion de la photo</b></h2>
-                <span>film</span>
+                <span>Images</span>
             </div>
             <div class="name">
                 <h2>Camille Prothin</h2>
                 <span>réalisateur</span>
             </div>
             <div class="seat">
-                <h2>94</h2>
+                <h2>594</h2>
                 <span>vues</span>
             </div>
             
@@ -184,7 +188,7 @@
             <div class="card cardRight">
             <div class="eye"></div>
             <div class="number">
-                <h3>94</h3>
+                <h3>594</h3>
                 <span>vues</span>
             </div>
             </div>
@@ -380,17 +384,64 @@
 <div class="section-heading text-center mb-5 mt-5 pt-5">
     <h2>PHOTO</h2>
 </div>
-<div class="d-flex flex-row justify-content-around flex-wrap mb-3">
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center">
-        <a href="/photo">
-            <div class="polaroid-img d-flex justify-content-center">
-                <div class="polaroid-title">
-                    <p>Enfant de la forêt</p>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mb-3">
+    <div class="col d-flex justify-content-center">
+        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+            <a href="/photo">
+                <div class="polaroid-img d-flex justify-content-center">
+                    <div class="polaroid-title">
+                        <p>Enfant de la forêt</p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center">
+    <div class="col d-flex justify-content-center">
+        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+            <a href="/photo">
+                <div class="polaroid-img d-flex justify-content-center">
+                    <div class="polaroid-title">
+                        <p>Creek Pernod</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+            <a href="/photo">
+                <div class="polaroid-img d-flex justify-content-center">
+                    <div class="polaroid-title">
+                        <p>Loutre pirate</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+            <a href="/photo">
+                <div class="polaroid-img d-flex justify-content-center">
+                    <div class="polaroid-title">
+                        <p>Le butin</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+            <a href="/photo">
+                <div class="polaroid-img d-flex justify-content-center">
+                    <div class="polaroid-title">
+                        <p>Rayon de soleil</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
         <a href="/photo">
             <div class="polaroid-img d-flex justify-content-center">
                 <div class="polaroid-title">
@@ -399,7 +450,7 @@
             </div>
         </a>
     </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center">
+    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
         <a href="/photo">
             <div class="polaroid-img d-flex justify-content-center">
                 <div class="polaroid-title">
@@ -408,7 +459,7 @@
             </div>
         </a>
     </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center">
+    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
         <a href="/photo">
             <div class="polaroid-img d-flex justify-content-center">
                 <div class="polaroid-title">
@@ -417,7 +468,7 @@
             </div>
         </a>
     </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center">
+    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
         <a href="/photo">
             <div class="polaroid-img d-flex justify-content-center">
                 <div class="polaroid-title">
@@ -425,6 +476,6 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
 </div>
 <!-- fin photo -->

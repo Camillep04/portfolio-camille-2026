@@ -207,11 +207,11 @@ nav.navbar.bootsnav .navbar-toggle i{color: #f92c2c;}
 .overlay-text {
     position: relative;
     z-index: 2; /* place le texte au-dessus de l'image */
-    color: white; /* adapte la couleur pour être visible sur l'image */
+    color: white; 
 }
 
 .header-text h2, .header-text a {
-    color: white; /* adapte la couleur du texte et du lien */
+    color: white; 
 }
 
 

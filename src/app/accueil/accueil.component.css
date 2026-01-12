@@ -4,10 +4,10 @@
 	font-family: Montserrat;
 	/*Set the position to relative in order to place the sidebar then.*/
 	position: relative;
-    color: #f92c2c;
-    text-transform: uppercase;
-    font-size: larger;
-    height: 70px;
+  color: #f92c2c;
+  text-transform: uppercase;
+  font-size: larger;
+  height: 70px;
 }
 /* WRITING END */
 .bg-noir{
@@ -232,27 +232,26 @@
     background-repeat: no-repeat;
   }
   
-  .polaroid:nth-of-type(1) .polaroid-img {
-    background-image: url("../../../public/img/galerie/1.jpg");
-  }
-  
-  .polaroid:nth-of-type(2) .polaroid-img {
-    background-image: url("../../../public/img/galerie/2.jpg");
-  }
-  
-  .polaroid:nth-of-type(3) .polaroid-img {
-    background-image: url("../../../public/img/galerie/3.jpg");
-  }
-  
-  .polaroid:nth-of-type(4) .polaroid-img {
-    background-image: url("../../../public/img/galerie/4.jpg");
-  }
-  
-  .polaroid:nth-of-type(5) .polaroid-img {
-    background-image: url("../../../public/img/galerie/5.jpg");
-  }
-  .polaroid {
-    position: relative;
+.col:nth-child(1) .polaroid-img {
+  background-image: url("../../../public/img/galerie/1.jpg");
+}
+
+.col:nth-child(2) .polaroid-img {
+  background-image: url("../../../public/img/galerie/2.jpg");
+}
+
+.col:nth-child(3) .polaroid-img {
+  background-image: url("../../../public/img/galerie/3.jpg");
+}
+.col:nth-child(4) .polaroid-img {
+  background-image: url("../../../public/img/galerie/4.jpg");
+}
+
+.col:nth-child(5) .polaroid-img {
+  background-image: url("../../../public/img/galerie/5.jpg");
+}
+.polaroid {
+  position: relative;
 }
 
 .polaroid-title {
