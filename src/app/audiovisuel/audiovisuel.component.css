@@ -56,53 +56,54 @@ main section:nth-child(2) {
   background-size: 100%;
 }
 main section:nth-child(3) {
-  background: url("../../../public/img/portfolio/wg.png");
+  background: url("../../../public/img/portfolio/room-tour.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 main section:nth-child(4) {
-  background: url("../../../public/img/portfolio/mf.png");
+  background: url("../../../public/img/portfolio/mr.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  /* background-size: 100%; */
+  background-size: 100%;
 }
 main section:nth-child(5) {
-  background: url("../../../public/img/portfolio/phone_fond.png");
+  background: url("../../../public/img/portfolio/wg.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 main section:nth-child(6) {
-  background: url("../../../public/img/portfolio/plateau.jpg");
+  background: url("../../../public/img/portfolio/mf.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 100%;
+  /* background-size: 100%; */
 }
 main section:nth-child(7) {
-  background: url("../../../public/img/portfolio/clip_mmi.png");
+  background: url("../../../public/img/portfolio/phone_fond.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 main section:nth-child(8) {
-  background: url("../../../public/img/portfolio/inlive.png");
+  background: url("../../../public/img/portfolio/plateau.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 main section:nth-child(9) {
-  background: url("../../../public/img/portfolio/carriole.png");
+  background: url("../../../public/img/portfolio/clip_mmi.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
 main section:nth-child(10) {
-  background: url("../../../public/img/portfolio/badass.png");
+  background: url("../../../public/img/portfolio/inlive.png");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 main section::after {
   content: "";
   width: 100%;
