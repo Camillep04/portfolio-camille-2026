@@ -2,6 +2,21 @@
 
 ## 2026-08-26
 
+* **Work**: Session 1 of [the roadmap](/plans/remediation-roadmap.md) is done —
+  the safety net exists. Spec fixed, `test:ci` added, the Deno workflow replaced
+  by a real build-and-test check, and the style budget given a band. Three P0
+  issues moved to `resolved`. The budget one is worth recording: the real
+  minified size of `audiovisuel.component.css` is **5.93 kB** against a 6 kB
+  hard error, so the margin was ~70 bytes, not the comfortable gap the audit
+  assumed.
+* **Creation**: [Owner review, 2026-08-26](/references/camille-review-2026-08.md),
+  Camille’s own 25 requests, and a rewritten roadmap that interleaves them with
+  the audit findings. Two new sessions: **5** for the specified features and
+  **6** for design, accessibility and the English version — every item in 6
+  carries the open question that must be answered before it can be built.
+
+## 2026-08-26
+
 * **Review**: alexp read the bundle and approved it. Recorded as
   `verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }` on all 55 concepts,
   which raises every one of them to the **human-reviewed** trust tier (OKF

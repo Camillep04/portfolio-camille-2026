@@ -2,11 +2,11 @@
 type: Issue
 title: The GitHub Actions workflow fails on every push to main
 description: A Deno Deploy workflow that is not the real pipeline and is broken three ways, turning main permanently red.
-tags: [ci, deploy, p0]
+tags: [ci, deploy, p0, resolved]
 resource: /.github/workflows/deploy.yml
-status: stable
+status: deprecated
 priority: P0
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,13 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 1.** `.github/workflows/deploy.yml` was deleted
+and replaced by `.github/workflows/ci.yml`, which runs
+`npm ci`, `npm run build` and `npm run test:ci` on Node 20 for every pull
+request and every push to `main`. It is a *check*, not a deploy — Netlify still
+owns publishing. See
+[Netlify is the deploy target](/decisions/netlify-as-deploy-target.md).
 
 # Symptom
 

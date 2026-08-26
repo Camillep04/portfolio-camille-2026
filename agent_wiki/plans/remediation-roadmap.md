@@ -1,7 +1,7 @@
 ---
 type: Plan
 title: Remediation roadmap
-description: The staged order for working through the 29 audit findings, safety net first, refactor last.
+description: The staged order for the 29 audit findings and the owner's 25 requests, safety net first, design last.
 tags: [plan, roadmap]
 status: draft
 stale_after: 2027-06-30T00:00:00Z
@@ -11,6 +11,9 @@ sources:
   - id: review
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
+  - id: owner-review
+    resource: /references/camille-review-2026-08.md
+    title: Owner review, 2026-08-26
 ---
 
 # The ordering principle
@@ -20,22 +23,29 @@ CI, the first work must be **building the safety net**, not fixing the most
 visible bugs. Every session after that is verified by the net built in
 session 1.
 
+Two documents feed this plan: [the code audit](/references/review-audit-2026-08.md)
+(what is broken underneath) and [the owner's review](/references/camille-review-2026-08.md)
+(what is wrong on screen). Owner requests are marked **[C]** below. Where the
+two agree — the content refactor — that item gets priority.
+
 Within each session, changes should be small enough that the owner can verify
 them page by page before merging.
 
-# Session 1 — make the safety net real
+# Session 1 — make the safety net real ✅ done 2026-08-26
 
 The prerequisite for everything else.
 
-1. Fix [the stale app component spec](/issues/stale-app-component-spec.md) so
-   `npm test` can pass on a clean checkout.
-2. Add a `test:ci` script (`ng test --watch=false --browsers=ChromeHeadless`)
-   so tests can run unattended.
-3. Delete the Deno workflow and replace it with a real PR check —
-   `npm ci && npm run build && npm run test:ci`. See
-   [the issue](/issues/deno-deploy-workflow-broken.md).
-4. Give [the style budget a warning band](/issues/component-style-budget-no-headroom.md),
-   after running a real build to see the actual number.
+1. ✅ Fixed [the stale app component spec](/issues/stale-app-component-spec.md);
+   the suite now passes on a clean checkout (9/9 green).
+2. ✅ Added `test:ci` (`ng test --watch=false --browsers=ChromeHeadless`).
+3. ✅ Deleted the Deno workflow, replaced with `.github/workflows/ci.yml` —
+   `npm ci && npm run build && npm run test:ci` on every PR and push to `main`.
+   See [the issue](/issues/deno-deploy-workflow-broken.md).
+4. ✅ Gave [the style budget a warning band](/issues/component-style-budget-no-headroom.md):
+   warning 8 kB, error 16 kB. A real build measured
+   `audiovisuel.component.css` at **5.93 kB** against the old 6 kB *hard error* —
+   about 70 bytes of headroom, so the next project added would have broken the
+   build with no warning first.
 
 **Done when:** a pull request into `main` runs a green check that would have
 gone red for a broken build or a failing test.
@@ -46,48 +56,127 @@ Everything here is currently broken for real visitors.
 
 5. Delete the trailing [jQuery 1.9.1 tag](/issues/duplicate-jquery-load-order.md).
 6. Fix or remove [the magnific-popup script](/issues/magnific-popup-script-404.md).
+   **[C]** This is the same bug as the photo popup opening *underneath the nav
+   bar* on `/photo` — fix the loading first, then check the stacking context,
+   since the popup may simply be inheriting the wrong `z-index` once it actually
+   initialises.
 7. [Link the missing stylesheets](/issues/unlinked-stylesheets.md) — the cheap
    fix — or commit to
    [the Bootstrap 5 migration](/issues/bootstrap-version-conflict.md), the
    expensive one. **Decide this explicitly before starting**; they are different
    sizes of job and the second one requires replacing bootsnav.
-8. Delete [the dead inline script](/issues/dead-inline-script-audiovisuel.md)
+   **[C]** Fixing the responsive layout on large screens is downstream of this:
+   `responsive.css` is not loaded at all today, so no breakpoint behaves as
+   written. Re-check the large-screen complaint **after** the stylesheets are
+   linked — part of it may simply disappear.
+8. **[C]** Centre the navbar links and align them with the "Camille Prothin"
+   wordmark. Do this after 7, in [the header](/components/header.md).
+9. Delete [the dead inline script](/issues/dead-inline-script-audiovisuel.md)
    and the five `onclick="closePopup()"` attributes.
-9. Convert internal links to
-   [routerLink](/issues/no-routerlink-full-page-reloads.md) — but note this
-   *increases* exposure to the
-   [jQuery-binds-too-early problem](/issues/empty-component-classes.md), since
-   more navigation becomes client-side. Verify each page after a client-side
-   navigation, not just a reload.
+10. Convert internal links to
+    [routerLink](/issues/no-routerlink-full-page-reloads.md) — but note this
+    *increases* exposure to the
+    [jQuery-binds-too-early problem](/issues/empty-component-classes.md), since
+    more navigation becomes client-side. Verify each page after a client-side
+    navigation, not just a reload.
 
 # Session 3 — weight
 
-10. Regenerate the 2.1 MB favicon, compress `public/img`, add `loading="lazy"`.
+11. Regenerate the 2.1 MB favicon, compress `public/img`, add `loading="lazy"`.
     See [oversized images](/issues/oversized-images.md).
-11. Delete dead weight: [docs/](/issues/stale-docs-build-output.md),
+12. Delete dead weight: [docs/](/issues/stale-docs-build-output.md),
     [src/assets/magnific-popup](/issues/vendored-magnific-popup-repo.md),
     [the Dockerfile](/issues/broken-dockerfile.md),
     [app.component.css](/issues/angular-starter-boilerplate-css.md).
 
 # Session 4 — the refactor that pays for itself
 
-12. Extract `PROJECTS`, `PHOTOS`, `EXPERIENCES`, `EDUCATION` to typed data and
+The audit and the owner arrived at this one independently, which makes it the
+highest-value session in the plan.
+
+13. Extract `PROJECTS`, `PHOTOS`, `EXPERIENCES`, `EDUCATION` to typed data and
     render with `@for`. See
     [content hardcoded in templates](/issues/content-hardcoded-in-templates.md)
     and the target described in
     [the content update workflow](/specs/content-update-workflow.md).
 
+    Three owner requests are satisfied by this and by nothing else:
+    * **[C]** New projects added at the **top**, numbered newest-first
+      (4, 3, 2, 1) instead of each one inheriting the previous.
+    * **[C]** Photo order changeable without breaking the responsive grid —
+      array order becomes display order.
+    * **[C]** Texts, images and links editable in one place, the site staying
+      coherent and responsive.
+
 Stage it one dataset at a time — `PHOTOS` first, since that file is the largest
-and the most mechanical — so each stage is independently verifiable.
+and the most mechanical — so each stage is independently verifiable. The photo
+data model must carry an optional `description`, because Session 5's popup
+needs it.
 
 **Done when:** adding a project is a nine-line object in one `.ts` file, and a
 test asserts the rendered count matches the data.
 
+# Session 5 — the owner's features
+
+All **[C]**, all specified well enough to build. Ordered cheapest first.
+
+14. Footer: replace the hard-coded `2026` with the current year.
+15. Rename the projects route `/audiovisuel` to `/projets`, keeping a redirect
+    from the old path so existing links survive. See
+    [site routes](/specs/site-routes.md).
+16. Projects page buttons ("voir la vidéo" / "voir le projet"): on hover, invert
+    to white background and black text with the fill wiping left to right, and
+    remove the current grey colour change.
+17. `/photo`: centre the images vertically.
+18. `/photo`: Instagram call to action at the end of the page, to
+    `https://www.instagram.com/p___camille/`.
+19. `/photo` popup: show the photo's description when it has one.
+20. `/photo` popup: left/right arrow controls to browse the gallery as a
+    carousel. Needs Session 4's `PHOTOS` array to be the source of order.
+21. Projects page: clickable hearts, empty becoming filled, remembered per
+    visitor. *Open question before building: remember in `localStorage`
+    (simplest, no consent banner) or a real cookie? And is it a private
+    favourite, or should a count be displayed?*
+
+# Session 6 — design, accessibility and reach
+
+Every item here is a direction rather than a specification. **Agree a short
+brief with the owner before writing markup** — that is the rule for this whole
+session, and the open question is recorded next to each item.
+
+22. **[C]** Redesign the "QUI EST CAMILLE" block for design and legibility.
+    *Open: what specifically reads badly — line length, contrast, the photo/text
+    ratio? Any reference site?*
+23. **[C]** Redesign "Expériences" and "FORMATIONS".
+    *Open: keep the vertical timeline, or move to cards / two columns?*
+24. **[C]** Swap the order of "compétences" and "plonger dans mon univers" on
+    the home page. Mechanical, but it changes the page's rhythm, so it belongs
+    with the redesign above.
+25. **[C]** "COMPETENCES" logos: smaller, and in black and white.
+    *Open: how much smaller, and greyscale at rest with colour on hover, or
+    greyscale always?*
+26. **[C]** `/photo`: add padding at the `lg` and `md` breakpoints.
+    *Open: matching the site's existing section padding, or wider?*
+27. **[C]** Redesign the "Mes réseaux :" block on `/contact`.
+    *Open: this depends on [unlinked stylesheets](/issues/unlinked-stylesheets.md)
+    being fixed first — the icons are invisible today, so the current design has
+    never actually been seen.*
+28. **[C]** Digital accessibility pass **without changing the current design**.
+    *Open: which target — WCAG 2.1 AA, or RGAA? That decides how much of "sans
+    modifier le site actuel" is achievable, since contrast ratios may force
+    colour changes.*
+29. **[C]** English version of the site.
+    *Open: Angular's `@angular/localize` (two builds, two URLs, good for SEO) or
+    a runtime language toggle (simpler, one build)? And who writes the English
+    copy?* This is much cheaper after Session 4 — translating a data file beats
+    translating duplicated markup.
+
 # Ongoing
 
-13. [Linter and formatter](/issues/no-linter-or-formatter.md).
-14. SEO and accessibility pass:
-    [html lang](/issues/html-lang-mismatch.md),
+30. [Linter and formatter](/issues/no-linter-or-formatter.md).
+31. SEO and technical accessibility:
+    [html lang](/issues/html-lang-mismatch.md) — which becomes a real decision
+    once item 29 lands —
     [SEO metadata](/issues/missing-seo-metadata.md),
     [alt text](/issues/missing-alt-text.md),
     [contact form overflow](/issues/contact-form-overflow-mobile.md),
@@ -99,4 +188,5 @@ test asserts the rendered count matches the data.
 # Related
 
 * [All issues](/issues/index.md)
+* [Owner review, 2026-08-26](/references/camille-review-2026-08.md)
 * [Branch workflow](/specs/branch-workflow.md)

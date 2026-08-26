@@ -13,6 +13,7 @@ executors, and attesters point in here.
 
 * [The live site](live-site.md) - The production URL, and what the browser console actually reports there.
 * [Code review, 2026-08-21](review-audit-2026-08.md) - The audit that seeded the issue list, and how its findings map here.
+* [Owner review, 2026-08-26](camille-review-2026-08.md) - Camille’s own list of 25 fixes, improvements and additions, and where each lands.
 * [Khanas HTML template](khanas-template.md) - The third-party theme that all of `public/css` and `public/js` came from.
 
 # Machinery

@@ -2,11 +2,11 @@
 type: Issue
 title: The anyComponentStyle budget has no warning band
 description: Warning and error are both 6 kB, so the build goes from green to hard failure with no advance notice as projects are added.
-tags: [build, config, p0]
+tags: [build, config, p0, resolved]
 resource: /angular.json
-status: stable
+status: deprecated
 priority: P0
-verification: unverified
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,16 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 1.** A real production build was finally run.
+Minified, `audiovisuel.component.css` is **5.93 kB** — so it sat about **70
+bytes** under the old 6 kB *hard error*, and the next project added would have
+broken the build outright with no warning first. The audit was right and the
+margin was thinner than it guessed. The budget is now `maximumWarning: 8kB`,
+`maximumError: 16kB`.
+
+For reference, the other component styles measured: `accueil` 3.54 kB,
+`app` 3.43 kB, `header` 385 B, `contact` 109 B, `photo` 94 B.
 
 # Symptom
 

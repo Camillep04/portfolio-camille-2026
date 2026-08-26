@@ -16,9 +16,9 @@ each **re-verified against the code on 2026-08-26**. Frontmatter carries
 
 # P0 — blocks or silently breaks the workflow
 
-* [Stale AppComponent spec](stale-app-component-spec.md) - Two tests fail on a clean checkout, so the regression net is ignored.
-* [Deno Deploy workflow broken](deno-deploy-workflow-broken.md) - Fails on every push to `main`, training everyone to ignore red checks.
-* [Style budget has no headroom](component-style-budget-no-headroom.md) - Warning equals error at 6 kB, on the file that grows with every project.
+* [Stale AppComponent spec](stale-app-component-spec.md) - **Resolved** in session 1; the suite is green.
+* [Deno Deploy workflow broken](deno-deploy-workflow-broken.md) - **Resolved** in session 1; replaced by a build-and-test check.
+* [Style budget has no headroom](component-style-budget-no-headroom.md) - **Resolved** in session 1; it had ~70 bytes of headroom left.
 * [develop not pushed](develop-not-pushed.md) - **Resolved** since the audit; kept for the trail.
 
 # P1 — bugs live on the site now

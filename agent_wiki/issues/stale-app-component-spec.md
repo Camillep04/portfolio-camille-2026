@@ -2,11 +2,11 @@
 type: Issue
 title: Stale AppComponent spec fails on a clean checkout
 description: Two of three tests in app.component.spec.ts assert Angular starter values that no longer exist, so npm test is red for everyone.
-tags: [testing, p0, ci]
+tags: [testing, p0, ci, resolved]
 resource: /src/app/app.component.spec.ts
-status: stable
+status: deprecated
 priority: P0
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,12 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 1.** `app.component.spec.ts` was rewritten: the
+title assertion now expects `Camille Portfolio`, and the `Hello, PortfolioAngular`
+`<h1>` test was replaced by one asserting the real shell — `app-header` and
+`app-footer` around the router outlet. `provideRouter(routes)` was added so the
+outlet resolves. `npm run test:ci` reports **9 of 9 green**.
 
 # Symptom
 
