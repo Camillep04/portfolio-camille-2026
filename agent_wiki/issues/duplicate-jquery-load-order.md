@@ -2,11 +2,11 @@
 type: Issue
 title: jQuery loads three times and the oldest copy wins
 description: jQuery 1.9.1 loads after every plugin registered against 2.2.4, wiping them off window.$ and breaking anything that resolves $ at ready time.
-tags: [javascript, jquery, legacy, p1, live-bug]
+tags: [javascript, jquery, legacy, p1, live-bug, resolved]
 resource: /src/index.html
-status: stable
+status: deprecated
 priority: P1
-verification: confirmed-in-production
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -17,6 +17,11 @@ sources:
     resource: /references/live-site.md
     title: Live site checks, 2026-08-26
 ---
+
+**Resolved 2026-08-26, session 2.** The trailing `jquery/1.9.1` tag is gone
+from `src/index.html`. Verified in the browser: `jQuery.fn.jquery` now reports
+**2.2.4**, and `sticky`, `appear`, `owlCarousel` and `modal` are all attached
+to it.
 
 # Symptom
 

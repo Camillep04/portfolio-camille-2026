@@ -23,13 +23,15 @@ each **re-verified against the code on 2026-08-26**. Frontmatter carries
 
 # P1 — bugs live on the site now
 
-* [Duplicate jQuery load order](duplicate-jquery-load-order.md) - jQuery 1.9.1 loads last and wipes every plugin.
-* [magnific-popup script 404s](magnific-popup-script-404.md) - Wrong path, and `src/assets` never ships anyway.
-* [Unlinked stylesheets](unlinked-stylesheets.md) - Font Awesome invisible, and **no mobile breakpoints at all**.
+* [Photo popup opens behind the navbar](photo-modal-opens-behind-navbar.md) - **Resolved** in session 2; BS3 `in` vs BS4 `show`.
+* [Page pinned left above 1920px](page-pinned-left-above-1920.md) - **Resolved** in session 2; BS4's reboot killed the theme's centring.
+* [Duplicate jQuery load order](duplicate-jquery-load-order.md) - **Resolved** in session 2; 2.2.4 keeps its plugins.
+* [magnific-popup script 404s](magnific-popup-script-404.md) - **Resolved** in session 2; the tag and `popup.js` are deleted.
+* [Unlinked stylesheets](unlinked-stylesheets.md) - **Resolved** in session 2; icons are bootstrap-icons now.
 * [Bootstrap version conflict](bootstrap-version-conflict.md) - Four versions fighting; utility classes silently ignored.
-* [Dead inline script in audiovisuel](dead-inline-script-audiovisuel.md) - Angular strips it; five close buttons throw.
-* [Duplicate DOM ids](duplicate-dom-ids.md) - 35 identical modal ids and an `aria-labelledby` pointing at nothing.
-* [No routerLink](no-routerlink-full-page-reloads.md) - Every internal click re-bootstraps the whole app.
+* [Dead inline script in audiovisuel](dead-inline-script-audiovisuel.md) - **Resolved** in session 2; the five dead popups went with it.
+* [Duplicate DOM ids](duplicate-dom-ids.md) - Down to SVG boilerplate and `education` after session 2; 35 modal ids remain.
+* [No routerLink](no-routerlink-full-page-reloads.md) - **Resolved** in session 2; the typewriter and burger menu moved into Angular.
 
 # P2 — performance
 

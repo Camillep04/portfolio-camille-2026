@@ -2,11 +2,11 @@
 type: Issue
 title: The inline script in audiovisuel never runs, and five buttons call into it
 description: Angular strips script elements from component templates, so openPopup/closePopup do not exist and every close button throws a ReferenceError.
-tags: [angular, javascript, p1, live-bug]
+tags: [angular, javascript, p1, live-bug, resolved]
 resource: /src/app/audiovisuel/audiovisuel.component.html
-status: stable
+status: deprecated
 priority: P1
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,14 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 2.** The `<script>` block and all five
+`onclick="closePopup()"` attributes are gone, and so are the five
+`popup-container` blocks they belonged to — each one held an empty YouTube
+iframe that nothing could ever open. That also removed 5 duplicate
+`popup-container` ids and 5 duplicate `youtube-iframe` ids; see
+[duplicate DOM ids](/issues/duplicate-dom-ids.md), which is now down to the
+SVG boilerplate and `education`.
 
 # Symptom
 

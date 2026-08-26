@@ -50,35 +50,41 @@ The prerequisite for everything else.
 **Done when:** a pull request into `main` runs a green check that would have
 gone red for a broken build or a failing test.
 
-# Session 2 — kill the live bugs
+# Session 2 — kill the live bugs ✅ done 2026-08-26
 
-Everything here is currently broken for real visitors.
+Decided first, as the plan required:
+[cheap fix now, Bootstrap 5 later](/decisions/css-cheap-fix-before-bootstrap-5.md).
+Everything below was verified in a browser at 2560px, 1366px and 375px, not
+just built.
 
-5. Delete the trailing [jQuery 1.9.1 tag](/issues/duplicate-jquery-load-order.md).
-6. Fix or remove [the magnific-popup script](/issues/magnific-popup-script-404.md).
-   **[C]** This is the same bug as the photo popup opening *underneath the nav
-   bar* on `/photo` — fix the loading first, then check the stacking context,
-   since the popup may simply be inheriting the wrong `z-index` once it actually
-   initialises.
-7. [Link the missing stylesheets](/issues/unlinked-stylesheets.md) — the cheap
-   fix — or commit to
-   [the Bootstrap 5 migration](/issues/bootstrap-version-conflict.md), the
-   expensive one. **Decide this explicitly before starting**; they are different
-   sizes of job and the second one requires replacing bootsnav.
-   **[C]** Fixing the responsive layout on large screens is downstream of this:
-   `responsive.css` is not loaded at all today, so no breakpoint behaves as
-   written. Re-check the large-screen complaint **after** the stylesheets are
-   linked — part of it may simply disappear.
-8. **[C]** Centre the navbar links and align them with the "Camille Prothin"
-   wordmark. Do this after 7, in [the header](/components/header.md).
-9. Delete [the dead inline script](/issues/dead-inline-script-audiovisuel.md)
-   and the five `onclick="closePopup()"` attributes.
-10. Convert internal links to
-    [routerLink](/issues/no-routerlink-full-page-reloads.md) — but note this
-    *increases* exposure to the
-    [jQuery-binds-too-early problem](/issues/empty-component-classes.md), since
-    more navigation becomes client-side. Verify each page after a client-side
-    navigation, not just a reload.
+5. ✅ Deleted the trailing [jQuery 1.9.1 tag](/issues/duplicate-jquery-load-order.md).
+   jQuery is 2.2.4 again and every plugin is attached to it.
+6. ✅ Deleted [the magnific-popup script](/issues/magnific-popup-script-404.md)
+   and `popup.js` — `/photo` never used magnific-popup.
+   **[C]** The owner's "popup opens under the nav bar" bug was a different
+   fault: [Bootstrap 3's JS marking the modal `in` while Bootstrap 4's CSS waits
+   for `show`](/issues/photo-modal-opens-behind-navbar.md), leaving the dialog
+   translated a quarter-screen up. Fixed and re-measured.
+7. ✅ [Linked animate.css and responsive.css](/issues/unlinked-stylesheets.md).
+   Font Awesome could not be repaired by linking — `public/fonts/` does not
+   exist either — so the fourteen icons are **bootstrap-icons** now, from the
+   npm package already in `package.json`.
+   **[C]** Linking `responsive.css` did *not* fix the large-screen complaint;
+   that file has only `max-width` rules. The real cause was
+   [the page pinned left above 1920px](/issues/page-pinned-left-above-1920.md).
+8. ✅ **[C]** Centred the navbar links on the bar and aligned them with the
+   "Camille Prothin" wordmark, in [the header](/components/header.md).
+9. ✅ Deleted [the dead inline script](/issues/dead-inline-script-audiovisuel.md),
+   the five `onclick="closePopup()"` attributes, and the five dead
+   `popup-container` blocks they belonged to.
+10. ✅ Converted internal links to
+    [routerLink](/issues/no-routerlink-full-page-reloads.md). The audit's
+    warning was real: the hero typewriter had to move into `AccueilComponent`
+    and the burger menu had to learn to close on `NavigationEnd`.
+
+**Still open from this session's territory:** whether the site should stay
+capped at 1920px and centred, or stretch on very wide screens. That is a design
+question for session 6.
 
 # Session 3 — weight
 

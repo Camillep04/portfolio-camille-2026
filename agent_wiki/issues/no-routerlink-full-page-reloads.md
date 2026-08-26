@@ -2,11 +2,11 @@
 type: Issue
 title: Every internal link is a full page reload
 description: Zero uses of routerLink in the app, so each click tears down Angular and re-downloads everything.
-tags: [angular, routing, performance, p1]
+tags: [angular, routing, performance, p1, resolved]
 resource: /src/app/header/header.component.html
-status: stable
+status: deprecated
 priority: P1
-verification: changed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,18 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 2.** Every internal link is a `routerLink`, and
+navigation was verified to stay client-side (one `navigation` performance entry
+across four page changes).
+
+The audit's warning was right, and two things had to move for it to be safe:
+
+* The hero typewriter (`public/js/indexCam.js`) only ran on `DOMContentLoaded`,
+  so it stayed **empty** on a client-side return to the home page. It is now
+  `AccueilComponent`, started in `ngOnInit`, and the file is deleted.
+* The burger menu used to be closed by the page reload itself. It now closes on
+  `NavigationEnd`.
 
 # Symptom
 

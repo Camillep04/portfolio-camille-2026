@@ -2,6 +2,32 @@
 
 ## 2026-08-26
 
+* **Work**: Session 2 — the live bugs are fixed and **verified in a browser**
+  at 2560px, 1366px and 375px, not just built. Three of the audit's guesses
+  turned out to be wrong in instructive ways:
+  * Font Awesome could never have worked. The audit said the stylesheet was
+    unlinked; `public/fonts/` does not exist either, so the webfont was missing
+    too. The icons are bootstrap-icons now.
+  * The owner's *"popup opens under the nav bar"* had nothing to do with
+    magnific-popup. `/photo` uses Bootstrap **4 markup** driven by Bootstrap
+    **3's JS**: BS3 marks an open modal `in`, BS4 clears its entry transform on
+    `show`, so the dialog kept `translate(0, -25%)` and opened at y = -206.
+    New concept:
+    [photo modal opens behind the navbar](/issues/photo-modal-opens-behind-navbar.md).
+  * The owner's *"responsive cassé sur les grands écrans"* was not
+    `responsive.css` — that file only has `max-width` rules. Bootstrap 4's
+    reboot, loaded from the CDN after the theme, resets `body { margin: 0 }` and
+    killed the theme's `margin: 0 auto`. Above 1920px the page sat pinned to the
+    left with a 625px blank strip. New concept:
+    [page pinned left above 1920px](/issues/page-pinned-left-above-1920.md).
+* **Decision**: [cheap CSS fix before Bootstrap 5](/decisions/css-cheap-fix-before-bootstrap-5.md),
+  taken by the owner. The migration becomes its own session before the redesigns.
+* **Evidence that session 1 was worth doing first**: converting links to
+  `routerLink` turned two component specs red (no `ActivatedRoute`). The net
+  caught it the same minute it was introduced. 11 tests green now.
+
+## 2026-08-26
+
 * **Work**: Session 1 of [the roadmap](/plans/remediation-roadmap.md) is done —
   the safety net exists. Spec fixed, `test:ci` added, the Deno workflow replaced
   by a real build-and-test check, and the style budget given a band. Three P0

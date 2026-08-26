@@ -2,11 +2,11 @@
 type: Issue
 title: Four shipped stylesheets are never linked
 description: font-awesome, animate, responsive and owl CSS all exist in public/css but are not in index.html, so icons are invisible and mobile breakpoints are missing.
-tags: [css, responsive, a11y, p1, live-bug]
+tags: [css, responsive, a11y, p1, live-bug, resolved]
 resource: /src/index.html
-status: stable
+status: deprecated
 priority: P1
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,19 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-26, session 2.** `animate.css` and `responsive.css` are
+linked; `owl.carousel` was left out because no template uses an Owl carousel.
+
+Two corrections to the audit, both found by actually loading the site:
+
+* **Font Awesome could not have been fixed by linking it.** `public/fonts/`
+  does not exist, so the webfont was missing too. The fourteen icons are
+  bootstrap-icons now, served from the npm package via `angular.json`.
+* **Linking `responsive.css` did not fix the owner's large-screen complaint.**
+  That file contains only `max-width` rules — it has nothing to say above
+  1199px. The real cause was
+  [the page pinned left above 1920px](/issues/page-pinned-left-above-1920.md).
 
 # Symptom
 

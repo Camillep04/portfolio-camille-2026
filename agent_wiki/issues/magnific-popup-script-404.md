@@ -2,11 +2,11 @@
 type: Issue
 title: The magnific-popup script 404s and popup.js throws
 description: The script tag points at a path that does not exist and would not ship even if it did, so the gallery lightbox init fails on every page.
-tags: [javascript, assets, p1, live-bug]
+tags: [javascript, assets, p1, live-bug, resolved]
 resource: /src/index.html
-status: stable
+status: deprecated
 priority: P1
-verification: confirmed-in-production
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -17,6 +17,14 @@ sources:
     resource: /references/live-site.md
     title: Live site checks, 2026-08-26
 ---
+
+**Resolved 2026-08-26, session 2.** Both the script tag and `public/js/popup.js`
+were deleted rather than repaired: the photo gallery never used magnific-popup,
+it uses Bootstrap modals. `popup.js` only threw.
+
+This is also where the owner's "the top of the popup is behind the nav bar" bug
+lived, and the cause was **not** magnific-popup — see
+[the modal transform issue](/issues/photo-modal-opens-behind-navbar.md).
 
 # Symptom
 
