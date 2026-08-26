@@ -1,0 +1,60 @@
+Wiki tooling for the Open Knowledge Format
+==========================================
+
+This directory contains work derived from third-party open source software.
+
+
+-------------------------------------------------------------------------------
+Open Knowledge Format reference agent
+-------------------------------------------------------------------------------
+
+Copyright 2026 Google LLC
+Licensed under the Apache License, Version 2.0
+https://www.apache.org/licenses/LICENSE-2.0
+Source: https://github.com/GoogleCloudPlatform/open-knowledge-format
+
+The following files are derived works, modified from the upstream sources
+noted against each. Every modification is listed in the file's own header.
+
+  okf.py             <- src/reference_agent/bundle/document.py
+                        src/reference_agent/viewer/generator.py
+  templates/viz.html <- src/reference_agent/viewer/templates/viz.html
+  static/viz.css     <- src/reference_agent/viewer/static/viz.css
+  static/viz.js      <- src/reference_agent/viewer/static/viz.js
+
+Summary of changes:
+  * The Python package was collapsed into one module, okf.py.
+  * A `validate` subcommand was added; upstream ships no conformance checker.
+  * Link extraction resolves bundle-absolute (`/`-prefixed) links and ignores
+    links inside code spans and fences.
+  * `log.md` is excluded from the concept walk.
+  * Timestamp parsing accepts a trailing `Z` on Python 3.10.
+  * Node colors are derived from a hash of the concept `type`.
+  * Search and the type filter share one filter pass, and a type legend was
+    added.
+  * The viewer's JavaScript dependencies are inlined rather than loaded from a
+    CDN.
+  * Regenerating over an existing viz.html reuses its embedded bundle name
+    when no name is given.
+
+
+-------------------------------------------------------------------------------
+Cytoscape.js  (vendor/cytoscape.min.js, v3.28.1)
+-------------------------------------------------------------------------------
+
+Copyright (c) 2016-2023, The Cytoscape Consortium
+Licensed under the MIT License
+https://github.com/cytoscape/cytoscape.js
+
+Vendored unmodified. The full license text is retained in the file header.
+
+
+-------------------------------------------------------------------------------
+marked  (vendor/marked.min.js, v12.0.0)
+-------------------------------------------------------------------------------
+
+Copyright (c) 2011-2024, Christopher Jeffrey
+Licensed under the MIT License
+https://github.com/markedjs/marked
+
+Vendored unmodified. The full license text is retained in the file header.

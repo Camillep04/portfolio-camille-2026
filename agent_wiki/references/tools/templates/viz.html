@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2026 Google LLC
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  MODIFICATIONS from the upstream OKF reference viewer template:
+    * Cytoscape and marked are inlined rather than fetched from a CDN, so the
+      generated page opens with no network access.
+    * Added a type legend, needed because node colors are derived from the
+      type name rather than a fixed palette.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OKF Bundle Viewer</title>
+<style>
+/*__VIZ_CSS__*/
+</style>
+</head>
+<body>
+<header>
+  <div class="title">
+    <strong id="bundle-name"></strong>
+    <span class="muted">OKF v0.2 bundle</span>
+  </div>
+  <div class="controls">
+    <input id="search" type="search" placeholder="Search title / id / tag">
+    <select id="filter-type">
+      <option value="">All types</option>
+    </select>
+    <select id="layout">
+      <option value="cose">cose (force)</option>
+      <option value="concentric">concentric</option>
+      <option value="breadthfirst">breadth-first</option>
+      <option value="circle">circle</option>
+      <option value="grid">grid</option>
+    </select>
+    <button id="reset">Reset view</button>
+  </div>
+</header>
+
+<main>
+  <section id="graph-pane">
+    <div id="graph"></div>
+    <div id="legend"></div>
+  </section>
+  <section id="detail">
+    <div id="detail-empty" class="muted">Click a node to see its details.</div>
+    <article id="detail-content" hidden>
+      <header class="detail-header">
+        <span class="type-chip" id="detail-type"></span>
+        <h1 id="detail-title"></h1>
+        <div class="muted" id="detail-id"></div>
+      </header>
+      <div class="badges" id="detail-badges"></div>
+      <dl class="frontmatter">
+        <dt>Description</dt><dd id="detail-description"></dd>
+        <dt>Resource</dt><dd id="detail-resource"></dd>
+        <dt>Tags</dt><dd id="detail-tags"></dd>
+        <dt>Generated</dt><dd id="detail-generated"></dd>
+        <dt>Verified</dt><dd id="detail-verified"></dd>
+        <dt>Sources</dt><dd id="detail-sources"></dd>
+      </dl>
+      <hr>
+      <div id="detail-body"></div>
+      <section id="detail-backlinks" hidden>
+        <h2>Cited by</h2>
+        <ul id="backlinks-list"></ul>
+      </section>
+    </article>
+  </section>
+</main>
+
+<script>
+/*__CYTOSCAPE__*/
+</script>
+<script>
+/*__MARKED__*/
+</script>
+<script>
+window.BUNDLE_NAME = __BUNDLE_NAME__;
+window.BUNDLE = __BUNDLE_DATA__;
+</script>
+<script>
+/*__VIZ_JS__*/
+</script>
+</body>
+</html>
