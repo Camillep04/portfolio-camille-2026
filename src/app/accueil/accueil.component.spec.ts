@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { AccueilComponent } from './accueil.component';
 
@@ -8,7 +9,8 @@ describe('AccueilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccueilComponent]
+      imports: [AccueilComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 
@@ -17,7 +19,15 @@ describe('AccueilComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    fixture.destroy();
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should type the hero word one letter at a time', () => {
+    expect(component.typed).toBe('v');
   });
 });

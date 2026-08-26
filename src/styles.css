@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+/* The theme caps the page at `max-width: 1920px` and centres it with
+   `margin: 0 auto` (public/css/style.css). Bootstrap 4 is loaded from a CDN
+   *after* that file and its reboot resets `body { margin: 0 }`, so above
+   1920px the whole page was pinned to the left of the screen with a blank
+   strip on the right — while the fixed navbar still spanned the full width.
+   This restores the theme's intent. */
+body {
+  margin-left: auto;
+  margin-right: auto;
+}

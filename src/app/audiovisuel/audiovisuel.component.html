@@ -30,15 +30,6 @@
             <span class="texts">
               <span class="text-2">Voir la vidéo</span>
 
-              <div>              
-                <div id="popup-container" class="popup-container">
-                    <span class="close-button" onclick="closePopup()">X</span>
-                    <div class="video-container">
-                        <!-- <iframe id="youtube-iframe" src="" frameborder="0" allowfullscreen></iframe> -->
-                        <iframe id="youtube-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-              </div>
 
             </span>
           </a>
@@ -83,15 +74,6 @@
             <span class="texts">
               <span class="text-2">Voir la vidéo</span>
 
-              <div>              
-                <div id="popup-container" class="popup-container">
-                    <span class="close-button" onclick="closePopup()">X</span>
-                    <div class="video-container">
-                        <!-- <iframe id="youtube-iframe" src="" frameborder="0" allowfullscreen></iframe> -->
-                        <iframe id="youtube-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-              </div>
 
             </span>
           </a>
@@ -145,15 +127,6 @@
             <span class="texts">
               <span class="text-2">Voir la vidéo</span>
 
-              <div>              
-                <div id="popup-container" class="popup-container">
-                    <span class="close-button" onclick="closePopup()">X</span>
-                    <div class="video-container">
-                        <!-- <iframe id="youtube-iframe" src="" frameborder="0" allowfullscreen></iframe> -->
-                        <iframe id="youtube-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-              </div>
             </span>
           </a>
           <button class="save_btn">
@@ -197,15 +170,6 @@
             <span class="texts">
               <span class="text-2">Voir la vidéo</span>
 
-              <div>              
-                <div id="popup-container" class="popup-container">
-                    <span class="close-button" onclick="closePopup()">X</span>
-                    <div class="video-container">
-                        <!-- <iframe id="youtube-iframe" src="" frameborder="0" allowfullscreen></iframe> -->
-                        <iframe id="youtube-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-              </div>
 
             </span>
           </a>
@@ -259,15 +223,6 @@
             <span class="texts">
               <span class="text-2">Voir la vidéo</span>
 
-              <div>              
-                <div id="popup-container" class="popup-container">
-                    <span class="close-button" onclick="closePopup()">X</span>
-                    <div class="video-container">
-                        <!-- <iframe id="youtube-iframe" src="" frameborder="0" allowfullscreen></iframe> -->
-                        <iframe id="youtube-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-              </div>
             </span>
           </a>
           <button class="save_btn">
@@ -297,7 +252,7 @@
 
         <div class="buttons">
           <a class="playstore-button" href="https://skfb.ly/pEKVW" target="_blank">
-            <i class="fas fa-bezier-curve"></i>
+            <i class="bi bi-vector-pen"></i>
             <span class="texts">
               <span class="text-2"><img src="img/3d.png" class="mr-3">Voir le projet</span>
             </span>
@@ -361,7 +316,7 @@
 
         <div class="buttons">
           <a class="playstore-button" href="https://drive.google.com/drive/folders/1HSqk7K_5SLldIYRRgmI6EvUHKhymKear?usp=sharing" target="_blank">
-            <i class="fas fa-bezier-curve"></i>
+            <i class="bi bi-vector-pen"></i>
             <span class="texts">
               <span class="text-2"><img src="img/vecteur.png" class="mr-3">Voir le projet</span>
             </span>
@@ -470,31 +425,4 @@
     </div>
   </section>
 
-<script>
-function openPopup(videoId) {
-    var popupContainer = document.getElementById('popup-container');
-    var youtubeIframe = document.getElementById('youtube-iframe');
-
-    youtubeIframe.src = "https://www.youtube.com/embed/" + videoId;
-    popupContainer.classList.add('show');
-}
-
-function closePopup() {
-    var popupContainer = document.getElementById('popup-container');
-    var youtubeIframe = document.getElementById('youtube-iframe');
-
-    youtubeIframe.src = "";
-    popupContainer.classList.remove('show');
-}
-
-var popupButton = document.getElementById('popup-button');
-popupButton.addEventListener('click', function() {
-    openPopup("VIDEO_ID_HERE");
-});
-
-document.querySelector('.close').addEventListener('click', function() {
-  $('#exampleModalCenter').modal('hide');
-});
-
-</script>
 </main>

@@ -3,18 +3,17 @@
         <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
             <div class="containerw">
                 <div class="navbar-header col-lg-4">
-                    <a class="navbar-brand" href="index.html">Camille PROTHIN</a>
+                    <a class="navbar-brand" routerLink="/">Camille PROTHIN</a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <img src="img/menu.png">
                     </button>
                 </div>
-                <div class="collapse navbar-collapse col-lg-6 menu-ui-design centrer" id="navbar-menu">
+                <div #navbarMenu class="collapse navbar-collapse col-lg-6 menu-ui-design centrer" id="navbar-menu">
                     <ul class="nav navbar-nav d-flex flex-lg-row" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="smooth-menu active"></li>
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="/audiovisuel">Projets</a></li>
-                        <li><a href="/photo">Photos</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Accueil</a></li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/audiovisuel">Projets</a></li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/photo">Photos</a></li>
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/contact">Contact</a></li>
                         <li><a target="_blank" href="img/CV_camille_2026.pdf">CV</a></li>
                     </ul>
                 </div>

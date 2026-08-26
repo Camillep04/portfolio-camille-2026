@@ -1,17 +1,45 @@
+/* The page is capped at 1920px and centred (see src/styles.css). bootsnav's
+   fixed navbar is width:100% with no left, so on a screen wider than that it
+   started at the page's left edge and ran off the right of the screen. Pin it
+   to the centred page instead, so the bar sits over the content it belongs
+   to. */
+nav.navbar.bootsnav.navbar-fixed {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    max-width: 1920px;
+}
+
 @media (min-width: 992px) {
     .navbar-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* width: 100%; */
     }
+    /* Centre the links on the bar itself, not in the space left of the
+       wordmark, and centre them vertically so they sit on the same line as
+       "Camille PROTHIN". top: 50% follows the bar when bootsnav shrinks it
+       on scroll. */
     .navbar-collapse {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         flex-grow: 0;
+        width: auto;
+        padding: 0;
     }
     .navbar-collapse ul.navbar-nav {
-        margin-left: auto;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        float: none;
+    }
+    .navbar-collapse ul.navbar-nav > li {
+        float: none;
     }
 }
+
 @media (max-width: 991.98px) {
     .navbar-header {
         display: flex;

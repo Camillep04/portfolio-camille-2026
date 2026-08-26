@@ -9,3 +9,22 @@
 .modal-center{
   margin-top: auto;
 }
+/* The modals are Bootstrap 4 markup driven by Bootstrap 3's JS: BS3 adds
+   `.in` where BS4 expects `.show`, so BS4's `transform: translate(0, -25%)`
+   is never cleared and the popup opens a quarter of a screen too high —
+   its top hidden behind the fixed navbar. Clear it on `.in` as well. */
+.modal.fade.in .modal-dialog {
+  transform: none;
+}
+
+/* Keep the photo inside the viewport below the navbar, and centred in it. */
+.modal .modal-body {
+  display: flex;
+  justify-content: center;
+}
+
+.modal .modal-body img {
+  max-height: calc(100vh - 220px);
+  width: auto;
+  max-width: 100%;
+}
