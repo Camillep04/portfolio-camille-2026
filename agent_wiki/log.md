@@ -2,6 +2,17 @@
 
 ## 2026-08-26
 
+* **Decision**: the page
+  [stays capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md).
+  This closes the one question session 2 left open, and it constrains session 6:
+  the redesigns are drawn for a 1920px canvas.
+* **Session ended here.** Sessions 1 and 2 are complete and committed on
+  `develop` (three commits, not yet pushed — the owner will push). The next
+  session starts at **session 3** of
+  [the roadmap](/plans/remediation-roadmap.md).
+
+## 2026-08-26
+
 * **Work**: Session 2 — the live bugs are fixed and **verified in a browser**
   at 2560px, 1366px and 375px, not just built. Three of the audit's guesses
   turned out to be wrong in instructive ways:

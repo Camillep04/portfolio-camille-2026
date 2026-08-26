@@ -82,9 +82,9 @@ just built.
     warning was real: the hero typewriter had to move into `AccueilComponent`
     and the burger menu had to learn to close on `NavigationEnd`.
 
-**Still open from this session's territory:** whether the site should stay
-capped at 1920px and centred, or stretch on very wide screens. That is a design
-question for session 6.
+**Answered since:** the site
+[stays capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md).
+Session 6 designs for a 1920px canvas.
 
 # Session 3 — weight
 

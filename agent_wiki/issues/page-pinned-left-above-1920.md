@@ -48,11 +48,12 @@ the centred page with `left: 50%; transform: translateX(-50%); max-width:
 Re-measured at 2560px: body, navbar and content all centred on x = 1273, the
 viewport centre. Re-checked at 1366px and 375px — unchanged.
 
-# Still open
+# Settled
 
-Whether the site *should* stay capped at 1920 and centred, or stretch to fill a
-wide screen, is a design question for the owner. This issue only covers the
-broken state.
+The owner chose to
+[keep the page capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md)
+rather than stretch it on wide screens, so this fix is the final behaviour, not
+a stopgap.
 
 # Related
 
