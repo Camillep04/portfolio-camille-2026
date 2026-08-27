@@ -5,21 +5,21 @@
         <div class="image-prev">
           @if (project.link) {
             <a [href]="project.link" target="_blank">
-              <img [src]="project.image" [alt]="project.title" width="350">
+              <img [src]="project.image" [alt]="i18n.tc(project.title)" width="350">
             </a>
           } @else {
-            <img [src]="project.image" [alt]="project.title" width="350">
+            <img [src]="project.image" [alt]="i18n.tc(project.title)" width="350">
           }
         </div>
 
         <div class="info p-3">
-          <h2 class="title">{{ project.title }}</h2>
+          <h2 class="title">{{ i18n.tc(project.title) }}</h2>
           <div class="tips">
             <p class="year mt-2">{{ project.year }}</p>
           </div>
 
           <p class="desc txt-fff p-3">
-            <img [src]="project.icon" alt=""> <span [innerHTML]="project.description"></span>
+            <img [src]="project.icon" alt=""> <span [innerHTML]="i18n.tc(project.description)"></span>
           </p>
 
           <div class="buttons">
@@ -29,13 +29,13 @@
                   @case ('project') {
                     <i class="bi bi-vector-pen"></i>
                     <span class="texts">
-                      <span class="text-2"><img [src]="project.linkThumb" class="mr-3" alt="">{{ project.linkLabel }}</span>
+                      <span class="text-2"><img [src]="project.linkThumb" class="mr-3" alt="">{{ linkLabel(project) }}</span>
                     </span>
                   }
                   @case ('site') {
                     <img src="img/lien.png" alt="">
                     <span class="texts">
-                      <span class="text-2"> {{ project.linkLabel }}</span>
+                      <span class="text-2"> {{ linkLabel(project) }}</span>
                     </span>
                   }
                   @default {
@@ -46,7 +46,7 @@
                       </g>
                     </svg>
                     <span class="texts">
-                      <span class="text-2">{{ project.linkLabel }}</span>
+                      <span class="text-2">{{ linkLabel(project) }}</span>
                     </span>
                   }
                 }
@@ -56,7 +56,7 @@
             <button class="save_btn" type="button"
                     [class.is-favourite]="isFavourite(project.id)"
                     [attr.aria-pressed]="isFavourite(project.id)"
-                    [attr.aria-label]="isFavourite(project.id) ? 'Retirer ' + project.title + ' des favoris' : 'Ajouter ' + project.title + ' aux favoris'"
+                    [attr.aria-label]="favouriteLabel(project)"
                     (click)="toggleFavourite(project.id)">
               <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>

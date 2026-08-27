@@ -1,7 +1,7 @@
 <!--contact start -->
 <section id="contact" class="contact">
     <div class="section-heading text-center">
-        <h2>contact me</h2>
+        <h2>{{ i18n.t('contact.title') }}</h2>
     </div>
     <div class="container">
         <div class="contact-content">
@@ -13,12 +13,12 @@
                                 <h3 class="txt text-danger">Camille PROTHIN</h3>
                             </div>
                             <div class="d-flex align-items-center flex-column">
-                                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSduMT0SwYKsSyVh6NovkpNS-0pEK0Qj3FjnVykFzpBIW8coWA/viewform?embedded=true" width="440" height="990" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>                            
+                                <iframe [title]="i18n.t('contact.form')" src="https://docs.google.com/forms/d/e/1FAIpQLSduMT0SwYKsSyVh6NovkpNS-0pEK0Qj3FjnVykFzpBIW8coWA/viewform?embedded=true" width="440" height="990" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
                                 <div class="contact-add-info">
                             </div>
                                 <div class="single-contact-add-info">
                                     <div>
-                                        <h3 class="text-center mb-4">Mes réseaux :</h3>
+                                        <h3 class="text-center mb-4">{{ i18n.t('contact.socials') }}</h3>
                                         <ul class="d-flex flex-row justify-content-center align-items-center">
                                             <li class="px-2">
                                                 <a target="_blank" href="https://www.instagram.com/p___camille?igsh=MWpoeHUzaTgxbHgxOA%3D%3D&utm_source=qr">
@@ -45,7 +45,7 @@
                                     </div>
                                     <div>
                                         <div class="header-text mt-5">
-                                            <a href="img/CV_camille_2026.pdf" class="d-flex justify-content-center" download>Télécharger mon CV</a>
+                                            <a href="img/CV_camille_2026.pdf" class="d-flex justify-content-center" download>{{ i18n.t('cta.downloadCv') }}</a>
                                         </div>
                                     </div>
                                 </div>

@@ -5,72 +5,118 @@
  * object — the timeline markup is generated per entry, so the duplicate
  * `id="education"` sections and their copied `bi-circle-fill` markup are gone.
  *
- * `period`   — the big date label ("2026", "2025-2027")
- * `headline` — the kind of entry ("Stage - 4 mois", "Master cinéma et audiovisuel XR")
- * `place`    — the organisation or school
+ * `period`   — the big date label ("2026", "2025-2027"); not translated
+ * `headline` — the kind of entry ("Stage - 4 mois" / "4-month internship")
+ * `place`    — the organisation or school (often identical in both languages)
  * `description` — the one-line summary
+ *
+ * `headline`, `place` and `description` are `{ fr, en }` pairs so the site's
+ * language toggle can swap them at runtime.
  */
+import type { Localized } from '../i18n/translations';
+
 export interface TimelineEntry {
   period: string;
-  headline: string;
-  place: string;
-  description: string;
+  headline: Localized;
+  place: Localized;
+  description: Localized;
 }
 
 export const EXPERIENCES: TimelineEntry[] = [
   {
     period: '2026',
-    headline: 'Stage - 4 mois',
-    place: 'Université Paul Valéry - MSH SUD',
-    description:
-      'Création de vidéos corporate - Interviews - Vulgarisation audiovisuelle R&D - Montage - Captation événementielle/terrain',
+    headline: { fr: 'Stage - 4 mois', en: 'Internship - 4 months' },
+    place: {
+      fr: 'Université Paul Valéry - MSH SUD',
+      en: 'Paul Valéry University - MSH SUD',
+    },
+    description: {
+      fr: 'Création de vidéos corporate - Interviews - Vulgarisation audiovisuelle R&D - Montage - Captation événementielle/terrain',
+      en: 'Corporate video production - Interviews - Turning R&D into accessible video - Editing - Event and field filming',
+    },
   },
   {
     period: '2024',
-    headline: 'Alternance',
-    place: 'Agence web Ciweb',
-    description:
-      'Refonte site web - front et back end - Laravel - JQuery - BDD - PHP - JS - HTML - CSS',
+    headline: { fr: 'Alternance', en: 'Work-study year' },
+    place: { fr: 'Agence web Ciweb', en: 'Ciweb web agency' },
+    description: {
+      fr: 'Refonte site web - front et back end - Laravel - JQuery - BDD - PHP - JS - HTML - CSS',
+      en: 'Website rebuild - front and back end - Laravel - jQuery - databases - PHP - JS - HTML - CSS',
+    },
   },
   {
     period: '2023',
-    headline: 'Stage - 8 semaines',
-    place: 'Artemis NC',
-    description: 'Refonte graphique, refonte site web, communication sur les réseaux',
+    headline: { fr: 'Stage - 8 semaines', en: 'Internship - 8 weeks' },
+    place: { fr: 'Artemis NC', en: 'Artemis NC' },
+    description: {
+      fr: 'Refonte graphique, refonte site web, communication sur les réseaux',
+      en: 'Visual redesign, website rebuild, social media communication',
+    },
   },
   {
     period: '2023',
-    headline: 'Monitorat',
-    place: 'IUT - UNC',
-    description:
-      'Monitorat de communication de l’IUT. Participation à la présence numérique de l’IUT',
+    headline: { fr: 'Monitorat', en: 'Student assistant' },
+    place: { fr: 'IUT - UNC', en: 'IUT - University of New Caledonia' },
+    description: {
+      fr: "Monitorat de communication de l'IUT. Participation à la présence numérique de l'IUT",
+      en: "Communication assistant for the IUT, helping run the institute's online presence",
+    },
   },
   {
     period: '2022',
-    headline: 'Stage - 4 semaines',
-    place: 'Agence de communication Trait d’Union Pacifique',
-    description: 'Posts Facebook - Etiquette produit - Détourage produit',
+    headline: { fr: 'Stage - 4 semaines', en: 'Internship - 4 weeks' },
+    place: {
+      fr: 'Agence de communication Trait d’Union Pacifique',
+      en: 'Trait d’Union Pacifique communication agency',
+    },
+    description: {
+      fr: 'Posts Facebook - Etiquette produit - Détourage produit',
+      en: 'Facebook posts - Product labels - Product cut-outs',
+    },
   },
 ];
 
 export const EDUCATION: TimelineEntry[] = [
   {
     period: '2025-2027',
-    headline: 'Master cinéma et audiovisuel XR',
-    place: "École Nationale Supérieure d'AudioVisuel - Toulouse",
-    description: '3D - Éffets spéciaux - Animation',
+    headline: {
+      fr: 'Master cinéma et audiovisuel XR',
+      en: "Master's in Film and XR Audiovisual",
+    },
+    place: {
+      fr: "École Nationale Supérieure d'AudioVisuel - Toulouse",
+      en: "École Nationale Supérieure d'AudioVisuel (ENSAV) - Toulouse",
+    },
+    description: {
+      fr: '3D - Éffets spéciaux - Animation',
+      en: '3D - Visual effects - Animation',
+    },
   },
   {
     period: '2022 - 2024',
-    headline: 'BUT MMI',
-    place: 'Université de la Nouvelle-Calédonie - IUT',
-    description:
-      'Stratégie de communication - Gestion de projet - Développement web - Intégration web',
+    headline: { fr: 'BUT MMI', en: 'BUT MMI (Multimedia & Internet, BSc)' },
+    place: {
+      fr: 'Université de la Nouvelle-Calédonie - IUT',
+      en: 'University of New Caledonia - IUT',
+    },
+    description: {
+      fr: 'Stratégie de communication - Gestion de projet - Développement web - Intégration web',
+      en: 'Communication strategy - Project management - Web development - Web integration',
+    },
   },
   {
     period: '2021',
-    headline: 'Baccalauréat général - Mention Bien',
-    place: 'Lycée Jules Garnier Nouvelle-Calédonie',
-    description: 'Spécialité maths physique-chimie',
+    headline: {
+      fr: 'Baccalauréat général - Mention Bien',
+      en: 'French Baccalauréat - awarded with merit',
+    },
+    place: {
+      fr: 'Lycée Jules Garnier Nouvelle-Calédonie',
+      en: 'Lycée Jules Garnier, New Caledonia',
+    },
+    description: {
+      fr: 'Spécialité maths physique-chimie',
+      en: 'Majors in mathematics and physics-chemistry',
+    },
   },
 ];

@@ -7,8 +7,8 @@
             <!-- Texte centré au-dessus de l'image -->
             <div class="col-md-12 text-center overlay-text">
                 <div class="header-text">
-                    <h2 class="pb-5">J'aime m'amuser en :<span><h1 class="writing">{{ typed }}</h1></span></h2>
-                    <a routerLink="/projets">VOIR MES PROJETS</a>
+                    <h2 class="pb-5">{{ i18n.t('hero.funIn') }}<span><h1 class="writing">{{ typed }}</h1></span></h2>
+                    <a routerLink="/projets">{{ i18n.t('hero.cta') }}</a>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
 <!--about start -->
 <section id="about" class="about bg-noir">
     <div class="section-heading text-center">
-        <h2 class="text-light">Qui est Camille ?</h2>
+        <h2 class="text-light">{{ i18n.t('about.title') }}</h2>
     </div>
     <div class="mt-5 d-flex justify-content-center align-items-center flex-column">
         
@@ -27,10 +27,7 @@
             <div class="col-12 col-md-6 mb-4">
                 <div class="single-about-txt text-center text-md-left">
                     <img src="img/camille.webp" alt="profile_image" class="img-fluid img-text">
-                    <p class="text-light taille_texte text-justify pb-4">
-                        Je suis une jeune diplômée d'un Bachelor Universitaire de Technologie dans les Métiers du Multimédia et de l'Internet et depuis quelques années je pratique la photo et la vidéo. Durant ma dernière année de MMI, j’ai découvert la réalisation du documentaire et j’ai par la même occasion développé une nouvelle passion.
-                        Je suis actuellement en <b>Master cinéma et audiovisuel XR en France.</b> Modélisation 3D, fond vert, compositing, réalités virtuelles, scènes 3D, logiciels sont mes nouveaux mots favoris. J'apprend et suis la pipeline du monde de la 3D comme  les plus grands de l’industrie.
-                    </p>
+                    <p class="text-light taille_texte text-justify pb-4" [innerHTML]="i18n.t('about.bio')"></p>
                     <div class="row d-flex justify-content-around align-items-center pt-5">
                         <ul class="d-flex justify-content-center flex-row">
                             <li class="px-5">
@@ -60,7 +57,7 @@
             </div>
             <div class="col-12 col-md-5 d-flex flex-column align-items-center">
                 <div class="section-heading text-center">
-                    <h2 class="text-light pb-4">CV vidéo</h2>
+                    <h2 class="text-light pb-4">{{ i18n.t('cvVideo.title') }}</h2>
                 </div>
 
                 <div class="video-wrapper flex-grow-1 w-100">
@@ -74,7 +71,7 @@
 
                 <div class="header-text mt-5">
                     <a href="img/CV_camille_2026.pdf" class="d-flex justify-content-center" download>
-                        Télécharger mon CV
+                        {{ i18n.t('cta.downloadCv') }}
                     </a>
                 </div>
             </div>
@@ -85,7 +82,7 @@
 <!--clients start -->
 <section id="clients" class="clients pb-5 mb-5">
     <div class="section-heading text-center mb-5">
-        <h2>Compétences</h2>
+        <h2>{{ i18n.t('skills.title') }}</h2>
     </div>
 
     <div class="slider">
@@ -135,32 +132,32 @@
 
 <!-- ticket -->
 <div class="section-heading text-center">
-    <h2>Plongez dans mon univers</h2>
+    <h2>{{ i18n.t('universe.title') }}</h2>
 </div>
 <div class="d-flex flex-column flex-lg-row justify-content-center gap-4 m-5">
     <div class="cardWrap d-flex justify-content-center">
         <a routerLink="/projets" class="survol-ticket d-flex mb-4 justify-content-center">
             <div class="card cardLeft">
-            <h1 class="text-light"><span>TICKET</span></h1>
+            <h1 class="text-light"><span>{{ i18n.t('ticket.label') }}</span></h1>
             <div class="title">
-                <h2 class="text-uppercase"><b>Athlète quel est ton rêve ?</b></h2>
-                <span>Documentaire</span>
+                <h2 class="text-uppercase"><b>{{ i18n.t('ticket.doc.title') }}</b></h2>
+                <span>{{ i18n.t('ticket.doc.kind') }}</span>
             </div>
             <div class="name">
                 <h2>Camille Prothin</h2>
-                <span>réalisatrice</span>
+                <span>{{ i18n.t('ticket.role') }}</span>
             </div>
             <div class="seat">
                 <h2>2024</h2>
-                <span>année</span>
+                <span>{{ i18n.t('ticket.yearLabel') }}</span>
             </div>
-            
+
             </div>
             <div class="card cardRight">
             <div class="eye"></div>
             <div class="number">
                 <h3>356</h3>
-                <span>vues</span>
+                <span>{{ i18n.t('ticket.viewsLabel') }}</span>
             </div>
             </div>
         </a>
@@ -169,26 +166,26 @@
     <div class="cardWrap d-flex justify-content-center">
         <a routerLink="/photo" class="survol-ticket d-flex mb-4 justify-content-center">
             <div class="card cardLeft">
-            <h1 class="text-light"><span>TICKET</span></h1>
+            <h1 class="text-light"><span>{{ i18n.t('ticket.label') }}</span></h1>
             <div class="title">
-                <h2 class="text-uppercase"><b>Photographies</b></h2>
-                <span>Images</span>
+                <h2 class="text-uppercase"><b>{{ i18n.t('ticket.photo.title') }}</b></h2>
+                <span>{{ i18n.t('ticket.photo.kind') }}</span>
             </div>
             <div class="name">
                 <h2>Camille Prothin</h2>
-                <span>réalisatrice</span>
+                <span>{{ i18n.t('ticket.role') }}</span>
             </div>
             <div class="seat">
                 <h2>594</h2>
-                <span>vues</span>
+                <span>{{ i18n.t('ticket.viewsLabel') }}</span>
             </div>
-            
+
             </div>
             <div class="card cardRight">
             <div class="eye"></div>
             <div class="number">
                 <h3>594</h3>
-                <span>vues</span>
+                <span>{{ i18n.t('ticket.viewsLabel') }}</span>
             </div>
             </div>
         </a>
@@ -199,7 +196,7 @@
 <!--experiences start -->
 <section id="experiences" class="education">
     <div class="section-heading text-center">
-        <h2 class="test">Expériences</h2>
+        <h2 class="test">{{ i18n.t('experiences.title') }}</h2>
     </div>
     <div class="container">
         <div class="education-horizontal-timeline">
@@ -209,7 +206,7 @@
                         <div class="single-horizontal-timeline p-5">
                             <div class="experience-time">
                                 <h2>{{ entry.period }}</h2>
-                                <h3>{{ entry.headline }}</h3>
+                                <h3>{{ i18n.tc(entry.headline) }}</h3>
                             </div><!--/.experience-time-->
                             <div class="timeline-horizontal-border">
                                 <i class="bi bi-circle-fill" aria-hidden="true"></i>
@@ -217,8 +214,8 @@
                             </div>
                             <div class="timeline">
                                 <div class="timeline-content">
-                                    <h4 class="title">{{ entry.place }}</h4>
-                                    <p class="description pt-3 pb-5">{{ entry.description }}</p>
+                                    <h4 class="title">{{ i18n.tc(entry.place) }}</h4>
+                                    <p class="description pt-3 pb-5">{{ i18n.tc(entry.description) }}</p>
                                 </div><!--/.timeline-content-->
                             </div><!--/.timeline-->
                         </div>
@@ -233,7 +230,7 @@
 <!--formations start -->
 <section id="formations" class="education">
     <div class="section-heading text-center">
-        <h2>Formations</h2>
+        <h2>{{ i18n.t('formations.title') }}</h2>
     </div>
     <div class="container">
         <div class="education-horizontal-timeline">
@@ -243,7 +240,7 @@
                         <div class="single-horizontal-timeline">
                             <div class="experience-time">
                                 <h2>{{ entry.period }}</h2>
-                                <h3>{{ entry.headline }}</h3>
+                                <h3>{{ i18n.tc(entry.headline) }}</h3>
                             </div><!--/.experience-time-->
                             <div class="timeline-horizontal-border">
                                 <i class="bi bi-circle-fill" aria-hidden="true"></i>
@@ -251,8 +248,8 @@
                             </div>
                             <div class="timeline">
                                 <div class="timeline-content">
-                                    <h4 class="title">{{ entry.place }}</h4>
-                                    <p class="description pt-3">{{ entry.description }}</p>
+                                    <h4 class="title">{{ i18n.tc(entry.place) }}</h4>
+                                    <p class="description pt-3">{{ i18n.tc(entry.description) }}</p>
                                 </div><!--/.timeline-content-->
                             </div><!--/.timeline-->
                         </div>
@@ -267,100 +264,25 @@
 
 <!-- photo -->
 <div class="section-heading text-center mb-5 mt-5 pt-5">
-    <h2>PHOTO</h2>
+    <h2>{{ i18n.t('home.photo.title') }}</h2>
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mb-3">
-    <div class="col d-flex justify-content-center">
-        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-            <a routerLink="/photo">
-                <div class="polaroid-img d-flex justify-content-center">
-                    <div class="polaroid-title">
-                        <p>Ballet de méduses</p>
+    <!-- The five teasers echo the first five gallery photos. The background
+         image is a `.col:nth-child(n)` rule in the stylesheet, so array order
+         here must stay galerie/1..5; the title comes from the same data as
+         /photo so it never drifts and it translates. -->
+    @for (photo of polaroids; track photo.id) {
+        <div class="col d-flex justify-content-center">
+            <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+                <a routerLink="/photo">
+                    <div class="polaroid-img d-flex justify-content-center">
+                        <div class="polaroid-title">
+                            <p>{{ i18n.tc(photo.title) }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-            <a routerLink="/photo">
-                <div class="polaroid-img d-flex justify-content-center">
-                    <div class="polaroid-title">
-                        <p>Grande roue</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-            <a routerLink="/photo">
-                <div class="polaroid-img d-flex justify-content-center">
-                    <div class="polaroid-title">
-                        <p>Loutre pirate</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-            <a routerLink="/photo">
-                <div class="polaroid-img d-flex justify-content-center">
-                    <div class="polaroid-title">
-                        <p>Full moon</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-            <a routerLink="/photo">
-                <div class="polaroid-img d-flex justify-content-center">
-                    <div class="polaroid-title">
-                        <p>Flamboyant</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    
-    <!-- <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
-        <a routerLink="/photo">
-            <div class="polaroid-img d-flex justify-content-center">
-                <div class="polaroid-title">
-                    <p>Creek Pernod</p>
-                </div>
+                </a>
             </div>
-        </a>
-    </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
-        <a routerLink="/photo">
-            <div class="polaroid-img d-flex justify-content-center">
-                <div class="polaroid-title">
-                    <p>Loutre pirate</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
-        <a routerLink="/photo">
-            <div class="polaroid-img d-flex justify-content-center">
-                <div class="polaroid-title">
-                    <p>Le butin</p>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="polaroid survol-ticket d-flex flex-column align-items-center p-2">
-        <a routerLink="/photo">
-            <div class="polaroid-img d-flex justify-content-center">
-                <div class="polaroid-title">
-                    <p>Rayon de soleil</p>
-                </div>
-            </div>
-        </a>
-    </div> -->
+        </div>
+    }
 </div>
 <!-- fin photo -->

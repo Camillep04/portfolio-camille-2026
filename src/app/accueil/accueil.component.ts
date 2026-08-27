@@ -1,9 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { EDUCATION, EXPERIENCES } from '../data/cv';
+import { PHOTOS } from '../data/photos';
+import { LanguageService } from '../i18n/language.service';
 
-const WORDS = ['vidéo', 'photo', 'cinéma', 'création', 'développement', ':)'];
+/** Hero typewriter words, one list per language. Keep the two the same length
+ *  so the rotating index never falls off the end when the language changes. */
+const WORDS: Record<'fr' | 'en', string[]> = {
+  fr: ['vidéo', 'photo', 'cinéma', 'création', 'développement', ':)'],
+  en: ['video', 'photo', 'cinema', 'creating', 'coding', ':)'],
+};
 const TYPE_MS = 75;
 const ERASE_MS = 25;
 const PAUSE_MS = 1000;
@@ -16,6 +23,8 @@ const PAUSE_MS = 1000;
   styleUrl: './accueil.component.css'
 })
 export class AccueilComponent implements OnInit, OnDestroy {
+  readonly i18n = inject(LanguageService);
+
   /** The word being typed in the hero. Was public/js/indexCam.js, which only
    *  ran on DOMContentLoaded and so stayed empty after a client-side
    *  navigation back to this page. */
@@ -23,6 +32,10 @@ export class AccueilComponent implements OnInit, OnDestroy {
 
   readonly experiences = EXPERIENCES;
   readonly education = EDUCATION;
+
+  /** The five teaser polaroids echo the first five gallery photos — driven
+   *  from the same data so the titles translate and never drift. */
+  readonly polaroids = PHOTOS.slice(0, 5);
 
   private wordIndex = 0;
   private timer?: ReturnType<typeof setTimeout>;
@@ -36,7 +49,7 @@ export class AccueilComponent implements OnInit, OnDestroy {
   }
 
   private type(): void {
-    const word = WORDS[this.wordIndex];
+    const word = WORDS[this.i18n.lang()][this.wordIndex];
     if (this.typed.length < word.length) {
       this.typed = word.slice(0, this.typed.length + 1);
       this.timer = setTimeout(() => this.type(), TYPE_MS);
@@ -50,7 +63,8 @@ export class AccueilComponent implements OnInit, OnDestroy {
       this.typed = this.typed.slice(0, -1);
       this.timer = setTimeout(() => this.erase(), ERASE_MS);
     } else {
-      this.wordIndex = (this.wordIndex + 1) % WORDS.length;
+      const count = WORDS[this.i18n.lang()].length;
+      this.wordIndex = (this.wordIndex + 1) % count;
       this.timer = setTimeout(() => this.type(), TYPE_MS);
     }
   }

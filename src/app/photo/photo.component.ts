@@ -1,6 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 
 import { PHOTOS } from '../data/photos';
+import { LanguageService } from '../i18n/language.service';
 
 @Component({
   selector: 'app-photo',
@@ -11,6 +12,7 @@ import { PHOTOS } from '../data/photos';
 })
 export class PhotoComponent {
   readonly photos = PHOTOS;
+  readonly i18n = inject(LanguageService);
 
   /** Index into `photos` of the photo shown in the lightbox, or null when closed.
    *  A single Angular-driven dialog replaces the 35 Bootstrap modals — the

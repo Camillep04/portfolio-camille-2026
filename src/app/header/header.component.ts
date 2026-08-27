@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
+
+import { LanguageService } from '../i18n/language.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +13,8 @@ import { Subscription, filter } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('navbarMenu') navbarMenu?: ElementRef<HTMLElement>;
+
+  readonly i18n = inject(LanguageService);
 
   private sub?: Subscription;
 

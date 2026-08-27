@@ -61,3 +61,36 @@ nav.navbar.bootsnav.navbar-fixed {
 .centrer{
     height: 100%;
 }
+
+/* Session 6: the FR/EN toggle. A plain button styled to sit in the nav row
+   next to the links — a pill so it reads as a control, not another page
+   link. */
+.lang-switch {
+    display: flex;
+    align-items: center;
+}
+.lang-switch button {
+    margin-left: 8px;
+    padding: 2px 12px;
+    border: 1px solid currentColor;
+    border-radius: 16px;
+    background: transparent;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.lang-switch button:hover,
+.lang-switch button:focus-visible {
+    background: #fff;
+    color: #000;
+}
+@media (max-width: 991.98px) {
+    .lang-switch {
+        justify-content: center;
+        padding: 10px 0;
+    }
+}

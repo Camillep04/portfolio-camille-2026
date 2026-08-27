@@ -7,7 +7,7 @@
         @for (photo of photos; track photo.id; let i = $index) {
           <div class="item">
             <button type="button" class="btn" (click)="open(i)">
-              <img [src]="photo.src" [alt]="photo.title" loading="lazy"/>
+              <img [src]="photo.src" [alt]="i18n.tc(photo.title)" loading="lazy"/>
             </button>
           </div>
         }
@@ -15,7 +15,7 @@
     </div>
 
     <div class="instagram-cta">
-      <p>Retrouvez plus de photos sur mon Instagram</p>
+      <p>{{ i18n.t('photo.instagramCta') }}</p>
       <a class="instagram-link" href="https://www.instagram.com/p___camille/" target="_blank" rel="noopener">
         <i class="bi bi-instagram" aria-hidden="true"></i>
         <span>&#64;p___camille</span>
@@ -61,28 +61,28 @@
 </section>
 
 @if (activePhoto; as photo) {
-  <div class="lightbox" role="dialog" aria-modal="true" [attr.aria-label]="photo.title"
+  <div class="lightbox" role="dialog" aria-modal="true" [attr.aria-label]="i18n.tc(photo.title)"
        (click)="close()">
-    <button type="button" class="lightbox-close" aria-label="Fermer" (click)="close()">
+    <button type="button" class="lightbox-close" [attr.aria-label]="i18n.t('photo.close')" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
 
-    <button type="button" class="lightbox-nav prev" aria-label="Photo précédente"
+    <button type="button" class="lightbox-nav prev" [attr.aria-label]="i18n.t('photo.prev')"
             (click)="$event.stopPropagation(); prev()">
       <span aria-hidden="true">&#8249;</span>
     </button>
 
     <figure class="lightbox-figure" (click)="$event.stopPropagation()">
-      <img [src]="photo.src" [alt]="photo.title"/>
+      <img [src]="photo.src" [alt]="i18n.tc(photo.title)"/>
       <figcaption>
-        <span class="lightbox-title">{{ photo.title }}</span>
+        <span class="lightbox-title">{{ i18n.tc(photo.title) }}</span>
         @if (photo.description) {
-          <span class="lightbox-desc">{{ photo.description }}</span>
+          <span class="lightbox-desc">{{ i18n.tc(photo.description) }}</span>
         }
       </figcaption>
     </figure>
 
-    <button type="button" class="lightbox-nav next" aria-label="Photo suivante"
+    <button type="button" class="lightbox-nav next" [attr.aria-label]="i18n.t('photo.next')"
             (click)="$event.stopPropagation(); next()">
       <span aria-hidden="true">&#8250;</span>
     </button>

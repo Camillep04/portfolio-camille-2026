@@ -34,7 +34,7 @@ describe('PhotoComponent', () => {
   it('uses the photo title as the image alt text', () => {
     const el: HTMLElement = fixture.nativeElement;
     const firstAlt = el.querySelector('.gallery .item img')?.getAttribute('alt');
-    expect(firstAlt).toBe(PHOTOS[0].title);
+    expect(firstAlt).toBe(PHOTOS[0].title.fr);
   });
 
   it('opens the lightbox on the clicked photo and closes it', () => {
@@ -44,7 +44,7 @@ describe('PhotoComponent', () => {
 
     expect(component.activeIndex).toBe(2);
     const caption = el.querySelector('.lightbox-title')?.textContent?.trim();
-    expect(caption).toBe(PHOTOS[2].title);
+    expect(caption).toBe(PHOTOS[2].title.fr);
 
     (el.querySelector('.lightbox-close') as HTMLButtonElement).click();
     fixture.detectChanges();
@@ -72,7 +72,7 @@ describe('PhotoComponent', () => {
     if (withDesc !== -1) {
       component.open(withDesc);
       fixture.detectChanges();
-      expect(el.querySelector('.lightbox-desc')?.textContent?.trim()).toBe(PHOTOS[withDesc].description);
+      expect(el.querySelector('.lightbox-desc')?.textContent?.trim()).toBe(PHOTOS[withDesc].description?.fr);
     }
   });
 
