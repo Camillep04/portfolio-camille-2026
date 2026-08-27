@@ -27,7 +27,7 @@ describe('HeaderComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const menu = Array.from(compiled.querySelectorAll('#navbar-menu a'));
     expect(menu.map(a => a.getAttribute('href'))).toEqual([
-      '/', '/audiovisuel', '/photo', '/contact', 'img/CV_camille_2026.pdf'
+      '/', '/projets', '/photo', '/contact', 'img/CV_camille_2026.pdf'
     ]);
     expect(compiled.querySelector('.navbar-brand')?.getAttribute('href')).toBe('/');
   });

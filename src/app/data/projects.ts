@@ -1,5 +1,5 @@
 /**
- * The projects shown on /audiovisuel, as data.
+ * The projects shown on /projets (the component is still named audiovisuel), as data.
  *
  * Array order is display order — the first object is the top of the page. To
  * add a project, add one object at the position you want it; nothing else in

@@ -7,6 +7,8 @@ import { PhotoComponent } from './photo/photo.component';
 export const routes: Routes = [
     {path: '', component: AccueilComponent},
     { path: 'contact', component: ContactComponent},
-    { path: 'audiovisuel', component: AudiovisuelComponent},
+    { path: 'projets', component: AudiovisuelComponent},
+    // Old path kept as a redirect so existing links and bookmarks survive.
+    { path: 'audiovisuel', redirectTo: 'projets', pathMatch: 'full' },
     { path: 'photo', component: PhotoComponent },
 ];
