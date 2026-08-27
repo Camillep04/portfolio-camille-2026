@@ -285,7 +285,7 @@
 .slider {
 	background: white;
 	/* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125); */
-	height: 100px;
+	height: 70px;
 	margin: auto;
 	overflow: hidden;
 	position: relative;
@@ -296,7 +296,7 @@
 .slider::after {
 	background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
 	content: "";
-	height: 100px;
+	height: 70px;
 	position: absolute;
 	width: 200px;
 	z-index: 2;
@@ -320,7 +320,28 @@
 }
 
 .slider .slide {
-	height: 100px;
+	height: 70px;
 	width: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Session 6: logos half their old size (100px -> 50px), greyscale at rest and
+   full colour on hover/focus. The `img` width/height attributes in the template
+   are the pre-Session-6 100px; these rules win. */
+.slider .slide img {
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+	filter: grayscale(100%);
+	opacity: 0.85;
+	transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.slider .slide img:hover,
+.slider .slide img:focus {
+	filter: grayscale(0);
+	opacity: 1;
 }
 /* fin compétences */

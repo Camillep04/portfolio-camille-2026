@@ -11,6 +11,16 @@
   padding-top: 100px;
 }
 
+/* Session 6: the gallery ran to the container edge on tablet / small desktop.
+   Add horizontal breathing room at the Bootstrap `md` and `lg` tiers
+   (768-1199px) — the container's own 15px gutter plus 10px, per the owner. */
+@media (min-width: 768px) and (max-width: 1199.98px){
+  .portfolio .container{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
 /* Masonry via CSS columns: array order in photos.ts is the fill order, and the
    grid reflows on resize with no stair-step gaps. Replaces the hand-packed
    Bootstrap `.col-sm-4` layout and the never-loaded isotope script. */
