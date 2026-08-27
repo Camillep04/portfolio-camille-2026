@@ -7,8 +7,7 @@ import { FooterComponent } from './footer/footer.component';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'Camille Portfolio';

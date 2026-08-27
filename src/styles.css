@@ -9,3 +9,13 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Moved from app.component.css when the Angular CLI starter boilerplate was
+   deleted — these two rules were the only ones actually leaking out of
+   `:host` onto app-root, so they belong in the global stylesheet instead. */
+app-root {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  box-sizing: border-box;
+}
