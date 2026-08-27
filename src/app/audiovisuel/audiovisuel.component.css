@@ -42,66 +42,15 @@ main section {
   position: relative;
   text-transform: uppercase;
   box-shadow: 0px 0px 10px #00000024;
-}
-main section:nth-child(1) {
-  background-image: url("../../../public/img/portfolio/a&h.jpg");
+  /* The hero image is now `background` from projects.ts, set inline per section,
+     so reordering the array carries the image with the project. These are the
+     properties every section shared; the old per-section `nth-child` rules
+     varied only between `100%` and (below 1500px) `cover`, so they unify to
+     `cover`. */
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(2) {
-  background: url("../../../public/img/portfolio/reel.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(3) {
-  background: url("../../../public/img/portfolio/room-tour.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(4) {
-  background: url("../../../public/img/portfolio/mr.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(5) {
-  background: url("../../../public/img/portfolio/wg.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(6) {
-  background: url("../../../public/img/portfolio/mf.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  /* background-size: 100%; */
-}
-main section:nth-child(7) {
-  background: url("../../../public/img/portfolio/phone_fond.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(8) {
-  background: url("../../../public/img/portfolio/plateau.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(9) {
-  background: url("../../../public/img/portfolio/clip_mmi.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-main section:nth-child(10) {
-  background: url("../../../public/img/portfolio/inlive.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 main section::after {
@@ -125,6 +74,15 @@ main section .content {
   row-gap: 15px;
   flex-wrap: wrap;
   position: relative;
+}
+/* Alternate image / info side. Was source order per hand-written section; now a
+   class toggled on `$odd` in the template. `order` (not `row-reverse`) so the
+   single-column mobile stack follows the same alternation. */
+main section .content.reversed .image-prev {
+  order: 1;
+}
+main section .content.reversed .info {
+  order: 0;
 }
 main section .content .image-prev {
   width: max-content;
@@ -252,17 +210,6 @@ main section .content .info .buttons {
 .save_btn:active {
   transform: scale(0.8);
 } */
-@media screen and (max-width: 1500px) {
-  main section:nth-child(1) {
-    background-size: cover;
-  }
-  main section:nth-child(2) {
-    background-size: cover;
-  }
-  main section:nth-child(3) {
-    background-size: cover;
-  }
-}
 @media screen and (max-width: 1015px) {
   main section img {
     transform: scale(0.8);
