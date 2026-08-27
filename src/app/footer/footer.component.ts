@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  /** Rendered in the copyright line so it never goes stale. */
+  readonly currentYear = new Date().getFullYear();
 }
