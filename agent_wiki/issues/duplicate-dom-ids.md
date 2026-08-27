@@ -2,11 +2,11 @@
 type: Issue
 title: Duplicate DOM ids throughout the app
 description: 35 modal titles share one id and aria-labelledby points at an id that does not exist, so screen readers announce nothing.
-tags: [a11y, html, p1, live-bug]
+tags: [a11y, html, p1, live-bug, resolved]
 resource: /src/app
-status: stable
+status: deprecated
 priority: P1
-verification: confirmed-in-production
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -17,6 +17,23 @@ sources:
     resource: /references/live-site.md
     title: Live site checks, 2026-08-26
 ---
+
+**Resolved across sessions 2 and 4.** As of session 4, extracting every
+static `id="..."` literal from the templates and running `sort | uniq -d`
+returns nothing — the only ids left are `@for`-generated per-item slugs.
+
+* Session 2 removed `youtube-iframe` ×10 and `popup-container` ×5 with the dead
+  popup markup ([dead inline script](/issues/dead-inline-script-audiovisuel.md)).
+* Session 4:
+  * `exampleModalLongTitle` ×35 → `modalPhotoTitle-<slug>`, unique;
+    `aria-labelledby` now resolves.
+  * `id="education"` ×2 → `id="experiences"` / `id="formations"`.
+  * The `SVGRepo_*` boilerplate ids (16 each, app-wide) were dropped when the
+    two project SVGs moved into the template once instead of being copied per
+    project.
+
+Specs on both pages assert id uniqueness. See
+[content hardcoded in templates](/issues/content-hardcoded-in-templates.md).
 
 # Symptom
 

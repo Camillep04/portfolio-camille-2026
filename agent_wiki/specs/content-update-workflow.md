@@ -8,6 +8,13 @@ generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 ---
 
+**Target reached, 2026-08-27 (session 4).** All four datasets — `PHOTOS`,
+`PROJECTS`, `EXPERIENCES`, `EDUCATION` — are typed arrays under
+[`src/app/data/`](/architecture/content-data-layer.md), rendered with `@for`.
+Adding an item is one object in one `.ts` file; a missing field fails
+`ng build`; specs assert rendered count == data length; ids are per-item. The
+"workflow today" table below is the *old* state, kept for the record.
+
 # Why this concept exists
 
 This portfolio is maintained by its owner, who codes competently but not

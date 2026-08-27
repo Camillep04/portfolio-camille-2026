@@ -104,32 +104,45 @@ Session 6 designs for a 1920px canvas.
 **Done when:** `ng build` succeeds, 11/11 tests pass, and `/`, `/photo`,
 `/audiovisuel` all load clean in a browser with no console errors — verified.
 
-# Session 4 — the refactor that pays for itself
+# Session 4 — the refactor that pays for itself ✅ done 2026-08-27
 
-The audit and the owner arrived at this one independently, which makes it the
-highest-value session in the plan.
+The audit and the owner arrived at this one independently, which made it the
+highest-value session in the plan. Landed one dataset at a time, one commit
+each, each verified in a browser before the next.
 
-13. Extract `PROJECTS`, `PHOTOS`, `EXPERIENCES`, `EDUCATION` to typed data and
-    render with `@for`. See
+13. ✅ Extracted every content dataset to typed data under
+    [`src/app/data/`](/architecture/content-data-layer.md), rendered with
+    `@for`. See
     [content hardcoded in templates](/issues/content-hardcoded-in-templates.md)
-    and the target described in
-    [the content update workflow](/specs/content-update-workflow.md).
+    (now resolved) and [the content update workflow](/specs/content-update-workflow.md).
+    * ✅ **`PHOTOS`** (`photos.ts`) — `photo.component.html` 958 → ~70 lines.
+      Per-photo DOM ids, so the 35 duplicate `exampleModalLongTitle` ids are
+      gone and `aria-labelledby` resolves. Hand-packed `col-sm-4` columns →
+      CSS-columns masonry, so reordering the array reflows without gaps. `alt`
+      is the photo title. Model carries optional `description` for Session 5.
+    * ✅ **`PROJECTS`** (`projects.ts`) — `audiovisuel.component.html` 427 →
+      ~55 lines. Each project carries its own `background`; it *was* a
+      positional `nth-child` rule, which is exactly why reordering scrambled
+      the page. image/info side alternates via a class + CSS `order`.
+    * ✅ **`EXPERIENCES` + `EDUCATION`** (`cv.ts`) — the two home-page
+      timelines, ~185 lines → two `@for` loops. The two `id="education"`
+      sections became `id="experiences"` / `id="formations"`.
 
-    Three owner requests are satisfied by this and by nothing else:
-    * **[C]** New projects added at the **top**, numbered newest-first
-      (4, 3, 2, 1) instead of each one inheriting the previous.
-    * **[C]** Photo order changeable without breaking the responsive grid —
-      array order becomes display order.
-    * **[C]** Texts, images and links editable in one place, the site staying
-      coherent and responsive.
+    Owner requests satisfied by this and nothing else:
+    * **[C]** New projects added at the **top** — array order is display order;
+      `projects.ts` keeps the current order, moving one is a one-line move.
+    * **[C]** Photo order changeable without breaking the responsive grid — the
+      CSS-columns masonry makes array order the fill order.
+    * **[C]** Texts, images and links editable in one place — one typed object
+      per item, type-checked at build.
 
-Stage it one dataset at a time — `PHOTOS` first, since that file is the largest
-and the most mechanical — so each stage is independently verifiable. The photo
-data model must carry an optional `description`, because Session 5's popup
-needs it.
+**Done:** adding an item is one object in one `.ts` file; specs assert the
+rendered count matches the data for photos, projects, experiences and
+formations. 19/19 green.
 
-**Done when:** adding a project is a nine-line object in one `.ts` file, and a
-test asserts the rendered count matches the data.
+**One visual side effect, on purpose:** the projects page's ten `nth-child`
+hero backgrounds unified to `background-size: cover` (they varied only between
+`100%` and, below 1500px, `cover`). Session 6 owns that redesign anyway.
 
 # Session 5 — the owner's features
 

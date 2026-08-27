@@ -30,7 +30,7 @@ each **re-verified against the code on 2026-08-26**. Frontmatter carries
 * [Unlinked stylesheets](unlinked-stylesheets.md) - **Resolved** in session 2; icons are bootstrap-icons now.
 * [Bootstrap version conflict](bootstrap-version-conflict.md) - Four versions fighting; utility classes silently ignored.
 * [Dead inline script in audiovisuel](dead-inline-script-audiovisuel.md) - **Resolved** in session 2; the five dead popups went with it.
-* [Duplicate DOM ids](duplicate-dom-ids.md) - Down to SVG boilerplate and `education` after session 2; 35 modal ids remain.
+* [Duplicate DOM ids](duplicate-dom-ids.md) - **Resolved** across sessions 2 and 4; `uniq -d` on template ids returns nothing.
 * [No routerLink](no-routerlink-full-page-reloads.md) - **Resolved** in session 2; the typewriter and burger menu moved into Angular.
 
 # P2 — performance
@@ -41,19 +41,19 @@ each **re-verified against the code on 2026-08-26**. Frontmatter carries
 
 # P3 — maintainability
 
-* [Content hardcoded in templates](content-hardcoded-in-templates.md) - **The root cause of most of the list above.**
+* [Content hardcoded in templates](content-hardcoded-in-templates.md) - **Resolved** in session 4; content is typed data under `src/app/data/`. Was the root cause of most of the list above.
 * [Empty component classes](empty-component-classes.md) - All behaviour is global jQuery binding before Angular renders.
 * [Angular starter boilerplate CSS](angular-starter-boilerplate-css.md) - 200 unused lines that still leak two real rules.
 * [Vendored magnific-popup repo](vendored-magnific-popup-repo.md) - 1.2 MB of upstream repo that never ships.
 * [No linter or formatter](no-linter-or-formatter.md) - Nothing mechanical catches the defects that accumulated.
 * [Broken Dockerfile](broken-dockerfile.md) - Every comment lost its `#`; unused regardless.
-* [Spec files are stubs](spec-files-are-stubs.md) - Six identical `should create` tests asserting nothing.
+* [Spec files are stubs](spec-files-are-stubs.md) - **Partly resolved** in session 4; the three content pages have real assertions (19/19). `contact` / `header` / `footer` still stubs.
 
 # P4 — SEO, accessibility, content
 
 * [html lang mismatch](html-lang-mismatch.md) - `lang="en"` on an entirely French site.
 * [Missing SEO metadata](missing-seo-metadata.md) - No description, no Open Graph, no per-route title.
-* [Missing alt text](missing-alt-text.md) - On a photography portfolio.
+* [Missing alt text](missing-alt-text.md) - Gallery photos and project posters fixed in session 4; header/footer/bio images still open.
 * [Contact form overflows on mobile](contact-form-overflow-mobile.md) - The only contact channel, cut off on a phone.
 * [Placeholder content on contact](placeholder-content-contact.md) - Five dead theme links and an English heading.
 * [No wildcard route](no-wildcard-route.md) - A typo'd URL renders a blank middle, not a 404.

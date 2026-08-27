@@ -14,3 +14,4 @@ is.
 * [Two-layer frontend](two-layer-frontend.md) - An Angular 18 shell wrapped around a vendored jQuery template. **Read this first** — most defects live on that seam.
 * [Angular application shell](angular-shell.md) - How the app boots, routes, and composes the four pages.
 * [Build and deploy](build-and-deploy.md) - Netlify builds from `main` on every push; three other deploy configs are dead.
+* [Content data layer](content-data-layer.md) - Photos, projects and CV timelines are typed arrays under `src/app/data/`, rendered with `@for`; array order is display order.

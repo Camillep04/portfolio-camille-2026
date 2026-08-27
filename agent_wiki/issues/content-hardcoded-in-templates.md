@@ -2,11 +2,11 @@
 type: Issue
 title: All content is hand-duplicated markup with no data layer
 description: Adding one project or photo means copy-pasting 25 to 60 lines of markup; this is the root cause of most other defects.
-tags: [maintainability, angular, refactor, p3, root-cause]
+tags: [maintainability, angular, refactor, p3, root-cause, resolved]
 resource: /src/app
-status: stable
+status: deprecated
 priority: P3
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,19 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-27, session 4.** Every content dataset now lives in typed
+data under [`src/app/data/`](/architecture/content-data-layer.md) and renders
+with `@for`: `photos.ts` (35 photos), `projects.ts` (10 projects), `cv.ts`
+(`EXPERIENCES` + `EDUCATION`). The three page templates shrank from
+958 / 427 / 501 lines to a loop each. Specs assert rendered count == data
+length. Adding an item is one object in one file, type-checked at build.
+Downstream issues cleared with it — see
+[duplicate DOM ids](/issues/duplicate-dom-ids.md) (photo modal ids + the two
+`education` sections) and [missing alt text](/issues/missing-alt-text.md) (the
+gallery). The skills marquee and the home-page polaroid strip were left as
+markup — not in scope, and touching the marquee risks its width-based
+animation.
 
 # Symptom
 

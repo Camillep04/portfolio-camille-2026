@@ -18,6 +18,24 @@ sources:
     title: Live site checks, 2026-08-26
 ---
 
+# Progress
+
+**Session 4** fixed the two content-image categories that ran through the
+templated datasets:
+
+* All **35 gallery photos** now carry `alt="<photo title>"` instead of
+  `alt="portfolio image"` — titles like "Ballet de méduses", so still worth a
+  proper description pass, but no longer identical.
+* All **10 project posters** now carry `alt="<project title>"` instead of
+  `alt=""`.
+* Project description glyphs (`camera.png`, `3d.png`, `vecteur.png`), the
+  `lien.png` button icon, and the small `linkThumb` glyph all render with a
+  deliberate `alt=""`.
+
+Still open: the header menu button, the footer `monter.png`, and the `accueil`
+bio / CV images. These are outside `src/app/data/` and need a separate pass —
+tracked with [SEO/accessibility ongoing](/plans/remediation-roadmap.md).
+
 # Symptom
 
 The site is largely unusable with a screen reader, and image search sees

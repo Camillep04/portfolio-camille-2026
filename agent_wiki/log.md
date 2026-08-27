@@ -2,6 +2,39 @@
 
 ## 2026-08-27
 
+* **Work**: Session 4 — the content refactor. Every repeated dataset is now
+  typed data under `src/app/data/`, rendered with `@for`. New concept:
+  [content data layer](/architecture/content-data-layer.md). Landed in three
+  commits, one dataset each, each verified in a browser:
+  * `photos.ts` — `photo.component.html` 958 → ~70 lines. CSS-columns masonry
+    replaces the hand-packed grid; per-photo modal ids; `alt` is the title.
+  * `projects.ts` — `audiovisuel.component.html` 427 → ~55 lines. Each project
+    carries its own hero `background` (was a positional `nth-child` rule, the
+    reason reordering scrambled the page); image/info side alternates via CSS
+    `order`. The ten `nth-child` rules unified to `background-size: cover` —
+    the one intentional visual change.
+  * `cv.ts` — the two home-page timelines, ~185 lines → two loops. The
+    duplicate `id="education"` became `id="experiences"` / `id="formations"`.
+* **Resolved**: [content hardcoded in templates](/issues/content-hardcoded-in-templates.md)
+  (the P3 root cause) and [duplicate DOM ids](/issues/duplicate-dom-ids.md)
+  (`uniq -d` on template ids now returns nothing).
+  [The content update workflow](/specs/content-update-workflow.md) target is
+  reached. Partial progress on
+  [spec files are stubs](/issues/spec-files-are-stubs.md) (three content pages
+  got real assertions, 19/19) and
+  [missing alt text](/issues/missing-alt-text.md) (gallery + posters).
+* **Verification**: `ng build` clean, 19/19 tests, `/`, `/photo`,
+  `/audiovisuel` all checked in a browser at desktop and 375px — counts,
+  labels, links, backgrounds, alternation, no horizontal overflow, no console
+  errors, and content surviving client-side navigation. Committed to `develop`,
+  not pushed.
+* Component concepts [photo-page](/components/photo-page.md),
+  [audiovisuel-page](/components/audiovisuel-page.md) and
+  [accueil-page](/components/accueil-page.md) rewritten to the post-refactor
+  state (they had also drifted since sessions 2–3).
+
+## 2026-08-27
+
 * **Work**: Session 3 of [the roadmap](/plans/remediation-roadmap.md) — weight.
   Four issues closed outright:
   [stale docs/](/issues/stale-docs-build-output.md) (38 MB, confirmed GitHub

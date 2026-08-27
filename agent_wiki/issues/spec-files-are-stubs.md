@@ -2,11 +2,11 @@
 type: Issue
 title: All six spec files are unmodified should-create stubs
 description: Six identical scaffolded tests with zero assertions about actual content, so the test suite protects nothing.
-tags: [testing, p3]
+tags: [testing, p3, partly-resolved]
 resource: /src/app
 status: stable
 priority: P3
-verification: confirmed
+verification: changed
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,20 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Partly resolved, session 4.** With content now typed data, the three
+content pages got real assertions:
+
+* `photo.spec` — item/modal count == `PHOTOS.length`, modal id uniqueness, alt
+  text == title.
+* `audiovisuel.spec` — section ids == `PROJECTS` order, link-button count,
+  image/info alternation.
+* `accueil.spec` — timeline card counts == `EXPERIENCES` / `EDUCATION` length,
+  section-id uniqueness on the page.
+
+Suite is 19/19 (was 6 stubs + a red `app.component.spec`). Still stubs:
+`contact`, `header`, `footer`. Nav-links-resolve-to-real-routes is not yet
+asserted anywhere.
 
 # Symptom
 

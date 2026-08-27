@@ -1,7 +1,7 @@
 ---
 type: Component
 title: AccueilComponent (home page)
-description: The 501-line home page — hero, bio, skills, two timelines, and a photo teaser — all hand-written markup with no data layer.
+description: The home page — hero, bio, skills, two timelines, a photo teaser. The timelines are data-driven since session 4; the rest is still hand-written.
 tags: [component, page, content]
 resource: /src/app/accueil/accueil.component.html
 status: stable
@@ -9,12 +9,20 @@ generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 ---
 
+> Parts of this concept below the section map predate sessions 2–4 and describe
+> the original theme wiring (Font Awesome dots, `indexCam.js`). Session 2 moved
+> the typewriter into the component and switched the dots to bootstrap-icons;
+> session 4 made the timelines data-driven. Treat the "surprises" section as
+> historical until re-verified.
+
 # What it is for
 
-Route `''`. The longest-lived page and the one Camille edits most often when a
-new experience or diploma is added.
+Route `''`. The longest-lived page. The "Expériences" and "Formations"
+timelines are now [`EXPERIENCES` / `EDUCATION` in `cv.ts`](/architecture/content-data-layer.md);
+adding an entry is one object.
 
-501 lines of template, 325 lines of CSS, empty class.
+~340 lines of template, empty class beyond the typewriter state and the two
+data arrays.
 
 # Section map
 
@@ -24,15 +32,16 @@ new experience or diploma is added.
 | 20 | `about` | *Qui est Camille ?* — bio, social SVG links, CV download, an embedded YouTube CV video (line 63) |
 | 86 | `clients` | *Compétences* — progress bars |
 | ~138 | — | *Plongez dans mon univers* — two "TICKET" cards linking to `/audiovisuel` and `/photo` |
-| 200 | `education` | *Expériences* — 5 timeline entries (2022–2026) |
-| 324 | `education` | *Formations* — 3 timeline entries (Bac 2021 → Master 2025-2027) |
-| ~406 | — | *PHOTO* — 9 polaroids, each linking to `/photo` |
+| ~200 | `experiences` | *Expériences* — `@for` over `EXPERIENCES` (5 entries, 2022–2026) |
+| ~240 | `formations` | *Formations* — `@for` over `EDUCATION` (3 entries, Bac 2021 → Master 2025-2027) |
+| ~270 | — | *PHOTO* — 5 polaroids, each linking to `/photo` |
 
-# The duplicate `id="education"`
+# The duplicate `id="education"` — fixed
 
-Lines 200 and 324 both carry `id="education"`. Invalid HTML;
-`getElementById('education')` only ever finds *Expériences*. This is a symptom
-of the copy-paste authoring pattern, not a one-off typo — see
+Both sections carried `id="education"` (invalid HTML;
+`getElementById('education')` only ever found *Expériences*). Session 4 split
+them into `id="experiences"` and `id="formations"` while making them
+data-driven. A spec now asserts section ids on the page are unique. See
 [duplicate DOM ids](/issues/duplicate-dom-ids.md).
 
 # The typewriter effect
@@ -69,12 +78,14 @@ animation rather than Camille's name. See
 * **13 content images carry `alt=""`**, and `img/camera.png` (×5),
   `img/3d.png` (×3), `img/vecteur.png` carry no `alt` at all.
 
-# Adding an experience today
+# Adding an experience
 
-Duplicate ~22 lines of timeline markup inside the right `education` section and
-edit the strings by hand. This is the workflow that
-[content hardcoded in templates](/issues/content-hardcoded-in-templates.md)
-exists to replace.
+Add a `TimelineEntry` object to `EXPERIENCES` (or `EDUCATION`) in
+[`src/app/data/cv.ts`](/architecture/content-data-layer.md) — `period`,
+`headline`, `place`, `description`. Array order is display order.
+
+Still hand-written on this page: the "Compétences" logo marquee and the five
+polaroid links.
 
 # Related
 
