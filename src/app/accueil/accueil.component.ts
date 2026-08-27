@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { EDUCATION, EXPERIENCES } from '../data/cv';
+
 const WORDS = ['vidéo', 'photo', 'cinéma', 'création', 'développement', ':)'];
 const TYPE_MS = 75;
 const ERASE_MS = 25;
@@ -18,6 +20,9 @@ export class AccueilComponent implements OnInit, OnDestroy {
    *  ran on DOMContentLoaded and so stayed empty after a client-side
    *  navigation back to this page. */
   typed = '';
+
+  readonly experiences = EXPERIENCES;
+  readonly education = EDUCATION;
 
   private wordIndex = 0;
   private timer?: ReturnType<typeof setTimeout>;
