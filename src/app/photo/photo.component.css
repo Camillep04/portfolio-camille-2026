@@ -4,6 +4,46 @@
 
 .portfolio{
   background-color: rgb(28, 28, 28);
+  padding: 50px 0 100px;
+}
+
+.portfolio-content{
+  padding-top: 100px;
+}
+
+/* Masonry via CSS columns: array order in photos.ts is the fill order, and the
+   grid reflows on resize with no stair-step gaps. Replaces the hand-packed
+   Bootstrap `.col-sm-4` layout and the never-loaded isotope script. */
+.gallery{
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 575px){
+  .gallery{
+    column-count: 1;
+  }
+}
+
+.gallery .item{
+  break-inside: avoid;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.gallery .item .btn{
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.gallery .item .btn img{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .modal-center{
