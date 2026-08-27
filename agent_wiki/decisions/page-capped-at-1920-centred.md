@@ -1,11 +1,15 @@
 ---
 type: Decision
 title: The page stays capped at 1920px and centred
-description: Above 1920px the site does not stretch; it keeps the theme's max-width and sits in the middle of the screen.
+description: SUPERSEDED — the owner reversed this in session 6; the page is now fluid. See page-is-fluid.
 tags: [decision, css, responsive]
-status: stable
+status: deprecated
 generated: { by: claude-code/opus-5, at: 2026-08-27T00:05:00Z }
 ---
+
+> **Superseded 2026-08-27 (session 6).** The owner asked for a fluid layout that
+> keeps working past 1920px. See [the page is fluid](/decisions/page-is-fluid.md).
+> The rest of this document is kept as the record of what was decided before.
 
 # The choice
 

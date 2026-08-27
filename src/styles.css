@@ -1,13 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-/* The theme caps the page at `max-width: 1920px` and centres it with
-   `margin: 0 auto` (public/css/style.css). Bootstrap 4 is loaded from a CDN
-   *after* that file and its reboot resets `body { margin: 0 }`, so above
-   1920px the whole page was pinned to the left of the screen with a blank
-   strip on the right — while the fixed navbar still spanned the full width.
-   This restores the theme's intent. */
+/* Session 6: the page is now FLUID — it fills any viewport width, including
+   past 1920px, instead of the theme's old `max-width: 1920px` cap
+   (public/css/style.css). Individual sections keep their own readable
+   max-widths so line length never runs away on ultra-wide screens.
+   `!important` is needed to beat both the theme file and Bootstrap 4's reboot
+   (loaded from a CDN after it). */
 body {
+  max-width: none !important;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Session 6: every button across the site shares one corner radius (16px).
+   These are the theme + component button classes; keeping the radius in one
+   place means the next new button inherits the house style for free. */
+.header-text a,
+.playstore-button,
+.instagram-link {
+  border-radius: 16px !important;
 }
 
 /* Moved from app.component.css when the Angular CLI starter boilerplate was

@@ -82,9 +82,10 @@ just built.
     warning was real: the hero typewriter had to move into `AccueilComponent`
     and the burger menu had to learn to close on `NavigationEnd`.
 
-**Answered since:** the site
-[stays capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md).
-Session 6 designs for a 1920px canvas.
+**Answered, then reversed:** session 2 chose to keep the site
+[capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md); the
+owner reversed that opening session 6 — [the page is fluid](/decisions/page-is-fluid.md)
+and each section carries its own readable max-width.
 
 # Session 3 — weight ✅ done 2026-08-27
 
@@ -181,7 +182,15 @@ Every item here is a direction rather than a specification. **Agree a short
 brief with the owner before writing markup** — that is the rule for this whole
 session, and the open question is recorded next to each item.
 
+**Cross-cutting, done 2026-08-27:** the page is now
+[fluid, not 1920px-capped](/decisions/page-is-fluid.md), and **all site buttons**
+share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
+`.header-text a`, `.playstore-button`, `.instagram-link`).
+
 22. **[C]** Redesign the "QUI EST CAMILLE" block for design and legibility.
+    *Built once on 2026-08-27 (headings top-left, GitHub link removed, CV label
+    bold, content capped for line-length) and pulled back — the owner wants to
+    refine the design first. Still open.*
     *Open: what specifically reads badly — line length, contrast, the photo/text
     ratio? Any reference site?*
 23. **[C]** Redesign "Expériences" and "FORMATIONS".

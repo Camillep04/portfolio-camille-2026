@@ -2,6 +2,27 @@
 
 ## 2026-08-27
 
+* **Work**: Session 6 — two cross-cutting design changes only. Committed to
+  `develop`.
+  * The page is now **fluid**, reversing the session-2 cap. New decision
+    [the page is fluid](/decisions/page-is-fluid.md);
+    [the 1920px cap](/decisions/page-capped-at-1920-centred.md) is deprecated.
+    `body { max-width: none !important }` in `src/styles.css`; sections will own
+    their readable max-width as they are redesigned.
+  * Every site button shares one corner radius, `border-radius: 16px`
+    (`.header-text a`, `.playstore-button`, `.instagram-link`), set once in
+    `src/styles.css`.
+  * **Verification**: 28/28 tests, `ng build` clean, no console errors, no
+    horizontal overflow at 2560px, button radii confirmed in-browser on `/`,
+    `/projets`, `/photo`. No screenshot — the preview pane was not displayed.
+* **Item 22** ("QUI EST CAMILLE" block) was built and then pulled back at the
+  owner's request — the design needs refining first. Deferred, still open in the
+  roadmap.
+* **Open for the rest of session 6**: items 22–29 still need briefs (see the
+  roadmap's open questions).
+
+## 2026-08-27
+
 * **Work**: Session 5 — the owner's features. Eight requests, four commits on
   `develop`, one per page/area, each verified in a browser:
   * `footer.ts` — copyright year is `new Date().getFullYear()`.
