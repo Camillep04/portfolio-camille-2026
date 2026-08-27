@@ -17,9 +17,13 @@ Use `type: Component`.
 # Pages
 
 * [AccueilComponent](accueil-page.md) - `/` — hero, bio, skills, two timelines, photo teaser.
-* [AudiovisuelComponent](audiovisuel-page.md) - `/audiovisuel` — ten hand-duplicated project sections.
-* [PhotoComponent](photo-page.md) - `/photo` — 35 photos rendered twice across 958 lines.
+* [AudiovisuelComponent](audiovisuel-page.md) - `/projets` — ten projects from `PROJECTS`, `@for` sections, clickable hearts.
+* [PhotoComponent](photo-page.md) - `/photo` — 35-photo masonry over one Angular lightbox with carousel arrows.
 * [ContactComponent](contact-page.md) - `/contact` — an embedded Google Form, the only contact channel.
+
+# State
+
+* [FavouritesService](favourites-service.md) - Private per-visitor hearted projects, in `localStorage`.
 
 # The static layer
 

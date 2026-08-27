@@ -27,12 +27,12 @@ it is the requirements, the audit is the diagnosis.
 | Popup image sits under the navbar (`/photo`) | Session 2, with [magnific-popup](/issues/magnific-popup-script-404.md) and [the jQuery clash](/issues/duplicate-jquery-load-order.md) |
 | Responsive broken on large screens | Session 2, with [the unlinked `responsive.css`](/issues/unlinked-stylesheets.md) |
 | Nav buttons not centred / aligned with "Camille Prothin" | Session 2 |
-| Dynamic year in the footer | Session 5 |
-| `/audiovisuel` → `/projets` | Session 5, see [site routes](/specs/site-routes.md) |
-| Photo popup: description, arrow-key carousel, vertical centring | Session 5 |
-| Instagram call to action at the end of `/photo` | Session 5 |
-| "voir la vidéo" hover: invert to white-on-black, wipe left→right, drop the grey | Session 5 |
-| Clickable hearts that stay filled per visitor | Session 5 |
+| Dynamic year in the footer | Session 5 ✅ |
+| `/audiovisuel` → `/projets` | Session 5 ✅, see [site routes](/specs/site-routes.md) |
+| Photo popup: description, arrow-key carousel, vertical centring | Session 5 ✅ |
+| Instagram call to action at the end of `/photo` | Session 5 ✅ |
+| "voir la vidéo" hover: invert to white-on-black, wipe left→right, drop the grey | Session 5 ✅ |
+| Clickable hearts that stay filled per visitor | Session 5 ✅ ([localStorage, private](/components/favourites-service.md)) |
 | Reverse project numbering (newest first), reorder photos safely, easy text/image/link edits | Session 4 — this **is** [the content refactor](/specs/content-update-workflow.md) |
 | Redesign "QUI EST CAMILLE", "Expériences"/"FORMATIONS", "Mes réseaux" | Session 6, each needs a brief first |
 | Swap "compétences" and "plonger dans mon univers" | Session 6 |

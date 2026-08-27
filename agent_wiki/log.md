@@ -2,6 +2,36 @@
 
 ## 2026-08-27
 
+* **Work**: Session 5 — the owner's features. Eight requests, four commits on
+  `develop`, one per page/area, each verified in a browser:
+  * `footer.ts` — copyright year is `new Date().getFullYear()`.
+  * `app.routes.ts` — `/audiovisuel` renamed to `/projets`, old path kept as a
+    `redirectTo`. Component dir/selector unchanged. See
+    [site routes](/specs/site-routes.md).
+  * `audiovisuel.*` — link-button hover wipes a white fill in from the left and
+    inverts the text to black (grey hover dropped); the heart is now clickable,
+    empty → filled red, backed by the new
+    [`FavouritesService`](/components/favourites-service.md). **Owner's answers
+    to the open question:** `localStorage` (no cookie, no banner), and a
+    **private** favourite with no count.
+  * `photo.*` — the 35 Bootstrap 3/4 modals became one Angular-driven lightbox:
+    vertical centring, optional `description`, `‹`/`›` + arrow-key carousel over
+    `PHOTOS` order with wraparound, Escape/backdrop close, body scroll lock.
+    Instagram CTA added at the foot of the gallery.
+* **New concept**: [FavouritesService](/components/favourites-service.md).
+* **Rewritten**: [photo-page](/components/photo-page.md) (lightbox replaces the
+  modal section), [audiovisuel-page](/components/audiovisuel-page.md) (route
+  name, interactions), [footer](/components/footer.md), and
+  [site routes](/specs/site-routes.md). The two Bootstrap-modal issues
+  ([version conflict](/issues/bootstrap-version-conflict.md),
+  [modal behind navbar](/issues/photo-modal-opens-behind-navbar.md)) are moot
+  for `/photo` now — noted in the component, not yet reflected in the issues.
+* **Verification**: `ng build` clean, 28/28 tests (was 19), `/`, `/projets`,
+  `/photo` and the `/audiovisuel` redirect all checked in a browser including
+  after client-side navigation. `viz.html` regenerated.
+
+## 2026-08-27
+
 * **Work**: Session 4 — the content refactor. Every repeated dataset is now
   typed data under `src/app/data/`, rendered with `@for`. New concept:
   [content data layer](/architecture/content-data-layer.md). Landed in three

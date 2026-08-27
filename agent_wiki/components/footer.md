@@ -11,8 +11,11 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 
 # What it is for
 
-14 lines: a centred copyright line (`© Réalisé par Camille PROTHIN - 2026`) and
-a scroll-to-top control. Empty class, empty CSS file (0 lines).
+14 lines: a centred copyright line
+(`© Réalisé par Camille PROTHIN - {{ currentYear }}`) and a scroll-to-top
+control. Empty CSS file (0 lines); the class holds one field,
+`currentYear = new Date().getFullYear()` (session 5), so the year never goes
+stale. A spec asserts the current year renders.
 
 # The scroll-to-top coupling
 
@@ -37,7 +40,6 @@ renders early — but it is still a coupling nothing in the component declares.
 # What surprises you
 
 * `img/monter.png` has **no `alt`**. See [missing alt text](/issues/missing-alt-text.md).
-* The copyright year is hard-coded to 2026.
 * `footer.component.css` is empty; all styling comes from the theme's
   `.footer-copyright` rules in `public/css/style.css`.
 

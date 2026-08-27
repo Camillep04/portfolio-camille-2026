@@ -14,9 +14,14 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 | URL | Must render | Component |
 |---|---|---|
 | `/` | Hero, bio, skills, experience and education timelines, photo teaser | [AccueilComponent](/components/accueil-page.md) |
-| `/audiovisuel` | All ten video/creative projects | [AudiovisuelComponent](/components/audiovisuel-page.md) |
+| `/projets` | All ten video/creative projects | [AudiovisuelComponent](/components/audiovisuel-page.md) |
 | `/photo` | The 35-photo gallery | [PhotoComponent](/components/photo-page.md) |
 | `/contact` | Google Form, real social links, CV download | [ContactComponent](/components/contact-page.md) |
+
+Session 5 renamed `/audiovisuel` → `/projets` (the owner's request). The old
+path stays as `{ path: 'audiovisuel', redirectTo: 'projets', pathMatch: 'full' }`
+so existing links and bookmarks resolve. The component directory and selector
+keep the `audiovisuel` name.
 
 Every route also renders [header](/components/header.md) and
 [footer](/components/footer.md), supplied by
@@ -39,8 +44,8 @@ enough. See [Netlify config nits](/issues/netlify-config-nits.md).
 # What is unspecified today
 
 **There is no `{ path: '**' }` route.** Because Netlify serves `index.html` for
-any unknown path, `/projets` or `/photos` renders header + footer + an empty
-middle — a broken-looking page rather than a 404 or a redirect home.
+any unknown path, `/photos` or a mistyped path renders header + footer + an
+empty middle — a broken-looking page rather than a 404 or a redirect home.
 
 The contract *should* be: any unrecognised path redirects to `/`. It is not
 implemented. See [no wildcard route](/issues/no-wildcard-route.md).

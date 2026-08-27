@@ -144,27 +144,36 @@ formations. 19/19 green.
 hero backgrounds unified to `background-size: cover` (they varied only between
 `100%` and, below 1500px, `cover`). Session 6 owns that redesign anyway.
 
-# Session 5 — the owner's features
+# Session 5 — the owner's features ✅ done 2026-08-27
 
-All **[C]**, all specified well enough to build. Ordered cheapest first.
+All **[C]**, all specified well enough to build. Ordered cheapest first. Four
+commits on `develop`, one per page/area, each verified in a browser.
 
-14. Footer: replace the hard-coded `2026` with the current year.
-15. Rename the projects route `/audiovisuel` to `/projets`, keeping a redirect
-    from the old path so existing links survive. See
+14. ✅ Footer: `currentYear = new Date().getFullYear()` in the copyright line.
+15. ✅ Renamed the projects route `/audiovisuel` → `/projets`;
+    `{ path: 'audiovisuel', redirectTo: 'projets', pathMatch: 'full' }` keeps
+    old links working. Component dir/selector keep the `audiovisuel` name. See
     [site routes](/specs/site-routes.md).
-16. Projects page buttons ("voir la vidéo" / "voir le projet"): on hover, invert
-    to white background and black text with the fill wiping left to right, and
-    remove the current grey colour change.
-17. `/photo`: centre the images vertically.
-18. `/photo`: Instagram call to action at the end of the page, to
+16. ✅ [Projects page](/components/audiovisuel-page.md) link buttons: hover/focus
+    inverts label + icons to black while a white fill wipes in from the left
+    (`::before` `scaleX`, `transform-origin: left`). The grey translucent hover
+    is gone.
+17. ✅ `/photo`: the lightbox image is flex-centred vertically and horizontally.
+18. ✅ `/photo`: Instagram call to action at the foot of the gallery →
     `https://www.instagram.com/p___camille/`.
-19. `/photo` popup: show the photo's description when it has one.
-20. `/photo` popup: left/right arrow controls to browse the gallery as a
-    carousel. Needs Session 4's `PHOTOS` array to be the source of order.
-21. Projects page: clickable hearts, empty becoming filled, remembered per
-    visitor. *Open question before building: remember in `localStorage`
-    (simplest, no consent banner) or a real cookie? And is it a private
-    favourite, or should a count be displayed?*
+19. ✅ `/photo` popup: shows `photo.description` under the title when set (no
+    photo has one yet — the field is ready).
+20. ✅ `/photo` popup: the 35 Bootstrap modals became **one Angular lightbox**.
+    `‹` / `›` buttons and ArrowLeft/ArrowRight browse `PHOTOS` in array order,
+    wrapping at both ends; Escape and backdrop click close.
+21. ✅ [Projects page](/components/audiovisuel-page.md) clickable hearts, empty →
+    filled, via [`FavouritesService`](/components/favourites-service.md).
+    **Owner's answers:** `localStorage`, not a cookie; a **private** favourite,
+    no count shown.
+
+**Done:** `ng build` clean, 28/28 tests, and `/`, `/projets`, `/photo` plus the
+`/audiovisuel` redirect all checked in a browser — including after a
+client-side navigation.
 
 # Session 6 — design, accessibility and reach
 

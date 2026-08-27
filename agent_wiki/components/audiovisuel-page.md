@@ -11,8 +11,9 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 
 # What it is for
 
-Route `'audiovisuel'`, labelled *Projets* in the nav. Camille's video and
-creative work.
+Route `'projets'` (renamed from `'audiovisuel'` in session 5, old path kept as
+a redirect), labelled *Projets* in the nav. Camille's video and creative work.
+The component directory and selector keep the `audiovisuel` name.
 
 # The shape (since session 4)
 
@@ -42,6 +43,19 @@ link?, linkLabel?, linkKind?  ('video' | 'project' | 'site'),  linkThumb?
   (Old phone) renders no button.
 * **`description`** is `[innerHTML]` — keeps `<a>` / `<u>` / `<br>`, Angular
   strips scripts and styles. The leading glyph is the `icon` field.
+
+# Interactions (session 5)
+
+* **Link button hover/focus** inverts the label and icons to black while a
+  white fill wipes in from the left (`::before` `scaleX` from
+  `transform-origin: left`). The old grey translucent hover is gone — the
+  owner asked for both.
+* **The heart** (`.save_btn`) is clickable: an empty white outline becomes a
+  filled red heart. Backed by
+  [`FavouritesService`](/components/favourites-service.md) — a private
+  per-visitor favourite in `localStorage`, no cookie, no count shown.
+  `isFavourite(id)` / `toggleFavourite(id)` on the component; `aria-pressed`
+  tracks state. Specs cover the toggle and the DOM reflection.
 
 A spec asserts section ids equal `PROJECTS.map(p => p.id)` in order, and that
 the link-button count equals the number of projects with a `link`.
