@@ -46,25 +46,137 @@
   height: auto;
 }
 
-.modal-center{
-  margin-top: auto;
-}
-/* The modals are Bootstrap 4 markup driven by Bootstrap 3's JS: BS3 adds
-   `.in` where BS4 expects `.show`, so BS4's `transform: translate(0, -25%)`
-   is never cleared and the popup opens a quarter of a screen too high —
-   its top hidden behind the fixed navbar. Clear it on `.in` as well. */
-.modal.fade.in .modal-dialog {
-  transform: none;
+/* Instagram call to action at the foot of the gallery. */
+.instagram-cta{
+  margin-top: 60px;
+  text-align: center;
+  color: #fff;
 }
 
-/* Keep the photo inside the viewport below the navbar, and centred in it. */
-.modal .modal-body {
+.instagram-cta p{
+  margin-bottom: 12px;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.instagram-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.instagram-link:hover,
+.instagram-link:focus-visible{
+  background-color: #fff;
+  color: rgb(28, 28, 28);
+}
+
+.instagram-link .bi{
+  font-size: 22px;
+}
+
+/* Lightbox: one Angular-driven dialog replaces the 35 Bootstrap modals. The
+   image is centred vertically and horizontally in the viewport; arrows and the
+   PHOTOS array order drive the carousel. */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-.modal .modal-body img {
-  max-height: calc(100vh - 220px);
-  width: auto;
+.lightbox-figure{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 100%;
+  max-height: 100%;
+}
+
+.lightbox-figure img{
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.lightbox-figure figcaption{
+  margin-top: 14px;
+  max-width: 720px;
+  text-align: center;
+  color: #fff;
+}
+
+.lightbox-title{
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.lightbox-desc{
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.lightbox-close{
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-nav{
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible{
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 575px){
+  .lightbox{
+    padding: 12px;
+  }
+  .lightbox-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .lightbox-nav.prev{ left: 8px; }
+  .lightbox-nav.next{ right: 8px; }
 }
