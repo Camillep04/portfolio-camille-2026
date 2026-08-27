@@ -2,11 +2,11 @@
 type: Issue
 title: docs/ is 38 MB of stale committed build output
 description: 128 tracked files of a January build that nothing serves, doubling clone size and polluting every search.
-tags: [repo-hygiene, performance, p2]
+tags: [repo-hygiene, performance, p2, resolved]
 resource: /docs
-status: stable
+status: deprecated
 priority: P2
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,11 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-27, session 3.** Confirmed with the owner that GitHub Pages
+is not configured to serve from `/docs`. Ran `git rm -r --cached docs && rm -rf
+docs`, added `/docs` to `.gitignore`. `ng build` and the test suite both still
+pass.
 
 # Symptom
 

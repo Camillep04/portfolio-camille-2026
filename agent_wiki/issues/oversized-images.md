@@ -2,7 +2,7 @@
 type: Issue
 title: 34 MB of images served at full resolution, plus a 2.1 MB favicon
 description: The portfolio ships megabyte-scale PNGs and JPEGs eagerly, and the favicon alone is 2.1 MB on every page view.
-tags: [performance, assets, p2]
+tags: [performance, assets, p2, partially-resolved]
 resource: /public/img
 status: stable
 priority: P2
@@ -17,6 +17,24 @@ sources:
     resource: /references/live-site.md
     title: Live site checks, 2026-08-26
 ---
+
+**Partially resolved 2026-08-27, session 3.** Items 1 and 2 of the fix list
+below are done, and item 3 is started but not finished:
+
+* Favicon regenerated: it turned out to be a 3712x3712 JPEG mislabeled `.ico`.
+  Now a proper 16/32/48 multi-resolution ICO at **15 kB**.
+* `loading="lazy"` added to all 70 `<img>` tags in `photo.component.html`.
+* `public/img` recompressed in place — PNGs losslessly, JPEGs at quality 92
+  (owner chose visually-lossless over true-lossless, since true-lossless only
+  shaves a JPEG's Huffman tables and doesn't touch its DCT coefficients).
+  **34 MB -> 28 MB.** The win was uneven: `clip_mmi.jpg` dropped 61% (4.5 MB ->
+  1.8 MB), but the large *photographic* PNGs — `wg.png` (3.3 MB), `mf.png`
+  (1.9 MB), `mr.png` (1.4 MB) — only shrank a few percent, because a lossless
+  format applied to a photo is close to incompressible no matter how it's
+  packed. **Format conversion (PNG -> WebP/JPEG) is still open** and is where
+  the next real win is.
+
+Items 4 (`NgOptimizedImage`) and 5 (dedupe `.jpg`/`.png` pairs) are untouched.
 
 # Symptom
 

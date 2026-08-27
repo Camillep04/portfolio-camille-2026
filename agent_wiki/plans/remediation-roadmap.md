@@ -86,14 +86,23 @@ just built.
 [stays capped at 1920px and centred](/decisions/page-capped-at-1920-centred.md).
 Session 6 designs for a 1920px canvas.
 
-# Session 3 — weight
+# Session 3 — weight ✅ done 2026-08-27
 
-11. Regenerate the 2.1 MB favicon, compress `public/img`, add `loading="lazy"`.
-    See [oversized images](/issues/oversized-images.md).
-12. Delete dead weight: [docs/](/issues/stale-docs-build-output.md),
+11. ✅ Regenerated the favicon (a mislabeled 3712x3712 JPEG, not actually an
+    ICO) at 15 kB, added `loading="lazy"` to all 70 gallery `<img>` tags,
+    recompressed `public/img` (34 MB -> 28 MB: PNGs losslessly, JPEGs at
+    quality 92). **Not fully done** — the large photographic PNGs barely
+    shrank under lossless recompression; converting them to WebP is the
+    remaining win. See [oversized images](/issues/oversized-images.md).
+12. ✅ Deleted dead weight: [docs/](/issues/stale-docs-build-output.md) (38 MB,
+    confirmed GitHub Pages doesn't serve it),
     [src/assets/magnific-popup](/issues/vendored-magnific-popup-repo.md),
     [the Dockerfile](/issues/broken-dockerfile.md),
-    [app.component.css](/issues/angular-starter-boilerplate-css.md).
+    [app.component.css](/issues/angular-starter-boilerplate-css.md) (moved its
+    two live rules into `styles.css` first).
+
+**Done when:** `ng build` succeeds, 11/11 tests pass, and `/`, `/photo`,
+`/audiovisuel` all load clean in a browser with no console errors — verified.
 
 # Session 4 — the refactor that pays for itself
 

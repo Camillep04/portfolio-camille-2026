@@ -2,11 +2,11 @@
 type: Issue
 title: The Dockerfile is syntactically broken and unused
 description: Every comment line is missing its hash prefix, so Docker parses prose as instructions and the build fails on line one.
-tags: [cleanup, deploy, p3]
+tags: [cleanup, deploy, p3, resolved]
 resource: /Dockerfile
-status: stable
+status: deprecated
 priority: P3
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,8 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-27, session 3.** Deleted. The site deploys via Netlify.
 
 # Symptom
 

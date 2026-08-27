@@ -2,11 +2,11 @@
 type: Issue
 title: app.component.css is 200 lines of Angular starter boilerplate
 description: Unused CLI scaffold styling that still leaks font-family and box-sizing onto app-root, so deleting it is a visible change.
-tags: [cleanup, css, p3]
+tags: [cleanup, css, p3, resolved]
 resource: /src/app/app.component.css
-status: stable
+status: deprecated
 priority: P3
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,15 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-27, session 3.** Moved `font-family` and `box-sizing` into
+`styles.css` (scoped to `app-root`), deleted the file, dropped `styleUrl` from
+the decorator, deleted `public/angular.ico`. The leftover `.mfp-fade` rules and
+the `img, video, iframe` rule at the bottom were confirmed dead too — Angular's
+style encapsulation keeps unscoped selectors in a component stylesheet
+confined to that component's own template, and `app.component.html` has no
+`img`/`video`/`iframe` of its own, only `<app-header>`, `<router-outlet>`,
+`<app-footer>`.
 
 # Symptom
 

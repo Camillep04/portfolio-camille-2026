@@ -2,11 +2,11 @@
 type: Issue
 title: src/assets/magnific-popup is a whole vendored upstream repo that never ships
 description: 1.2 MB including its own jQuery, QUnit, a Gruntfile and the plugin's marketing website, none of which is copied into the build.
-tags: [cleanup, repo-hygiene, p3]
+tags: [cleanup, repo-hygiene, p3, resolved]
 resource: /src/assets/magnific-popup
-status: stable
+status: deprecated
 priority: P3
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,10 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-27, session 3.** Magnific-popup was already dropped in
+session 2 in favour of the working Bootstrap 3 modals — nothing referenced
+this directory. Deleted the whole thing.
 
 # Symptom
 

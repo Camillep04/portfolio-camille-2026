@@ -1,5 +1,33 @@
 # Wiki Update Log
 
+## 2026-08-27
+
+* **Work**: Session 3 of [the roadmap](/plans/remediation-roadmap.md) — weight.
+  Four issues closed outright:
+  [stale docs/](/issues/stale-docs-build-output.md) (38 MB, confirmed GitHub
+  Pages isn't configured to serve it, before deleting),
+  [vendored magnific-popup](/issues/vendored-magnific-popup-repo.md),
+  [the broken Dockerfile](/issues/broken-dockerfile.md), and
+  [the Angular starter CSS](/issues/angular-starter-boilerplate-css.md) — the
+  last one needed `font-family`/`box-sizing` moved into `styles.css` first,
+  since Angular's style encapsulation meant only those two `:host` rules
+  actually reached `app-root`; the rest of the 200 lines, including the
+  leftover `.mfp-fade` rules, were already dead.
+* [Oversized images](/issues/oversized-images.md) partially resolved: the
+  favicon was a 3712x3712 JPEG mislabeled `.ico` (2.1 MB -> 15 kB fixed),
+  `loading="lazy"` added to all 70 gallery images, and `public/img`
+  recompressed 34 MB -> 28 MB. The owner chose visually-lossless (quality 92)
+  over true-lossless for JPEGs, since true-lossless only optimizes Huffman
+  tables and barely moves files like `clip_mmi.jpg`. The large photographic
+  PNGs (`wg.png`, `mf.png`, `mr.png`) barely shrank either way — lossless
+  recompression can't do much for a photo already in a lossless format.
+  WebP conversion is the remaining, bigger win and is still open.
+* **Verification**: `ng build` succeeds, 11/11 tests green, and `/`, `/photo`,
+  `/audiovisuel` all loaded clean in a browser (dev server) with zero console
+  errors and every image request returning 200 — including the lazy-loaded
+  gallery.
+* Committed to `develop` as `Session 3: shed the weight`, not yet pushed.
+
 ## 2026-08-26
 
 * **Decision**: the page
