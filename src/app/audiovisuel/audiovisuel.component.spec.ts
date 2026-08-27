@@ -42,4 +42,21 @@ describe('AudiovisuelComponent', () => {
       expect(c.classList.contains('reversed')).toBe(i % 2 === 1);
     });
   });
+
+  it('toggles the heart on a project and reflects it in the DOM', () => {
+    localStorage.removeItem('camille-portfolio:favourites');
+    const el: HTMLElement = fixture.nativeElement;
+    const firstHeart = el.querySelector('main > section .save_btn') as HTMLButtonElement;
+
+    expect(firstHeart.classList.contains('is-favourite')).toBe(false);
+    firstHeart.click();
+    fixture.detectChanges();
+    expect(firstHeart.classList.contains('is-favourite')).toBe(true);
+    expect(firstHeart.getAttribute('aria-pressed')).toBe('true');
+
+    firstHeart.click();
+    fixture.detectChanges();
+    expect(firstHeart.classList.contains('is-favourite')).toBe(false);
+    localStorage.removeItem('camille-portfolio:favourites');
+  });
 });

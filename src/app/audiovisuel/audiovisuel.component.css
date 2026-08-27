@@ -145,6 +145,9 @@ main section .content .info .buttons {
   width: max-content;
 }
 .playstore-button {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -156,13 +159,32 @@ main section .content .info .buttons {
   color: rgba(255, 255, 255, 1);
   outline: 0;
   backdrop-filter: blur(150px);
-  transition: all 0.2s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
   text-decoration: none;
 }
-.playstore-button:hover {
-  background-color: transparent;
-  border: 2px solid transparent;
-  color: rgb(255, 255, 255);
+/* Hover / focus: the button inverts to white-on-black with the white fill
+   wiping in from the left. `scaleX` from `transform-origin: left` is the wipe;
+   z-index:-1 keeps the fill above the button's own background but below its
+   label and icons (which turn black via `color`). Replaces the old grey
+   translucent hover the owner asked to drop. */
+.playstore-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.playstore-button:hover,
+.playstore-button:focus-visible {
+  color: #000;
+  border-color: #000;
+}
+.playstore-button:hover::before,
+.playstore-button:focus-visible::before {
+  transform: scaleX(1);
 }
 .icon {
   height: 2.5rem;
@@ -199,17 +221,27 @@ main section .content .info .buttons {
   border: none;
 }
 .heart {
-  width: 18px;
+  width: 20px;
+  height: 20px;
 }
+/* Empty at rest: white outline. Filled once hearted: solid red, remembered
+   per visitor in localStorage (see FavouritesService). */
 .heart path {
-  fill: white;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2px;
+  transition: fill 0.2s ease, stroke 0.2s ease;
 }
-/* .save_btn:hover {
-  background-color: rgb(0, 0, 0);
+.save_btn:hover .heart path {
+  fill: rgba(255, 255, 255, 0.35);
+}
+.save_btn.is-favourite .heart path {
+  fill: #ff4d6d;
+  stroke: #ff4d6d;
 }
 .save_btn:active {
-  transform: scale(0.8);
-} */
+  transform: scale(0.9);
+}
 @media screen and (max-width: 1015px) {
   main section img {
     transform: scale(0.8);

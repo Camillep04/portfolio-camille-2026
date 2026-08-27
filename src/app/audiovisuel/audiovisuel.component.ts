@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { PROJECTS } from '../data/projects';
+import { FavouritesService } from '../favourites.service';
 
 @Component({
   selector: 'app-audiovisuel',
@@ -11,4 +12,14 @@ import { PROJECTS } from '../data/projects';
 })
 export class AudiovisuelComponent {
   readonly projects = PROJECTS;
+
+  private readonly favourites = inject(FavouritesService);
+
+  isFavourite(id: string): boolean {
+    return this.favourites.has(id);
+  }
+
+  toggleFavourite(id: string): void {
+    this.favourites.toggle(id);
+  }
 }
