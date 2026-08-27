@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { EDUCATION, EXPERIENCES } from '../data/cv';
+import { TIMELINE } from '../data/cv';
 import { PHOTOS } from '../data/photos';
 import { LanguageService } from '../i18n/language.service';
 
@@ -30,8 +30,9 @@ export class AccueilComponent implements OnInit, OnDestroy {
    *  navigation back to this page. */
   typed = '';
 
-  readonly experiences = EXPERIENCES;
-  readonly education = EDUCATION;
+  /** Experiences and formations woven into one chronological strand for the
+   *  "parcours" section — see `TIMELINE` in `data/cv.ts`. */
+  readonly timeline = TIMELINE;
 
   /** The five teaser polaroids echo the first five gallery photos — driven
    *  from the same data so the titles translate and never drift. */

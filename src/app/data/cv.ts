@@ -76,6 +76,15 @@ export const EXPERIENCES: TimelineEntry[] = [
   },
 ];
 
+export type TimelineKind = 'experience' | 'formation';
+
+/** One entry of the merged home-page "parcours" strand. `year` is the entry's
+ *  most recent year, used as the big watermark millésime beside the card. */
+export interface TimelineItem extends TimelineEntry {
+  kind: TimelineKind;
+  year: number;
+}
+
 export const EDUCATION: TimelineEntry[] = [
   {
     period: '2025-2027',
@@ -120,3 +129,25 @@ export const EDUCATION: TimelineEntry[] = [
     },
   },
 ];
+
+/** The most recent 4-digit year mentioned in a `period` label
+ *  ("2022 - 2024" -> 2024, "2026" -> 2026). */
+function endYear(period: string): number {
+  const found = period.match(/\d{4}/g);
+  return found ? Math.max(...found.map(Number)) : 0;
+}
+
+/**
+ * `EXPERIENCES` and `EDUCATION` woven into one strand for the home-page
+ * "parcours" section: most recent first, and — when an experience and a
+ * formation end the same year — the experience comes first. The section
+ * renders experiences on the left of the shared axis and formations on the
+ * right, so `kind` drives the side and array order drives the vertical order.
+ */
+export const TIMELINE: TimelineItem[] = [
+  ...EXPERIENCES.map((e) => ({ ...e, kind: 'experience' as const, year: endYear(e.period) })),
+  ...EDUCATION.map((e) => ({ ...e, kind: 'formation' as const, year: endYear(e.period) })),
+].sort(
+  (a, b) =>
+    b.year - a.year || (a.kind === b.kind ? 0 : a.kind === 'experience' ? -1 : 1),
+);

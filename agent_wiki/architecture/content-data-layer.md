@@ -23,11 +23,11 @@ item; see [content hardcoded in templates](/issues/content-hardcoded-in-template
 |---|---|---|---|
 | `photos.ts` | `Photo`, `PHOTOS` | [PhotoComponent](/components/photo-page.md) | 35 |
 | `projects.ts` | `Project`, `PROJECTS` | [AudiovisuelComponent](/components/audiovisuel-page.md) | 10 |
-| `cv.ts` | `TimelineEntry`, `EXPERIENCES`, `EDUCATION` | [AccueilComponent](/components/accueil-page.md) | 5 + 3 |
+| `cv.ts` | `TimelineEntry`, `EXPERIENCES`, `EDUCATION`, `TIMELINE` | [AccueilComponent](/components/accueil-page.md) | 5 + 3 |
 
 # The rules that make it work
 
-* **Array order is display order.** No `sort`, no positional CSS. Moving an
+* **Array order is display order.** No positional CSS. Moving an
   object moves the item on the page. This is what the owner asked for — new
   projects at the top, photo order changeable — and it only holds because
   nothing downstream depends on position:
@@ -35,6 +35,11 @@ item; see [content hardcoded in templates](/issues/content-hardcoded-in-template
     Bootstrap grid;
   * each project carries its own `background` (it used to be a
     `main section:nth-child(N)` rule, the reason reordering scrambled the page).
+
+  The **one exception** is `cv.ts`'s `TIMELINE` (session 6): it *does* sort —
+  `EXPERIENCES` + `EDUCATION` merged, most recent first, experience before
+  formation on a year tie. `EXPERIENCES` / `EDUCATION` array order survives
+  only as that tie-break. See [accueil-page](/components/accueil-page.md).
 * **DOM ids are derived per item** (`modalPhoto-<photo.id>` etc.), so the
   duplicate-id class of bug is structurally impossible. See
   [duplicate DOM ids](/issues/duplicate-dom-ids.md).

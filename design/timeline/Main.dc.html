@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    .tl { font-family: "Poppins", system-ui, "Segoe UI", sans-serif; }
+    a { color: #f92c2c; } a:hover { color: #c81f1f; }
+
+    .c-card { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .c-row:hover .c-card { transform: translateY(-5px); border-color: #f92c2c; box-shadow: 0 16px 44px rgba(249,44,44,0.16); }
+    .c-row:hover .c-dot { background: #f92c2c; }
+    .c-row:hover .ghost { color: #f7dede; -webkit-text-stroke-color: #f3caca; }
+
+    .kick  { color: #f92c2c; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.11em; }
+    .place { font-size: 19px; font-weight: 600; color: #343a40; margin-top: 7px; line-height: 1.3; }
+    .desc  { font-size: 14px; line-height: 1.55; color: #636a82; margin-top: 8px; }
+    .per   { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #b9c0d0; margin-top: 12px; }
+
+    /* Millésime filigrane : plein espace négatif, face à la carte, de l'autre
+       côté du rail. Gris clair + contour d'un cheveu pour qu'il se lise sans
+       jamais crier. Passe en rosé très pâle au survol de la ligne. */
+    .ghost {
+      font-size: 88px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: #e6ebf3;
+      -webkit-text-stroke: 1px #d5dce9;
+      pointer-events: none;
+      user-select: none;
+      transition: color .25s ease, -webkit-text-stroke-color .25s ease;
+    }
+  </style>
+</helmet>
+
+<div class="tl" style="width: 1200px; min-height: 1900px; background: #f9fbfd; color: #2f3542; padding: 64px 60px 72px;">
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+    <div style="width: calc(50% - 44px);">
+      <h2 style="margin: 0; font-size: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;">Expériences</h2>
+      <span style="display: block; width: 52px; height: 3px; background: #f92c2c; margin-top: 12px;"></span>
+    </div>
+    <div style="width: calc(50% - 44px); text-align: right;">
+      <h2 style="margin: 0; font-size: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;">Formations</h2>
+      <span style="display: block; width: 52px; height: 3px; background: #f92c2c; margin: 12px 0 0 auto;"></span>
+    </div>
+  </div>
+
+  <div style="position: relative; height: 1760px;">
+
+    <!-- central rail -->
+    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #f92c2c;"></div>
+
+    <!-- 1 · 2025–2027 · Master · FORMATION (droite) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 40px;">
+      <div class="ghost" style="position: absolute; right: calc(50% + 64px); top: 24px;">2027</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; left: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; left: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 24px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2;">
+        <div class="kick">Master</div>
+        <div class="place">Cinéma et audiovisuel — parcours XR</div>
+        <div class="desc">ENSAV, Toulouse — 3D, effets spéciaux, animation.</div>
+        <div class="per">2025 – 2027</div>
+      </div>
+    </div>
+
+    <!-- 2 · 2026 · Stage MSH SUD · EXPÉRIENCE (gauche) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 255px;">
+      <div class="ghost" style="position: absolute; left: calc(50% + 64px); top: 24px;">2026</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; right: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; right: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 24px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2; text-align: right;">
+        <div class="kick">Stage · 4 mois</div>
+        <div class="place">Université Paul Valéry — MSH SUD</div>
+        <div class="desc">Vidéos corporate, interviews, vulgarisation audiovisuelle R&amp;D, montage, captation événementielle.</div>
+        <div class="per">2026</div>
+      </div>
+    </div>
+
+    <!-- 3 · 2024 · Alternance Ciweb · EXPÉRIENCE (gauche) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 470px;">
+      <div class="ghost" style="position: absolute; left: calc(50% + 64px); top: 24px;">2024</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; right: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; right: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 24px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2; text-align: right;">
+        <div class="kick">Alternance</div>
+        <div class="place">Agence web Ciweb</div>
+        <div class="desc">Refonte de site web, front et back end — Laravel, jQuery, PHP, JS, HTML, CSS, base de données.</div>
+        <div class="per">2024</div>
+      </div>
+    </div>
+
+    <!-- 4 · 2022–2024 · BUT MMI · FORMATION (droite) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 685px;">
+      <div class="ghost" style="position: absolute; right: calc(50% + 64px); top: 24px;">2024</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; left: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; left: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 24px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2;">
+        <div class="kick">BUT MMI</div>
+        <div class="place">Métiers du Multimédia et de l'Internet</div>
+        <div class="desc">Université de la Nouvelle-Calédonie — stratégie de communication, gestion de projet, développement et intégration web.</div>
+        <div class="per">2022 – 2024</div>
+      </div>
+    </div>
+
+    <!-- 5 · 2023 · Stage Artemis · EXPÉRIENCE (gauche) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 900px;">
+      <div class="ghost" style="position: absolute; left: calc(50% + 64px); top: 20px;">2023</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; right: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; right: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 22px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2; text-align: right;">
+        <div class="kick">Stage · 8 semaines</div>
+        <div class="place">Artemis NC</div>
+        <div class="desc">Refonte graphique, refonte du site web, communication sur les réseaux sociaux.</div>
+        <div class="per">2023</div>
+      </div>
+    </div>
+
+    <!-- 6 · 2023 · Monitorat IUT · EXPÉRIENCE (gauche) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 1110px;">
+      <div class="ghost" style="position: absolute; left: calc(50% + 64px); top: 20px;">2023</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; right: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; right: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 22px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2; text-align: right;">
+        <div class="kick">Monitorat</div>
+        <div class="place">IUT — Université de la Nouvelle-Calédonie</div>
+        <div class="desc">Monitorat de communication de l'IUT, participation à sa présence numérique.</div>
+        <div class="per">2023</div>
+      </div>
+    </div>
+
+    <!-- 7 · 2022 · Stage Trait d'Union · EXPÉRIENCE (gauche) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 1320px;">
+      <div class="ghost" style="position: absolute; left: calc(50% + 64px); top: 24px;">2022</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; right: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; right: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 22px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2; text-align: right;">
+        <div class="kick">Stage · 4 semaines</div>
+        <div class="place">Trait d'Union Pacifique</div>
+        <div class="desc">Posts Facebook, étiquettes produit, détourage produit.</div>
+        <div class="per">2022</div>
+      </div>
+    </div>
+
+    <!-- 8 · 2021 · Baccalauréat · FORMATION (droite) -->
+    <div class="c-row" style="position: absolute; left: 0; right: 0; top: 1535px;">
+      <div class="ghost" style="position: absolute; right: calc(50% + 64px); top: 24px;">2021</div>
+      <div class="c-dot" style="position: absolute; left: 50%; top: 58px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: #f9fbfd; border: 3px solid #f92c2c; z-index: 3;"></div>
+      <div style="position: absolute; left: 50%; top: 65px; width: 44px; height: 2px; background: #f92c2c; z-index: 1;"></div>
+      <div class="c-card" style="position: absolute; left: calc(50% + 44px); width: 440px; background: #fff; border: 1px solid #e5ebf2; border-radius: 16px; padding: 24px 26px; box-shadow: 0 8px 30px rgba(20,30,60,0.07); z-index: 2;">
+        <div class="kick">Baccalauréat général · Mention Bien</div>
+        <div class="place">Lycée Jules Garnier, Nouvelle-Calédonie</div>
+        <div class="desc">Spécialités mathématiques et physique-chimie.</div>
+        <div class="per">2021</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script data-dc-script data-props='{"$preview":{"width":1200,"height":2000}}'>
+class Component extends DCLogic {}
+</script>
+</x-dc>
+</body>
+</html>

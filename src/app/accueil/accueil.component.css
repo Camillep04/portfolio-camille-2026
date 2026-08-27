@@ -345,3 +345,230 @@
 	opacity: 1;
 }
 /* fin compétences */
+
+/* ============================================================
+   Session 6 · "parcours" — timeline 2 colonnes, axe rouge partagé
+   Remplace les deux ex-sections #experiences / #formations. L'ancien
+   habillage (.education-horizontal-timeline, .single-horizontal-timeline,
+   .timeline-horizontal-border… dans public/css/style.css) n'est plus appelé.
+   Expériences à gauche du rail, formations à droite ; l'ordre vertical
+   suit TIMELINE (data/cv.ts). Le millésime prend le plein espace négatif
+   face à la carte : filigrane discret mais lisible.
+   ============================================================ */
+
+.parcours {
+    padding: 60px 0 90px;
+}
+
+.parcours-heads {
+    display: flex;
+    justify-content: space-between;
+    gap: 88px;
+    margin-bottom: 40px;
+}
+.parcours-heads .section-title {
+    flex: 1;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #2f3542;
+}
+.parcours-heads .section-title::after {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 3px;
+    margin-top: 12px;
+    background: #f92c2c;
+}
+.parcours-heads .section-title:last-child {
+    text-align: right;
+}
+.parcours-heads .section-title:last-child::after {
+    margin-left: auto;
+}
+
+.xp-timeline {
+    position: relative;
+    list-style: none;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0;
+}
+/* le rail rouge central */
+.xp-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: #f92c2c;
+}
+
+.tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(40px, 6vw, 88px);
+    align-items: center;
+    margin-bottom: 44px;
+}
+.tl-item:last-child {
+    margin-bottom: 0;
+}
+/* carte et millésime partagent la même rangée, quel que soit l'ordre DOM */
+.tl-item > .tl-year,
+.tl-item > .tl-card {
+    grid-row: 1;
+}
+/* le point sur le rail */
+.tl-item::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border-radius: 50%;
+    background: #f9fbfd;
+    border: 3px solid #f92c2c;
+    transition: background 0.25s ease;
+}
+.tl-item:hover::after {
+    background: #f92c2c;
+}
+
+/* le millésime filigrane */
+.tl-year {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-size: clamp(54px, 7vw, 88px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #e6ebf3;
+    -webkit-text-stroke: 1px #d5dce9;
+    user-select: none;
+    transition: color 0.25s ease, -webkit-text-stroke-color 0.25s ease;
+}
+.tl-item:hover .tl-year {
+    color: #f7dede;
+    -webkit-text-stroke-color: #f3caca;
+}
+
+.tl-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e5ebf2;
+    border-radius: 16px;
+    padding: 24px 26px;
+    box-shadow: 0 8px 30px rgba(20, 30, 60, 0.07);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.tl-item:hover .tl-card {
+    transform: translateY(-5px);
+    border-color: #f92c2c;
+    box-shadow: 0 16px 44px rgba(249, 44, 44, 0.16);
+}
+/* petit connecteur carte -> rail */
+.tl-card::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 44px;
+    height: 2px;
+    background: #f92c2c;
+}
+
+.tl-kind {
+    margin: 0;
+    color: #f92c2c;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+}
+.tl-place {
+    margin: 7px 0 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #343a40;
+}
+.tl-desc {
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #636a82;
+}
+.tl-period {
+    margin: 12px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #b9c0d0;
+}
+
+/* expérience : carte à gauche, millésime à droite du rail */
+.tl-item.is-experience .tl-card {
+    grid-column: 1;
+    justify-self: stretch;
+    text-align: right;
+}
+.tl-item.is-experience .tl-card::after {
+    right: -44px;
+}
+.tl-item.is-experience .tl-year {
+    grid-column: 2;
+    justify-self: start;
+}
+/* formation : carte à droite, millésime à gauche du rail */
+.tl-item.is-formation .tl-card {
+    grid-column: 2;
+    justify-self: stretch;
+}
+.tl-item.is-formation .tl-card::after {
+    left: -44px;
+}
+.tl-item.is-formation .tl-year {
+    grid-column: 1;
+    justify-self: end;
+}
+
+/* ---- sous 992px : rail à gauche, tout empilé, millésime porté par
+   la ligne `.tl-period` dans la carte ---- */
+@media (max-width: 991px) {
+    .parcours-heads {
+        display: none;
+    }
+    .xp-timeline::before {
+        left: 9px;
+    }
+    .tl-item {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        margin-bottom: 28px;
+    }
+    .tl-item::after {
+        left: 9px;
+        top: 28px;
+    }
+    .tl-year {
+        display: none;
+    }
+    .tl-card::after,
+    .tl-item.is-experience .tl-card::after,
+    .tl-item.is-formation .tl-card::after {
+        display: none;
+    }
+    .tl-item.is-experience .tl-card,
+    .tl-item.is-formation .tl-card {
+        grid-column: 1;
+        text-align: left;
+        margin-left: 34px;
+    }
+}

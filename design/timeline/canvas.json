@@ -1,0 +1,17 @@
+{
+  "pages": [
+    { "id": "retenu", "name": "Proposition retenue" },
+    { "id": "ecartees", "name": "Pistes écartées" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "page": "retenu", "x": 0, "y": 0, "w": 1200, "h": 2010, "title": "Option C · Rail éditorial — millésimes lisibles" },
+    { "file": "OptionA.dc.html", "page": "ecartees", "x": 0, "y": 0, "w": 1200, "h": 1260, "title": "Option A · Colonnes parallèles" },
+    { "file": "OptionB.dc.html", "page": "ecartees", "x": 1360, "y": 0, "w": 1200, "h": 1600, "title": "Option B · Échelle chronologique" }
+  ],
+  "annotations": [
+    { "id": "note-c", "page": "retenu", "x": 0, "y": -230, "w": 1160, "text": "OPTION C — Rail éditorial (retenue)\nLe millésime filigrane passe dans le plein espace négatif, face à la carte, de l'autre côté du rail : plus rien ne le masque, il reste discret (gris clair + contour d'un cheveu) mais parfaitement lisible. Il vire au rosé très pâle au survol de la ligne.\nCarte survolée : léger soulèvement, bordure rouge, point du rail qui se remplit." },
+    { "id": "note-a", "page": "ecartees", "x": 0, "y": -190, "w": 1140, "text": "OPTION A — Colonnes parallèles (écartée)\nDeux colonnes indépendantes, axe rouge symbolique, connecteur + point par carte." },
+    { "id": "note-b", "page": "ecartees", "x": 1360, "y": -190, "w": 1140, "text": "OPTION B — Échelle chronologique (écartée)\nAxe = vraie échelle de temps, formations pluriannuelles en barres le long de l'axe." }
+  ],
+  "launch": { "view": "canvas", "page": "retenu" }
+}

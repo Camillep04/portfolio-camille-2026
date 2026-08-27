@@ -32,12 +32,21 @@ describe('AccueilComponent', () => {
     expect(component.typed).toBe('v');
   });
 
-  it('renders one timeline card per experience and per formation', () => {
+  it('renders one parcours card per experience and per formation', () => {
     const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelectorAll('#experiences .single-horizontal-timeline').length)
+    expect(el.querySelectorAll('#parcours .tl-item.is-experience').length)
       .toBe(EXPERIENCES.length);
-    expect(el.querySelectorAll('#formations .single-horizontal-timeline').length)
+    expect(el.querySelectorAll('#parcours .tl-item.is-formation').length)
       .toBe(EDUCATION.length);
+    expect(el.querySelectorAll('#parcours .tl-item').length)
+      .toBe(EXPERIENCES.length + EDUCATION.length);
+  });
+
+  it('orders the parcours strand most recent first', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const years = Array.from(el.querySelectorAll('#parcours .tl-year'))
+      .map((n) => Number(n.textContent));
+    expect(years).toEqual([...years].sort((a, b) => b - a));
   });
 
   it('has no duplicate section ids', () => {

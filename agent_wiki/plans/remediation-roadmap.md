@@ -193,8 +193,14 @@ share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
     refine the design first. Still open.*
     *Open: what specifically reads badly — line length, contrast, the photo/text
     ratio? Any reference site?*
-23. **[C]** Redesign "Expériences" and "FORMATIONS".
-    *Open: keep the vertical timeline, or move to cards / two columns?*
+23. ✅ **[C]** Redesign "Expériences" and "FORMATIONS" — done 2026-08-28.
+    Owner chose, from [three canvas prototypes](https://claude.ai/code/artifact/687eb5d7-8331-47dc-8b07-1a8ba0a93501),
+    the **"rail éditorial"** direction: one shared red vertical axis,
+    experiences left / formations right, interleaved by date, with a big
+    watermark year in the space opposite each card. The two `@for` sections
+    became one `#parcours` section over `TIMELINE` (`cv.ts`); CSS grid, stacks
+    to a left rail below 992px. See [accueil-page](/components/accueil-page.md).
+    36/36 tests, build clean, geometry verified in-browser.
 24. **[C]** Swap the order of "compétences" and "plonger dans mon univers" on
     the home page. Mechanical, but it changes the page's rhythm, so it belongs
     with the redesign above.

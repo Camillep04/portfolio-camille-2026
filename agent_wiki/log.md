@@ -1,5 +1,38 @@
 # Wiki Update Log
 
+## 2026-08-28
+
+* **Work**: Session 6, item 23 — the "Expériences" / "Formations" redesign.
+  Owner picked a direction from three canvas prototypes
+  ([design canvas](https://claude.ai/code/artifact/687eb5d7-8331-47dc-8b07-1a8ba0a93501),
+  working files under `design/timeline/`): **"rail éditorial"** — one shared
+  red vertical axis, experiences left / formations right, big watermark
+  millésime in the negative space opposite each card.
+  * `data/cv.ts` — new `TIMELINE`: `EXPERIENCES` + `EDUCATION` merged into one
+    strand, most recent first, experiences ahead of formations that end the
+    same year. Each item carries `kind` and `year` (the watermark).
+  * `accueil.component` — the two `#experiences` / `#formations` sections
+    collapse into one `#parcours` section, a single `@for` over `TIMELINE`.
+    CSS-grid rows (`1fr rail 1fr`), rail drawn as `.xp-timeline::before`,
+    per-item dot as `.tl-item::after`. Stacks to a left rail below 992px;
+    the watermark year hides on mobile, the `.tl-period` line in the card
+    carries it instead.
+  * `accueil.component.spec` — the timeline test now counts
+    `#parcours .tl-item.is-experience/.is-formation`, plus a new test that
+    the strand is ordered most-recent-first.
+* **Verification**: 36/36 tests, `ng build` clean. Layout checked in-browser
+  by computed geometry at 1305 / 900 / 391 px — cards symmetric 40px off the
+  rail, single grid row per item, no card overlaps, no horizontal overflow
+  from the section (the pre-existing ~15px page overflow from the compétences
+  marquee is untouched and out of scope). No screenshot — the Browser pane
+  was not displayable this session.
+* **Rewritten**: [accueil-page](/components/accueil-page.md) section map and
+  "adding an experience"; [content data layer](/architecture/content-data-layer.md)
+  cv.ts row. [Roadmap](/plans/remediation-roadmap.md) item 23 marked done.
+* **New working files**: `design/timeline/` (Design Components canvas source),
+  and a `portfolio-preview` entry in `.claude/launch.json` (port 4288, so the
+  Browser tools have their own dev server when another session holds 4200).
+
 ## 2026-08-27
 
 * **Work**: Session 6 — two cross-cutting design changes only. Committed to

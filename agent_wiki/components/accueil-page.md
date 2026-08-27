@@ -17,12 +17,9 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 
 # What it is for
 
-Route `''`. The longest-lived page. The "Expériences" and "Formations"
-timelines are now [`EXPERIENCES` / `EDUCATION` in `cv.ts`](/architecture/content-data-layer.md);
-adding an entry is one object.
-
-~340 lines of template, empty class beyond the typewriter state and the two
-data arrays.
+Route `''`. The longest-lived page. The CV timeline is now
+[`TIMELINE` in `cv.ts`](/architecture/content-data-layer.md); adding an entry
+is one object in `EXPERIENCES` or `EDUCATION`.
 
 # Section map
 
@@ -30,18 +27,32 @@ data arrays.
 |---|---|---|
 | 1 | `welcome-hero` | Hero. `J'aime m'amuser en :` followed by a typewriter effect |
 | 20 | `about` | *Qui est Camille ?* — bio, social SVG links, CV download, an embedded YouTube CV video (line 63) |
-| 86 | `clients` | *Compétences* — progress bars |
-| ~138 | — | *Plongez dans mon univers* — two "TICKET" cards linking to `/audiovisuel` and `/photo` |
-| ~200 | `experiences` | *Expériences* — `@for` over `EXPERIENCES` (5 entries, 2022–2026) |
-| ~240 | `formations` | *Formations* — `@for` over `EDUCATION` (3 entries, Bac 2021 → Master 2025-2027) |
-| ~270 | — | *PHOTO* — 5 polaroids, each linking to `/photo` |
+| 86 | `clients` | *Compétences* — B&W logo marquee (progress bars are gone) |
+| ~138 | — | *Plongez dans mon univers* — two "TICKET" cards linking to `/projets` and `/photo` |
+| ~196 | `parcours` | *Expériences* + *Formations* — one `@for` over `TIMELINE` (8 items) |
+| ~220 | — | *PHOTO* — 5 polaroids, each linking to `/photo` |
 
-# The duplicate `id="education"` — fixed
+# The "parcours" timeline (session 6, item 23)
 
-Both sections carried `id="education"` (invalid HTML;
-`getElementById('education')` only ever found *Expériences*). Session 4 split
-them into `id="experiences"` and `id="formations"` while making them
-data-driven. A spec now asserts section ids on the page are unique. See
+`#experiences` and `#formations` were two separate `@for` sections until
+session 6. They are now **one `#parcours` section**: a shared vertical red
+axis, experiences to its left, formations to its right, interleaved by date
+(`TIMELINE`). Each card has a big watermark year (`.tl-year`) in the empty
+space opposite it.
+
+* Layout is CSS grid (`.tl-item`: `1fr` / rail / `1fr`), **not** the theme's
+  `.education-horizontal-timeline` — those `public/css/style.css` rules are no
+  longer referenced. The rail is `.xp-timeline::before`, the per-entry dot is
+  `.tl-item::after`.
+* Both grid children are pinned to `grid-row: 1` — without it, auto-placement
+  drops the card onto a second row (DOM order is year-then-card).
+* Below **992px** it collapses to a single left-rail stack; `.tl-year` hides
+  and the `.tl-period` line inside the card shows the period instead.
+* Specs assert one `.tl-item` per `EXPERIENCES` / `EDUCATION` entry and that
+  the strand is ordered most-recent-first.
+
+Earlier fix, still true: both sections once carried `id="education"` (invalid
+HTML). Session 4 split them; session 6 merged them under one clean id. See
 [duplicate DOM ids](/issues/duplicate-dom-ids.md).
 
 # The typewriter effect
@@ -68,11 +79,9 @@ animation rather than Camille's name. See
   (BS5 only) and `row-cols-*` on the polaroid row (BS 4.4+, but the CDN is
   pinned to 4.0.0). Both silently ignored. See
   [Bootstrap version conflict](/issues/bootstrap-version-conflict.md).
-* **`<i class="fa fa-circle">` × 8 renders nothing** — Font Awesome's stylesheet
-  is not linked. The timeline dots are invisible. See
-  [unlinked stylesheets](/issues/unlinked-stylesheets.md).
 * **Progress bars never animate.** `custom.js` binds `.progress-bar` via
   `jquery.appear` at `$(document).ready`, before this component renders.
+  *(The parcours timeline no longer uses Font Awesome dots — session 6.)*
 * **Lines 465–500 are commented-out polaroid blocks.** See
   [dead commented markup](/issues/dead-commented-markup.md).
 * **13 content images carry `alt=""`**, and `img/camera.png` (×5),
@@ -82,7 +91,10 @@ animation rather than Camille's name. See
 
 Add a `TimelineEntry` object to `EXPERIENCES` (or `EDUCATION`) in
 [`src/app/data/cv.ts`](/architecture/content-data-layer.md) — `period`,
-`headline`, `place`, `description`. Array order is display order.
+`headline`, `place`, `description`. `TIMELINE` re-derives: `kind` picks the
+side, the most-recent year in `period` places it in the strand and becomes
+the watermark. Within a `period` array, order only matters as the tie-break
+between entries of the same year.
 
 Still hand-written on this page: the "Compétences" logo marquee and the five
 polaroid links.

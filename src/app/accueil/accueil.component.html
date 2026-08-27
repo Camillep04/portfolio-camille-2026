@@ -193,74 +193,31 @@
 </div>
 <!-- fin ticket -->
 
-<!--experiences start -->
-<section id="experiences" class="education">
-    <div class="section-heading text-center">
-        <h2 class="test">{{ i18n.t('experiences.title') }}</h2>
+<!--parcours (expériences + formations) start -->
+<section id="parcours" class="education parcours">
+    <div class="parcours-heads container">
+        <h2 class="section-title">{{ i18n.t('experiences.title') }}</h2>
+        <h2 class="section-title">{{ i18n.t('formations.title') }}</h2>
     </div>
     <div class="container">
-        <div class="education-horizontal-timeline">
-            <div class="row">
-                @for (entry of experiences; track $index) {
-                    <div class="col-sm-4">
-                        <div class="single-horizontal-timeline p-5">
-                            <div class="experience-time">
-                                <h2>{{ entry.period }}</h2>
-                                <h3>{{ i18n.tc(entry.headline) }}</h3>
-                            </div><!--/.experience-time-->
-                            <div class="timeline-horizontal-border">
-                                <i class="bi bi-circle-fill" aria-hidden="true"></i>
-                                <span class="single-timeline-horizontal"></span>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <h4 class="title">{{ i18n.tc(entry.place) }}</h4>
-                                    <p class="description pt-3 pb-5">{{ i18n.tc(entry.description) }}</p>
-                                </div><!--/.timeline-content-->
-                            </div><!--/.timeline-->
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+        <ol class="xp-timeline">
+            @for (item of timeline; track $index) {
+                <li class="tl-item"
+                    [class.is-experience]="item.kind === 'experience'"
+                    [class.is-formation]="item.kind === 'formation'">
+                    <span class="tl-year" aria-hidden="true">{{ item.year }}</span>
+                    <article class="tl-card">
+                        <p class="tl-kind">{{ i18n.tc(item.headline) }}</p>
+                        <h3 class="tl-place">{{ i18n.tc(item.place) }}</h3>
+                        <p class="tl-desc">{{ i18n.tc(item.description) }}</p>
+                        <p class="tl-period">{{ item.period }}</p>
+                    </article>
+                </li>
+            }
+        </ol>
     </div>
 </section><!--/.education-->
-<!--experiences end -->
-
-<!--formations start -->
-<section id="formations" class="education">
-    <div class="section-heading text-center">
-        <h2>{{ i18n.t('formations.title') }}</h2>
-    </div>
-    <div class="container">
-        <div class="education-horizontal-timeline">
-            <div class="row d-flex justify-content-center">
-                @for (entry of education; track $index) {
-                    <div class="col-sm-4">
-                        <div class="single-horizontal-timeline">
-                            <div class="experience-time">
-                                <h2>{{ entry.period }}</h2>
-                                <h3>{{ i18n.tc(entry.headline) }}</h3>
-                            </div><!--/.experience-time-->
-                            <div class="timeline-horizontal-border">
-                                <i class="bi bi-circle-fill" aria-hidden="true"></i>
-                                <span class="single-timeline-horizontal"></span>
-                            </div>
-                            <div class="timeline">
-                                <div class="timeline-content">
-                                    <h4 class="title">{{ i18n.tc(entry.place) }}</h4>
-                                    <p class="description pt-3">{{ i18n.tc(entry.description) }}</p>
-                                </div><!--/.timeline-content-->
-                            </div><!--/.timeline-->
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-
-</section><!--/.education-->
-<!--formations end -->
+<!--parcours end -->
 
 <!-- photo -->
 <div class="section-heading text-center mb-5 mt-5 pt-5">

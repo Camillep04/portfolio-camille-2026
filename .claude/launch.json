@@ -6,6 +6,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
       "port": 4200
+    },
+    {
+      "name": "portfolio-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["ng", "serve", "--port", "4288"],
+      "port": 4288,
+      "autoPort": false
     }
   ]
 }
