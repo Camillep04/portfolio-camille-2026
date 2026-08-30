@@ -36,6 +36,10 @@
     Verified 1920/2100/2560/3840, burger menu still toggles. Item 28
     (accessibility) marked abandoned per owner.
   * **New**: [XL screens scale up](/decisions/xl-screens-scale-up.md) decision.
+  * **Follow-up**: fixed a pre-existing ~15px horizontal scroll on `/` — the
+    polaroid `.row` (`accueil.component.html`) had no padded parent to absorb
+    its Bootstrap `-15px` gutter margins. Wrapped it in `.container-fluid`.
+    No layout change (polaroids were already 2-up on the 4.0.0 CDN).
   * **Rewritten**: [ContactComponent](/components/contact-page.md);
     [AppComponent](/components/app-root.md) and
     [HeaderComponent](/components/header.md) (both badly stale — described the

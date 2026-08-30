@@ -76,9 +76,13 @@ animation rather than Camille's name. See
 # What surprises you
 
 * **Bootstrap 5 utility classes that do nothing.** `gap-4` on the ticket cards
-  (BS5 only) and `row-cols-*` on the polaroid row (BS 4.4+, but the CDN is
-  pinned to 4.0.0). Both silently ignored. See
+  (BS5 only) and `row-cols-md-*` / `row-cols-lg-*` on the polaroid row (BS 4.4+,
+  but the CDN is pinned to 4.0.0), so the polaroids render 2-up, not 5-up. Both
+  silently ignored. See
   [Bootstrap version conflict](/issues/bootstrap-version-conflict.md).
+* **The polaroid `.row` is wrapped in `.container-fluid`** (Session 8). Without
+  a padded parent, the row's `-15px` gutter margins bled past the viewport and
+  gave the whole page ~15px of horizontal scroll.
 * **Progress bars never animate.** `custom.js` binds `.progress-bar` via
   `jquery.appear` at `$(document).ready`, before this component renders.
   *(The parcours timeline no longer uses Font Awesome dots — session 6.)*

@@ -223,23 +223,28 @@
 <div class="section-heading text-center mb-5 mt-5 pt-5">
     <h2>{{ i18n.t('home.photo.title') }}</h2>
 </div>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mb-3">
-    <!-- The five teasers echo the first five gallery photos. The background
-         image is a `.col:nth-child(n)` rule in the stylesheet, so array order
-         here must stay galerie/1..5; the title comes from the same data as
-         /photo so it never drifts and it translates. -->
-    @for (photo of polaroids; track photo.id) {
-        <div class="col d-flex justify-content-center">
-            <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
-                <a routerLink="/photo">
-                    <div class="polaroid-img d-flex justify-content-center">
-                        <div class="polaroid-title">
-                            <p>{{ i18n.tc(photo.title) }}</p>
+<!-- container-fluid supplies the 15px side padding that absorbs the row's
+     -15px gutter margins; without a padded parent the row bled 15px past the
+     viewport and gave the whole page a sliver of horizontal scroll. -->
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mb-3">
+        <!-- The five teasers echo the first five gallery photos. The background
+             image is a `.col:nth-child(n)` rule in the stylesheet, so array order
+             here must stay galerie/1..5; the title comes from the same data as
+             /photo so it never drifts and it translates. -->
+        @for (photo of polaroids; track photo.id) {
+            <div class="col d-flex justify-content-center">
+                <div class="polaroid survol-ticket d-flex flex-column align-items-center p-1">
+                    <a routerLink="/photo">
+                        <div class="polaroid-img d-flex justify-content-center">
+                            <div class="polaroid-title">
+                                <p>{{ i18n.tc(photo.title) }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 <!-- fin photo -->

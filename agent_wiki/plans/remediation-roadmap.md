@@ -280,6 +280,11 @@ All five items ✅ done 2026-08-30. Verified: `ng build` clean, **54/54 tests**
 375 / 1440 / 1920 / 2560 / 3840px. Committed to `develop`, not pushed — the
 merge is the owner's.
 
+**Follow-up (same day):** fixed a pre-existing ~15px horizontal scroll on `/` —
+the polaroid `.row` had no padded parent to absorb its Bootstrap `-15px` gutter
+margins, so it bled past the viewport. Wrapped it in `.container-fluid`. See
+[AccueilComponent](/components/accueil-page.md).
+
 Still open after this: item 22 (QUI EST CAMILLE redesign — its own session),
 Bootstrap 5 (its own session), the Ongoing list below.
 
