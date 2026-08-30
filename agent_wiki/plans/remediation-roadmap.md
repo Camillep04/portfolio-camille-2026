@@ -187,12 +187,20 @@ session, and the open question is recorded next to each item.
 share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
 `.header-text a`, `.playstore-button`, `.instagram-link`).
 
-22. **[C]** Redesign the "QUI EST CAMILLE" block for design and legibility.
-    *Built once on 2026-08-27 (headings top-left, GitHub link removed, CV label
-    bold, content capped for line-length) and pulled back — the owner wants to
-    refine the design first. Still open.*
-    *Open: what specifically reads badly — line length, contrast, the photo/text
-    ratio? Any reference site?*
+22. ✅ **[C]** Redesign the "QUI EST CAMILLE" block — done 2026-08-30 (Session 11)
+    to the owner's spec. Two columns at md/lg: the section heading moved *into*
+    each column (`about-left` / `about-right`), left-aligned and 2× larger
+    (`.about-title` — 48px, `min-height: 2.75em` so both reserve two lines and
+    the photo/video tops line up). Left = photo (float) + bio, the theme's
+    `border-bottom` rule under the bio removed at ≥768px. Right = video
+    (`pb-5`), then a `justify-content-between` row: the `Télécharger mon CV`
+    button on the left, the three social icons (moved here from the left
+    column, `li` `px-5`→`p-2`, `ul` `mr-0 ml-auto` to beat the theme's
+    `ul { margin: 0 auto }`) flush to the video's right edge. Below 768px: one
+    stacked column, each heading stays above its own content at the theme's
+    24px centred, the bio rule is visible again, the right column sits under
+    the left. Verified 1360 / 768 / 375px, no overflow.
+    *Earlier attempt on 2026-08-27 was pulled back pending the owner's spec.*
 23. ✅ **[C]** Redesign "Expériences" and "FORMATIONS" — done 2026-08-28.
     Owner chose, from [three canvas prototypes](https://claude.ai/code/artifact/687eb5d7-8331-47dc-8b07-1a8ba0a93501),
     the **"rail éditorial"** direction: one shared red vertical axis,
@@ -285,8 +293,7 @@ the polaroid `.row` had no padded parent to absorb its Bootstrap `-15px` gutter
 margins, so it bled past the viewport. Wrapped it in `.container-fluid`. See
 [AccueilComponent](/components/accueil-page.md).
 
-Still open after this: item 22 (QUI EST CAMILLE redesign — its own session),
-Bootstrap 5 (its own session), the Ongoing list below.
+Still open after this: Bootstrap 5 (its own session), the Ongoing list below.
 
 # Ongoing
 

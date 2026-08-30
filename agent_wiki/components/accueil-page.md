@@ -5,7 +5,7 @@ description: The home page — hero, bio, skills, two timelines, a photo teaser.
 tags: [component, page, content]
 resource: /src/app/accueil/accueil.component.html
 status: stable
-generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
+generated: { by: claude-code/sonnet-5, at: 2026-08-30T00:00:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 ---
 
@@ -26,7 +26,7 @@ is one object in `EXPERIENCES` or `EDUCATION`.
 | Line | `id` | Content |
 |---|---|---|
 | 1 | `welcome-hero` | Hero. `J'aime m'amuser en :` followed by a typewriter effect |
-| 20 | `about` | *Qui est Camille ?* — bio, social SVG links, CV download, an embedded YouTube CV video (line 63) |
+| 20 | `about` | *Qui est Camille ?* — two columns (`about-left` / `about-right`): bio + floated photo on the left, YouTube CV video + social SVG links + CV download on the right. Redesigned session 11 — see below |
 | 86 | `clients` | *Compétences* — B&W logo marquee (progress bars are gone) |
 | ~138 | — | *Plongez dans mon univers* — two "TICKET" cards linking to `/projets` and `/photo` |
 | ~196 | `parcours` | *Expériences* + *Formations* — one `@for` over `TIMELINE` (8 items) |
@@ -54,6 +54,39 @@ space opposite it.
 Earlier fix, still true: both sections once carried `id="education"` (invalid
 HTML). Session 4 split them; session 6 merged them under one clean id. See
 [duplicate DOM ids](/issues/duplicate-dom-ids.md).
+
+# The "about" block (session 11, item 22)
+
+Owner-specified two-column redesign, scoped in `accueil.component.css` under
+`#about` (emulated encapsulation raises specificity over the global
+`public/css/style.css` rules).
+
+* The section heading is no longer one centred `<h2>` above the row — each
+  column carries its own (`.about-heading > h2.about-title`, class
+  `text-center text-md-left`).
+* **≥768px**: `.about-title` is `font-size: 48px` with `min-height: 2.75em`
+  so both headings reserve two lines and the photo (left) and video (right)
+  tops align even though "QUI EST CAMILLE ?" wraps and "CV VIDÉO" doesn't.
+  The theme's `.single-about-txt p { border-bottom }` rule is zeroed.
+* **<768px**: single stacked column. No reordering — each heading stays above
+  its own content and falls back to the theme's 24px, centred (the `48px` /
+  `text-md-left` / `min-height` rules are all inside the `min-width: 768px`
+  query); the bio `border-bottom` is visible again; the right column follows
+  the left.
+* The three social SVG links moved **out of the left column** into
+  `.about-actions` on the right, under the video: a `d-flex flex-wrap
+  justify-content-between` row — the `Télécharger mon CV` button
+  (`.header-text`) on the left, `ul.about-social` (`li` padding `p-2`, was
+  `px-5`) on the right. Wraps to two lines only when the column is too narrow
+  (≈ md).
+* **Gotcha**: the theme's `style.css` has a blanket `ul { margin: 0 auto }`,
+  so `ml-auto` alone left the icons *centred* in the free space, not flush
+  right — the `ul` also needs `mr-0`. And `#about .about-social li:last-child
+  { padding-right: 0 !important }` (beats the `.p-2` utility) puts the last
+  icon's edge exactly on the video's right edge.
+* The video sits in a `.w-100.pb-5` wrapper around `.video-wrapper` (the
+  `pb-5` can't go on `.video-wrapper` itself — its iframe is
+  `position: absolute; inset: 0` and would cover the padding).
 
 # The typewriter effect
 

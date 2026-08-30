@@ -57,6 +57,38 @@
     width: 100%;
     height: 100%;
 }
+
+/* ------------------------------------------------------------------
+   Session 11 (item 22) — refonte du bloc "Qui est Camille ?" / "CV vidéo"
+   md/lg : 2 colonnes, titres alignés au début et 2x plus gros ; la photo
+   (float) + la bio à gauche, la vidéo + le bouton + les icônes à droite,
+   le haut de la vidéo aligné avec la photo. La barre sous la bio disparaît.
+   sm (<768) : tout empilé, colonne droite sous la gauche ; chaque titre
+   reste au-dessus de son contenu, 24px centré (styles d'origine du thème),
+   la barre sous la bio réapparaît.
+   ------------------------------------------------------------------ */
+/* le thème pose `ul { margin: 0 auto }` — sans ça les icônes se recentrent
+   dans l'espace libre au lieu de coller à droite (mr-0 + ml-auto sur le ul) ;
+   et on retire le padding droit de la dernière icône pour l'aligner pile sur
+   le bord droit de la vidéo. */
+#about .about-social li:last-child {
+    padding-right: 0 !important; /* bat le `.p-2` (utilitaire !important) */
+}
+
+@media (min-width: 768px) {
+    #about .about-title {
+        font-size: 48px;
+        line-height: 1.2;
+        text-align: start;
+        /* réserve 2 lignes (+ le pb-4) pour chaque titre : la photo et la
+           vidéo s'alignent même quand "QUI EST CAMILLE ?" passe sur deux
+           lignes et pas "CV VIDÉO" */
+        min-height: 2.75em;
+    }
+    #about .single-about-txt p {
+        border-bottom: 0;
+    }
+}
 /* fin ABOUT */
 
 /* ticket */

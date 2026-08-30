@@ -2,6 +2,22 @@
 
 ## 2026-08-30
 
+* **Work**: Session 11 — [roadmap](/plans/remediation-roadmap.md) item 22, the
+  "QUI EST CAMILLE ?" block redesign, to the owner's written spec (its own
+  session, as flagged). Two columns at md/lg with the section heading moved
+  into each column, left-aligned and 2× larger; photo+bio left, video then a
+  `justify-content-between` row (CV-download button left, social icons right)
+  on the right; the theme's `border-bottom` under the bio gone at ≥768px.
+  Below 768px everything stacks at the theme's original sizes — no reorder,
+  each heading stays above its content. Social icons moved from the left
+  column into the actions row (`li` `px-5`→`p-2`, `ul` `mr-0 ml-auto` +
+  `li:last-child` `padding-right: 0 !important` so they sit flush on the
+  video's right edge, past the theme's `ul { margin: 0 auto }`). All in
+  `accueil.component.html` + scoped `accueil.component.css` (`#about …`).
+  Verified in-browser at 1360 / 768 / 375px — headings and photo/video tops
+  align, no horizontal overflow. Concept updated:
+  [AccueilComponent](/components/accueil-page.md).
+
 * **Work**: Session 10 — new owner request, not on the roadmap: a desktop
   pointer hint. New `src/app/ui/action-hint.directive.ts` — `[appActionHint]`,
   a standalone directive that on hover/focus floats one `<body>`-level
