@@ -20,6 +20,7 @@ Use `type: Component`.
 * [AudiovisuelComponent](audiovisuel-page.md) - `/projets` — ten projects from `PROJECTS`, `@for` sections, clickable hearts.
 * [PhotoComponent](photo-page.md) - `/photo` — 35-photo masonry over one Angular lightbox with carousel arrows.
 * [ContactComponent](contact-page.md) - `/contact` — an embedded Google Form, the only contact channel.
+* [NotFoundComponent](not-found-page.md) - `**` — Camille's "perte de signal" 404 mock for any unknown URL.
 
 # State
 

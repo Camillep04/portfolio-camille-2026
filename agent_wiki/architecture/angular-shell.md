@@ -38,18 +38,21 @@ outlet.
 
 # Routes
 
-Defined in `src/app/app.routes.ts`. Four routes, **no wildcard**:
+Defined in `src/app/app.routes.ts`:
 
 | Path | Component | Concept |
 |---|---|---|
 | `''` | `AccueilComponent` | [Accueil page](/components/accueil-page.md) |
-| `'audiovisuel'` | `AudiovisuelComponent` | [Audiovisuel page](/components/audiovisuel-page.md) |
+| `'projets'` | `AudiovisuelComponent` | [Audiovisuel page](/components/audiovisuel-page.md) |
+| `'audiovisuel'` | — | redirects to `'projets'` (Session 5 rename) |
 | `'photo'` | `PhotoComponent` | [Photo page](/components/photo-page.md) |
 | `'contact'` | `ContactComponent` | [Contact page](/components/contact-page.md) |
+| `'**'` | `NotFoundComponent` | [Not-found page](/components/not-found-page.md) |
 
-The missing `{ path: '**' }` is a real defect on a host that rewrites unknown
-URLs to `index.html`: a typo'd path renders header + footer + blank middle
-instead of a 404. See [no wildcard route](/issues/no-wildcard-route.md).
+The `**` route (Session 7) matters on a host that rewrites unknown URLs to
+`index.html`: without it a typo'd path rendered header + footer + blank middle.
+Now it renders Camille's 404 design. See
+[no wildcard route](/issues/no-wildcard-route.md).
 
 # What is surprising
 

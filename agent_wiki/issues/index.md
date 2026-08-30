@@ -56,7 +56,7 @@ each **re-verified against the code on 2026-08-26**. Frontmatter carries
 * [Missing alt text](missing-alt-text.md) - Gallery photos and project posters fixed in session 4; header/footer/bio images still open.
 * [Contact form overflows on mobile](contact-form-overflow-mobile.md) - The only contact channel, cut off on a phone.
 * [Placeholder content on contact](placeholder-content-contact.md) - Five dead theme links and an English heading.
-* [No wildcard route](no-wildcard-route.md) - A typo'd URL renders a blank middle, not a 404.
+* [No wildcard route](no-wildcard-route.md) - **Resolved** in session 7; the `**` route renders [NotFoundComponent](/components/not-found-page.md), Camille's 404 design.
 * [Dead commented markup](dead-commented-markup.md) - Blocks git already remembers.
 * [Netlify config nits](netlify-config-nits.md) - Portability, duplicated redirects, and a test asset mapping that breaks rendering tests.
 

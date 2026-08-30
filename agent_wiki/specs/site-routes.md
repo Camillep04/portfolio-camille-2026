@@ -17,6 +17,7 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 | `/projets` | All ten video/creative projects | [AudiovisuelComponent](/components/audiovisuel-page.md) |
 | `/photo` | The 35-photo gallery | [PhotoComponent](/components/photo-page.md) |
 | `/contact` | Google Form, real social links, CV download | [ContactComponent](/components/contact-page.md) |
+| anything else | Camille's "perte de signal" 404 with links back into the site | [NotFoundComponent](/components/not-found-page.md) |
 
 Session 5 renamed `/audiovisuel` → `/projets` (the owner's request). The old
 path stays as `{ path: 'audiovisuel', redirectTo: 'projets', pathMatch: 'full' }`
@@ -41,14 +42,15 @@ that rewrite breaks every URL except `/`.
 Both `netlify.toml` and `public/_redirects` currently declare it; one is
 enough. See [Netlify config nits](/issues/netlify-config-nits.md).
 
+# Unknown paths
+
+**`{ path: '**' }` renders [NotFoundComponent](/components/not-found-page.md)**
+(Session 7). Because Netlify serves `index.html` with status 200 for any
+unknown path, this is a **soft 404** — the page is HTTP 200, there is no SSR to
+set the code. The page itself makes the "not found" obvious and links back to
+`/`, `/projets`, `/contact`.
+
 # What is unspecified today
-
-**There is no `{ path: '**' }` route.** Because Netlify serves `index.html` for
-any unknown path, `/photos` or a mistyped path renders header + footer + an
-empty middle — a broken-looking page rather than a 404 or a redirect home.
-
-The contract *should* be: any unrecognised path redirects to `/`. It is not
-implemented. See [no wildcard route](/issues/no-wildcard-route.md).
 
 **Per-route titles are unspecified.** Every route shows
 `<title>Camille Portfolio</title>`, so a browser with four tabs open shows four

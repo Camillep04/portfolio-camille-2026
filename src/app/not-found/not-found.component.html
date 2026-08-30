@@ -1,0 +1,21 @@
+<!-- 404 start -->
+<section class="notfound">
+  <span class="glow"></span>
+
+  <div class="wrap">
+    <p class="rec"><i></i>{{ i18n.t('notFound.signalLost') }}</p>
+
+    <div class="code" aria-hidden="true">404<span class="r">404</span><span class="c">404</span></div>
+
+    <h1>{{ i18n.t('notFound.title') }}</h1>
+
+    <div class="actions">
+      <a class="btn btn-primary" routerLink="/">{{ i18n.t('notFound.home') }}</a>
+      <a class="btn btn-ghost" routerLink="/projets">{{ i18n.t('nav.projects') }}</a>
+      <a class="btn btn-ghost" routerLink="/contact">{{ i18n.t('nav.contact') }}</a>
+    </div>
+  </div>
+
+  <p #timecode class="tc" aria-hidden="true">00:00:00:00</p>
+</section>
+<!-- 404 end -->

@@ -2,11 +2,11 @@
 type: Issue
 title: No wildcard route, so unknown URLs render a blank page
 description: Netlify rewrites everything to index.html, and with no catch-all route a typo shows header and footer around an empty middle.
-tags: [routing, p4]
+tags: [routing, p4, resolved]
 resource: /src/app/app.routes.ts
-status: stable
+status: deprecated
 priority: P4
-verification: confirmed
+verification: resolved
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
 verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 sources:
@@ -14,6 +14,13 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved 2026-08-30, session 7.** `{ path: '**', component: NotFoundComponent }`
+now catches every unknown URL and renders
+[NotFoundComponent](/components/not-found-page.md) — Camille's "perte de signal"
+404 mock (`proto404/proto-c-signal.html`), chosen over the redirect-home fix
+below because she designed a dedicated page. The rest of this concept is the
+original analysis, kept for the trail.
 
 # Symptom
 

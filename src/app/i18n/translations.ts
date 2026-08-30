@@ -69,6 +69,10 @@ const FR = {
   'contact.form': 'Formulaire de contact',
   'contact.socials': 'Mes réseaux :',
 
+  'notFound.signalLost': 'Signal perdu',
+  'notFound.title': "Cette page n'est pas au catalogue",
+  'notFound.home': "Retour à l'accueil",
+
   'footer.madeBy': 'Réalisé par Camille PROTHIN',
 
   // %s is replaced with the project title.
@@ -128,6 +132,10 @@ const EN: Record<UiKey, string> = {
   'contact.title': 'Contact me',
   'contact.form': 'Contact form',
   'contact.socials': 'My socials:',
+
+  'notFound.signalLost': 'Signal lost',
+  'notFound.title': "This page isn't in the catalogue",
+  'notFound.home': 'Back to home',
 
   'footer.madeBy': 'Made by Camille PROTHIN',
 

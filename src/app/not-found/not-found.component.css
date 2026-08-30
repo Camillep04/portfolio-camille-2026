@@ -1,0 +1,219 @@
+/* Camille's "perte de signal" 404 mock, ported from proto404/proto-c-signal.html.
+   Scoped to :host so the dark film-set backdrop stays between the shared header
+   and footer instead of taking over the viewport. */
+
+:host {
+  --accent: #f92c2c;
+  --radius: 16px;
+  display: block;
+}
+
+.notfound {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 24px;
+  background: #0f1117;
+  color: #fff;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* scanlines */
+.notfound::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+/* film grain */
+.notfound::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  animation: grain 1.2s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-2%, -2%); }
+  100% { transform: translate(3%, 3%); }
+}
+
+/* red spotlight */
+.glow {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -58%);
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(249, 44, 44, 0.16) 0%, transparent 62%);
+  animation: breathe 7s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  50% {
+    transform: translate(-50%, -58%) scale(1.12);
+    opacity: 0.75;
+  }
+}
+
+.wrap {
+  position: relative;
+  z-index: 4;
+  max-width: 640px;
+}
+
+.rec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 26px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #999fb3;
+}
+
+.rec i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.15; }
+}
+
+.code {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: clamp(110px, 26vw, 220px);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+}
+
+.code span {
+  position: absolute;
+  inset: 0;
+}
+
+.code .r {
+  color: var(--accent);
+  mix-blend-mode: screen;
+  animation: glitch-r 3.2s infinite steps(1);
+}
+
+.code .c {
+  color: #3ad9e0;
+  mix-blend-mode: screen;
+  animation: glitch-c 3.2s infinite steps(1);
+}
+
+@keyframes glitch-r {
+  0%, 88% { transform: translate(0, 0); opacity: 0; }
+  89% { transform: translate(-6px, 2px); opacity: 1; }
+  93% { transform: translate(5px, -3px); opacity: 1; }
+  96%, 100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitch-c {
+  0%, 88% { transform: translate(0, 0); opacity: 0; }
+  90% { transform: translate(6px, -2px); opacity: 1; }
+  94% { transform: translate(-4px, 3px); opacity: 1; }
+  97%, 100% { transform: translate(0, 0); opacity: 0; }
+}
+
+h1 {
+  margin: 0 0 36px;
+  font-size: clamp(20px, 3.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  /* the theme's global h1 rule capitalises every word — not wanted here */
+  text-transform: none;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 30px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: 0.25s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 34px rgba(249, 44, 44, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 48px rgba(249, 44, 44, 0.65);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tc {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: #6a708e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notfound::after,
+  .glow,
+  .rec i,
+  .code .r,
+  .code .c {
+    animation: none;
+  }
+}

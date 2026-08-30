@@ -1,5 +1,29 @@
 # Wiki Update Log
 
+## 2026-08-30
+
+* **Work**: Session 7 — the 404 page. Camille built three mocks on branch
+  `page_404` (`proto404/proto-{a,b,c}-*.html`); she picked **proto C, "perte de
+  signal"**. Ported it to a real component:
+  * `src/app/not-found/` — `NotFoundComponent`, standalone, `RouterLink`
+    buttons, all copy via new `notFound.*` i18n keys (fr + en). The decorative
+    SMPTE timecode ticks 25×/s **outside the Angular zone** and writes straight
+    to the element, so it doesn't drive app-wide change detection.
+  * `app.routes.ts` — added `{ path: '**', component: NotFoundComponent }`.
+  * `not-found.component.spec.ts` — create, three router links, i18n toggle.
+* **Verification**: 39/39 tests (was 36), `ng build` clean, checked in-browser
+  at 1305 / 375 px in both languages — no console errors, no horizontal
+  overflow, real routes unaffected. (The wiki's old "two tests fail on a clean
+  checkout" note in [branch-workflow](/specs/branch-workflow.md) is stale —
+  all green.)
+* **New**: [NotFoundComponent](/components/not-found-page.md).
+* **Rewritten**: [no wildcard route](/issues/no-wildcard-route.md) → resolved;
+  [site routes](/specs/site-routes.md) contract + soft-404 note;
+  [angular shell](/architecture/angular-shell.md) routes table; the
+  `components/` and `issues/` indexes.
+* **Merged earlier**: branch `page_404` (the three raw protos) fast-forwarded
+  into `develop`.
+
 ## 2026-08-28
 
 * **Work**: Session 6, item 23 — the "Expériences" / "Formations" redesign.
