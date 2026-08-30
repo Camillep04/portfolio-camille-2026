@@ -54,12 +54,14 @@ a,a:hover,a:active,a:focus {
 	font-size:16px;
 	padding:0;
 }
-h1,h2,h3,h4,h5,h6 { 
+h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	color:#43485c;
     font-size: 16px;
 	font-family: 'Poppins', sans-serif;
-	text-transform: capitalize;
+	/* Session 8: `text-transform: capitalize` removed here and site-wide — it
+	   capitalised Every Word Of Every Heading. Copy is authored in sentence
+	   case; ALL-CAPS headings keep their own `text-transform: uppercase`. */
 }
 p {
 	margin: 0;
@@ -251,7 +253,6 @@ nav.navbar.bootsnav .navbar-toggle i{color: #f92c2c;}
     height: 50px;
     line-height: 50px;
     border-radius: 50px;
-    text-transform: capitalize;
     color: #fff;
     background: #f92c2c;
     border:1px solid #f92c2c;
@@ -295,7 +296,6 @@ nav.navbar.bootsnav .navbar-toggle i{color: #f92c2c;}
 .single-about-add-info h3 {
     color: #636a82;
     font-size: 16px;
-    text-transform: capitalize;
 }
 .single-about-add-info p {font-weight:  300;border:  0;padding: 0;margin-top: 3px;}
 /*.single-about-txt*/
@@ -369,7 +369,6 @@ nav.navbar.bootsnav .navbar-toggle i{color: #f92c2c;}
 /*.education-horizontal-timeline*/
 .education-horizontal-timeline .col-sm-4 {padding:0 2px;}
 
-.single-horizontal-timeline .experience-time h3{text-transform: capitalize;}
 .single-horizontal-timeline .experience-time h3 span{text-transform:lowercase;}
 .single-horizontal-timeline .timeline-content h5 {margin: 15px 0;}
 .single-horizontal-timeline p {color: #999fb3;max-width: 335px;}
@@ -576,7 +575,6 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     transition:background 0.5s linear;
 }
 .profile-icon-name {
-    text-transform: capitalize;
     color: #636a82;
     font-size: 16px;
 }
@@ -587,7 +585,6 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 .single-profile-overlay{
     display:flex;
     align-items:center;
-    text-transform: capitalize;
     justify-content:center;
     position: absolute;
     top: 0;
@@ -744,7 +741,6 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     align-items:center;
     justify-content:center;
     height:50px;
-    text-transform:capitalize;
     margin-top: 3px;
     background: #f92c2c;
     border: 1px solid #f92c2c;
@@ -786,7 +782,6 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 .contact-add-head p {
     font-size:  16px;
-    text-transform: capitalize;
     color:  #636a82;
     font-weight:  300;
     margin-top:  6px;
@@ -829,7 +824,6 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 
 .hm-footer-copyright p{
     color: #888ea5;
-    text-transform: capitalize;
     padding: 38px 0;
 }
 .hm-footer-copyright p a {color: #888ea5;}

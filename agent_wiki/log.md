@@ -13,7 +13,13 @@
     `[title]`; `.contact` gets `padding-top: 140px` to clear the fixed nav.
     Verified at 1280 / 375px, no overflow. 42/42 tests (was 39, +3 contact
     specs), build clean.
-  * Items 34–36 (capitalize removal, YouTube popup, XL scaling) pending.
+  * **Item 34 ✅**: removed `text-transform: capitalize` from
+    `public/css/style.css` — the global `h1–h6` rule + 8 others (6 dead).
+    "Télécharger mon CV", the footer copyright and the `#parcours` org names
+    now render as authored. Section headings unchanged (already `uppercase`).
+    Two data typos noted for the owner (`projects.ts` "Réalisation Par…").
+    42/42 tests, build clean.
+  * Items 35–36 (YouTube popup, XL scaling) pending.
   * **Rewritten**: [ContactComponent](/components/contact-page.md);
     [contact form overflow](/issues/contact-form-overflow-mobile.md) → deprecated;
     [placeholder content](/issues/placeholder-content-contact.md) → deprecated;

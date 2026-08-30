@@ -247,9 +247,15 @@ bootsnav header rewrite is too big to ride along). Accessibility (item 28) is
     clears the fixed nav. Fixes [contact form overflow](/issues/contact-form-overflow-mobile.md)
     and [placeholder content](/issues/placeholder-content-contact.md). This also
     delivers most of roadmap item 27.
-34. **[C]** Remove `text-transform: capitalize` site-wide (the theme's global
-    `h1–h6` rule and ~8 others). ALL-CAPS headings (`text-transform: uppercase`)
-    stay. Source strings fixed where they leaned on the capitalisation.
+34. ✅ **[C]** Removed `text-transform: capitalize` site-wide — the theme's
+    global `h1–h6` rule plus 8 others in `public/css/style.css`. Visible effect:
+    the `.header-text a` buttons ("Télécharger mon CV") and the footer copyright
+    ("Réalisé par…") now render as authored, and the `#parcours` org-name `<h3>`s
+    stop mangling into "d'AudioVisuel" → "D'AudioVisuel". ALL-CAPS section
+    headings were already `text-transform: uppercase` (more specific), so they
+    are unchanged. Six of the nine rules were dead — theme selectors for markup
+    that no longer exists. Two source-copy typos surfaced but were left for the
+    owner: `projects.ts` "Réalisation **Par** Louanne Dronne" (fr + en).
 35. **[C]** YouTube links open in an in-site popup player instead of a new tab —
     one global click handler in `AppComponent`, covering the `/projets` buttons,
     inline links in project descriptions, and anything added later.
