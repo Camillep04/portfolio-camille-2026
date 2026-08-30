@@ -60,6 +60,9 @@ const FR = {
 
   'home.photo.title': 'PHOTO',
 
+  'video.player': 'Lecteur vidéo',
+  'video.close': 'Fermer la vidéo',
+
   'photo.instagramCta': 'Retrouvez plus de photos sur mon Instagram',
   'photo.close': 'Fermer',
   'photo.prev': 'Photo précédente',
@@ -122,6 +125,9 @@ const EN: Record<UiKey, string> = {
   'formations.title': 'Education',
 
   'home.photo.title': 'PHOTO',
+
+  'video.player': 'Video player',
+  'video.close': 'Close the video',
 
   'photo.instagramCta': 'See more photos on my Instagram',
   'photo.close': 'Close',

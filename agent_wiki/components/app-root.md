@@ -1,7 +1,7 @@
 ---
 type: Component
 title: AppComponent (app-root)
-description: The three-part page frame — header, router outlet, footer — and the 200 lines of untouched Angular starter CSS attached to it.
+description: The header / outlet / footer page frame, plus the one global behaviour — intercepting YouTube links into the in-site player.
 tags: [component, angular, shell]
 resource: /src/app/app.component.ts
 status: stable
@@ -11,40 +11,43 @@ verified: { by: human:alexp, at: 2026-08-26T21:05:00Z }
 
 # What it is for
 
-The root component. It is the only component with a non-empty `imports` array
-and the only one that composes other components.
+The root component. It composes the page frame and owns the one piece of
+behaviour that has to be global.
 
 ```html
 <app-header></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
+<app-video-modal></app-video-modal>
 ```
 
-`imports: [RouterOutlet, HeaderComponent, FooterComponent]`. The class body
-holds one field, `title = 'Camille Portfolio'`, which nothing renders — no
-`<h1>` exists in this template.
+`imports: [RouterOutlet, HeaderComponent, FooterComponent, VideoModalComponent]`.
 
 # Contract
 
-* Present on every route.
-* Guarantees [header](/components/header.md) above and
-  [footer](/components/footer.md) below whatever the route renders.
-* Provides no state, no services, no lifecycle hooks.
+* Present on every route: [header](/components/header.md) above,
+  [footer](/components/footer.md) below, whatever the route renders in between.
+* Renders [VideoModalComponent](/components/video-modal.md) once — invisible
+  until a YouTube link is clicked.
+* **YouTube link interception** (Session 8, [roadmap](/plans/remediation-roadmap.md)
+  item 35): a `@HostListener('document:click')` catches any click on an
+  `<a>` whose href [parses as a YouTube URL](/src/app/video/youtube.ts),
+  `preventDefault()`s it and opens the in-site player via
+  [`VideoModalService`](/components/video-modal.md). Modified clicks
+  (⌘/Ctrl/Shift/Alt, non-primary button) and already-cancelled events pass
+  through untouched, and if the listener never runs the links are ordinary
+  `target="_blank"` anchors — so the feature degrades cleanly.
+* Otherwise provides no state and no lifecycle hooks. `title = 'Camille
+  Portfolio'` is unused (no `<h1>` in the template).
 
-# What surprises you
+# History
 
-**`app.component.css` is 200 lines of Angular CLI starter boilerplate** —
-`--bright-blue`, `--electric-violet`, `.pill`, `.angular-logo`. None of it
-matches this markup. It is not inert, though: the `:host` block leaks
-`font-family: Inter` and `box-sizing: border-box` onto `app-root`, so deleting
-the file is a visible change, not a no-op. See
-[Angular starter boilerplate CSS](/issues/angular-starter-boilerplate-css.md).
-
-**`app.component.spec.ts` asserts starter values and fails.** Two of its three
-tests check for the title `'PortfolioAngular'` and an `<h1>` containing
-`'Hello, PortfolioAngular'`. Neither exists. See
-[stale app component spec](/issues/stale-app-component-spec.md).
+* Session 3 deleted `app.component.css` (200 lines of Angular CLI starter
+  boilerplate); its two live rules moved to `src/styles.css`.
+* Session 1 fixed the stale spec; it asserts the real frame now.
+* Session 8 added the YouTube interception and `<app-video-modal>`.
 
 # Related
 
 * [Angular application shell](/architecture/angular-shell.md)
+* [VideoModalComponent](/components/video-modal.md)

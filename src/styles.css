@@ -20,6 +20,12 @@ body {
   border-radius: 16px !important;
 }
 
+/* Body scroll is locked while the in-site YouTube player is open
+   (src/app/video/) so the page behind the backdrop doesn't scroll. */
+body.video-modal-open {
+  overflow: hidden;
+}
+
 /* Moved from app.component.css when the Angular CLI starter boilerplate was
    deleted — these two rules were the only ones actually leaking out of
    `:host` onto app-root, so they belong in the global stylesheet instead. */

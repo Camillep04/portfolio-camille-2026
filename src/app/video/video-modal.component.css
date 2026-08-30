@@ -1,0 +1,82 @@
+.video-backdrop {
+  position: fixed;
+  inset: 0;
+  /* Above the theme's fixed header, which sets `.top-area { z-index: 9999 }`. */
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 8, 14, 0.85);
+  animation: video-fade 0.18s ease-out;
+}
+
+.video-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #0f1117;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.video-close:hover,
+.video-close:focus-visible {
+  background: #f92c2c;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+@media (max-width: 560px) {
+  .video-close {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@keyframes video-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-backdrop {
+    animation: none;
+  }
+}

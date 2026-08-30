@@ -19,8 +19,18 @@
     now render as authored. Section headings unchanged (already `uppercase`).
     Two data typos noted for the owner (`projects.ts` "Réalisation Par…").
     42/42 tests, build clean.
-  * Items 35–36 (YouTube popup, XL scaling) pending.
+  * **Item 35 ✅**: in-site YouTube player. New `src/app/video/` —
+    `parseYouTubeId()`, `VideoModalService` (one signal), `VideoModalComponent`
+    (nocookie embed, close on ✕/backdrop/Escape, body scroll lock,
+    `z-index: 10000` to clear the theme header's 9999). `AppComponent` gains a
+    `document:click` handler that opens the player for any YouTube `<a>` and
+    leaves everything else alone. New i18n keys `video.player` / `video.close`.
+    54/54 tests (+12), build clean, verified in-browser.
+  * **New**: [VideoModalComponent + VideoModalService](/components/video-modal.md).
+  * Item 36 (XL scaling) pending.
   * **Rewritten**: [ContactComponent](/components/contact-page.md);
+    [AppComponent](/components/app-root.md) (was badly stale — still described
+    the deleted starter CSS and failing spec);
     [contact form overflow](/issues/contact-form-overflow-mobile.md) → deprecated;
     [placeholder content](/issues/placeholder-content-contact.md) → deprecated;
     [not-found-page](/components/not-found-page.md); roadmap.

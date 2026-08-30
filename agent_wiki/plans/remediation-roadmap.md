@@ -256,9 +256,13 @@ bootsnav header rewrite is too big to ride along). Accessibility (item 28) is
     are unchanged. Six of the nine rules were dead — theme selectors for markup
     that no longer exists. Two source-copy typos surfaced but were left for the
     owner: `projects.ts` "Réalisation **Par** Louanne Dronne" (fr + en).
-35. **[C]** YouTube links open in an in-site popup player instead of a new tab —
-    one global click handler in `AppComponent`, covering the `/projets` buttons,
-    inline links in project descriptions, and anything added later.
+35. ✅ **[C]** YouTube links open in an in-site popup player instead of a new
+    tab. One `document:click` handler in `AppComponent` +
+    [VideoModalComponent](/components/video-modal.md) (`src/app/video/`).
+    Covers the `/projets` link buttons, the inline links in project blurbs, and
+    anything added later; non-YouTube links and modified clicks pass through.
+    54/54 tests, verified in-browser (open via button + inline link, close via
+    ✕ / backdrop / Escape, mobile 375px).
 36. **[C]** Extra-large screens: the fixed nav bar spans the full viewport
     width (was capped at 1920px and centred); above ~1920px the content column
     is scaled up so it reads like the `lg` layout rather than going fluid.

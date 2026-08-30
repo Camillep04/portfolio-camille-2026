@@ -1,0 +1,25 @@
+@if (embedUrl(); as url) {
+  <div class="video-backdrop" (click)="close()">
+    <div
+      class="video-dialog"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="i18n.t('video.player')"
+      (click)="$event.stopPropagation()">
+      <button
+        type="button"
+        class="video-close"
+        (click)="close()"
+        [attr.aria-label]="i18n.t('video.close')">
+        &times;
+      </button>
+      <div class="video-frame">
+        <iframe
+          [src]="url"
+          title="YouTube"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+}

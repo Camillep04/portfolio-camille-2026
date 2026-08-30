@@ -25,6 +25,7 @@ Use `type: Component`.
 # State
 
 * [FavouritesService](favourites-service.md) - Private per-visitor hearted projects, in `localStorage`.
+* [VideoModalComponent + VideoModalService](video-modal.md) - The in-site YouTube player; AppComponent intercepts every YouTube link into it.
 
 # The static layer
 
