@@ -1,13 +1,12 @@
-/* The page is capped at 1920px and centred (see src/styles.css). bootsnav's
-   fixed navbar is width:100% with no left, so on a screen wider than that it
-   started at the page's left edge and ran off the right of the screen. Pin it
-   to the centred page instead, so the bar sits over the content it belongs
-   to. */
+/* The fixed nav bar spans the full viewport width at every size (Session 8,
+   roadmap item 36). It used to be capped at 1920px and centred, back when the
+   page itself was capped; the page is fluid now (and scaled up past ~1800px,
+   see src/styles.css), so the bar just fills the screen. bootsnav already
+   gives `.navbar-fixed` `position: fixed; width: 100%` — this only guarantees
+   the left edge. */
 nav.navbar.bootsnav.navbar-fixed {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    max-width: 1920px;
+    left: 0;
+    right: 0;
 }
 
 @media (min-width: 992px) {

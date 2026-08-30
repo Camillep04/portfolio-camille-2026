@@ -27,10 +27,20 @@
     leaves everything else alone. New i18n keys `video.player` / `video.close`.
     54/54 tests (+12), build clean, verified in-browser.
   * **New**: [VideoModalComponent + VideoModalService](/components/video-modal.md).
-  * Item 36 (XL scaling) pending.
+  * **Item 36 ✅**: extra-large screens. `header.component.css` — the fixed nav
+    bar is full-bleed at every width (`left: 0; right: 0`, was capped 1920 +
+    centred). `src/styles.css` — stepped `body { zoom }` past 2100px (1.5 →
+    2.7), effective layout width held ~1400px so XL reads like a large-laptop
+    view. `zoom` not `transform` so the fixed nav + video modal survive.
+    `html { overflow-x: hidden }` mops up `zoom`'s sub-pixel rounding.
+    Verified 1920/2100/2560/3840, burger menu still toggles. Item 28
+    (accessibility) marked abandoned per owner.
+  * **New**: [XL screens scale up](/decisions/xl-screens-scale-up.md) decision.
   * **Rewritten**: [ContactComponent](/components/contact-page.md);
-    [AppComponent](/components/app-root.md) (was badly stale — still described
-    the deleted starter CSS and failing spec);
+    [AppComponent](/components/app-root.md) and
+    [HeaderComponent](/components/header.md) (both badly stale — described the
+    deleted starter CSS, failing spec, and pre-`routerLink` nav);
+    [page is fluid](/decisions/page-is-fluid.md) gains a "refined" note;
     [contact form overflow](/issues/contact-form-overflow-mobile.md) → deprecated;
     [placeholder content](/issues/placeholder-content-contact.md) → deprecated;
     [not-found-page](/components/not-found-page.md); roadmap.

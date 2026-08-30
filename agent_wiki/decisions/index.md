@@ -14,4 +14,5 @@ mark it `status: deprecated` and have the replacement link back to it.
 * [Netlify is the deploy target](netlify-as-deploy-target.md) - Confirmed by the owner; the Deno workflow, Dockerfile and `docs/` are dead.
 * [CSS: cheap fix before Bootstrap 5](css-cheap-fix-before-bootstrap-5.md) - Session 2 links the missing stylesheets; the migration gets its own session later.
 * [The page is fluid, not capped at 1920px](page-is-fluid.md) - The site fills any viewport; each section carries its own readable max-width.
+* [Extra-large screens scale the whole page up](xl-screens-scale-up.md) - Past 2100px the page is `zoom`ed to read like a large-laptop layout, not left fluid.
 * [The page stays capped at 1920px and centred](page-capped-at-1920-centred.md) - DEPRECATED, superseded by the fluid-page decision in session 6.

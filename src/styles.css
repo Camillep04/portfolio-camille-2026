@@ -11,6 +11,31 @@ body {
   margin-right: auto;
 }
 
+/* Session 8, roadmap item 36: extra-large screens.
+   Up to 1920px (Full HD) the page is fluid, as Session 6 decided. Past that,
+   instead of letting the content keep stretching into a thin column lost in a
+   sea of whitespace, the whole page is scaled up with `zoom` so it reads like
+   a large-laptop ("lg") layout — same proportions, just bigger.
+   `zoom`, not `transform: scale`, because the nav bar is `position: fixed` and
+   a transformed ancestor would break that. Each step keeps the effective
+   layout width around 1400–1440px. The 2100px start clears any 1920 monitor
+   (whose content area is a bit under 1920) — thresholds are easy to retune. */
+@media (min-width: 2100px) {
+  /* `zoom` with a non-integer factor can round a full-width child up by a
+     pixel or two; clip that so it never shows a horizontal scrollbar. */
+  html { overflow-x: hidden; }
+  body { zoom: 1.5; }
+}
+@media (min-width: 2560px) {
+  body { zoom: 1.8; }
+}
+@media (min-width: 3100px) {
+  body { zoom: 2.15; }
+}
+@media (min-width: 3800px) {
+  body { zoom: 2.7; }
+}
+
 /* Session 6: every button across the site shares one corner radius (16px).
    These are the theme + component button classes; keeping the radius in one
    place means the next new button inherits the house style for free. */

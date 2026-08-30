@@ -213,10 +213,11 @@ share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
     *Open: this depends on [unlinked stylesheets](/issues/unlinked-stylesheets.md)
     being fixed first — the icons are invisible today, so the current design has
     never actually been seen.*
-28. **[C]** Digital accessibility pass **without changing the current design**.
-    *Open: which target — WCAG 2.1 AA, or RGAA? That decides how much of "sans
-    modifier le site actuel" is achievable, since contrast ratios may force
-    colour changes.*
+28. ~~**[C]** Digital accessibility pass.~~ **Abandoned 2026-08-30** by owner
+    decision — the accessibility idea is not being implemented. (Technical
+    a11y nits that ride along with other work — `alt` text, iframe titles —
+    still get fixed opportunistically; there is just no dedicated pass or
+    conformance target.)
 29. **[C]** English version of the site.
     *Open: Angular's `@angular/localize` (two builds, two URLs, good for SEO) or
     a runtime language toggle (simpler, one build)? And who writes the English
@@ -263,13 +264,24 @@ bootsnav header rewrite is too big to ride along). Accessibility (item 28) is
     anything added later; non-YouTube links and modified clicks pass through.
     54/54 tests, verified in-browser (open via button + inline link, close via
     ✕ / backdrop / Escape, mobile 375px).
-36. **[C]** Extra-large screens: the fixed nav bar spans the full viewport
-    width (was capped at 1920px and centred); above ~1920px the content column
-    is scaled up so it reads like the `lg` layout rather than going fluid.
-    Partly reverses [page is fluid](/decisions/page-is-fluid.md) for XL only.
+36. ✅ **[C]** Extra-large screens. The fixed nav bar now spans the full
+    viewport width at every size (`header.component.css` — was capped at 1920px
+    and centred). Past **2100px** the whole page is scaled up with stepped
+    `body { zoom }` (1.5 → 2.7), keeping the effective layout width ~1400px so
+    it reads like a large-laptop view instead of a thin centred column. `zoom`,
+    not `transform`, so the fixed nav and the video modal keep working. New
+    decision: [XL screens scale up](/decisions/xl-screens-scale-up.md), refining
+    [page is fluid](/decisions/page-is-fluid.md). Verified at 1920 / 2100 / 2560
+    / 3840 — nav full-bleed, no horizontal scroll, modal still covers the
+    viewport.
 
-Still open after this: item 22 (QUI EST CAMILLE redesign), Bootstrap 5, the
-Ongoing list below.
+All five items ✅ done 2026-08-30. Verified: `ng build` clean, **54/54 tests**
+(was 39), every page checked in-browser including client-side navigation and at
+375 / 1440 / 1920 / 2560 / 3840px. Committed to `develop`, not pushed — the
+merge is the owner's.
+
+Still open after this: item 22 (QUI EST CAMILLE redesign — its own session),
+Bootstrap 5 (its own session), the Ongoing list below.
 
 # Ongoing
 

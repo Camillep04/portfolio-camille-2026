@@ -28,6 +28,14 @@ responsibility. The pattern: the section is full-width, an inner wrapper carries
 `accueil.component.css` caps the "Qui est Camille ?" content at 1500px so the
 bio's line length stays sane on a 2560px screen.
 
+# Refined 2026-08-30 (Session 8)
+
+Fluid still holds, but only **up to 2100px**. Past that the owner found the
+content stranded in a thin centred column, so the page is now scaled up with
+`zoom` on `body` (stepped, effective layout width ~1400px). See
+[XL screens scale up](/decisions/xl-screens-scale-up.md). Per-section
+max-widths still matter for the 1440–2100px band.
+
 # What follows from it
 
 * Session 6's redesigns are drawn for a **fluid canvas**, not a 1920px one. Each
