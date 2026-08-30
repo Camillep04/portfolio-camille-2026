@@ -4,7 +4,7 @@ title: Template placeholder content still ships on the contact page
 description: Five dead social links from the purchased theme sit below the three real ones, under an English heading on a French page.
 tags: [content, cleanup, p4]
 resource: /src/app/contact/contact.component.html
-status: stable
+status: deprecated
 priority: P4
 verification: confirmed
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
@@ -14,6 +14,12 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved in Session 8 (2026-08-30).** The `.hm-foot-icon` block of five dead
+links is deleted; the heading has been an i18n key (`contact.title`, French
+first) since Session 6; `popup.js` was deleted in Session 2. See
+[ContactComponent](/components/contact-page.md) and
+[the roadmap](/plans/remediation-roadmap.md) item 33.
 
 # Symptom
 

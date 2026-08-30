@@ -47,7 +47,11 @@ The other two protos stay in `proto404/` for reference.
   80vh` keeps it from collapsing.
 * **`h1 { text-transform: none }`** is a deliberate override — the vendored
   theme capitalises every word of every `h1`
-  ([two-layer frontend](/architecture/two-layer-frontend.md) seam).
+  ([two-layer frontend](/architecture/two-layer-frontend.md) seam). Session 8
+  removes that theme rule globally, but the override is harmless kept.
+* `h1` has `margin: 0.8em 0 36px` — the top margin was added in Session 8
+  ([roadmap](/plans/remediation-roadmap.md) item 32) for breathing room under
+  the giant `404`.
 * Button radius is `--radius: 16px` — the one shared button radius Session 6
   standardised on across the site (`src/styles.css`).
 * Animations are disabled under `prefers-reduced-motion`.

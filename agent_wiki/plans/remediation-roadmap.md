@@ -201,9 +201,9 @@ share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
     became one `#parcours` section over `TIMELINE` (`cv.ts`); CSS grid, stacks
     to a left rail below 992px. See [accueil-page](/components/accueil-page.md).
     36/36 tests, build clean, geometry verified in-browser.
-24. **[C]** Swap the order of "compétences" and "plonger dans mon univers" on
-    the home page. Mechanical, but it changes the page's rhythm, so it belongs
-    with the redesign above.
+24. ~~**[C]** Swap the order of "compétences" and "plonger dans mon univers" on
+    the home page.~~ **Dropped 2026-08-30** — the owner decided the current
+    order is fine and this is no longer wanted.
 25. **[C]** "COMPETENCES" logos: smaller, and in black and white.
     *Open: how much smaller, and greyscale at rest with colour on hover, or
     greyscale always?*
@@ -222,6 +222,44 @@ share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
     a runtime language toggle (simpler, one build)? And who writes the English
     copy?* This is much cheaper after Session 4 — translating a data file beats
     translating duplicated markup.
+
+# Session 7 — the 404 page ✅ done 2026-08-30
+
+Off-roadmap but tracked here for continuity. The wildcard route landed
+Camille's "perte de signal" 404 design as a real component. See
+[NotFoundComponent](/components/not-found-page.md), [site routes](/specs/site-routes.md)
+and [the resolved wildcard-route issue](/issues/no-wildcard-route.md).
+
+# Session 8 — owner cleanup pass, in progress 2026-08-30
+
+A batch of owner requests from a fresh review, ordered trivial → demanding.
+Bootstrap 5 was on this list and was **deferred to its own session** (the
+bootsnav header rewrite is too big to ride along). Accessibility (item 28) is
+**abandoned** by owner decision.
+
+32. ✅ **[C]** `/404`: more breathing room above the `<h1>` (`margin-top: 0.8em`).
+33. ✅ **[C]** `/contact` restructure — see [ContactComponent](/components/contact-page.md):
+    removed the "Camille PROTHIN" title, the "Mes réseaux :" heading and the
+    five dead `.hm-foot-icon` links; moved the CV button + the three real social
+    links **above** the form; widened the Google Form iframe (440px → fluid,
+    `max-width: 680px` — Google caps its own form card near 640px, so a wider
+    iframe only adds grey margin); added section top-padding so the heading
+    clears the fixed nav. Fixes [contact form overflow](/issues/contact-form-overflow-mobile.md)
+    and [placeholder content](/issues/placeholder-content-contact.md). This also
+    delivers most of roadmap item 27.
+34. **[C]** Remove `text-transform: capitalize` site-wide (the theme's global
+    `h1–h6` rule and ~8 others). ALL-CAPS headings (`text-transform: uppercase`)
+    stay. Source strings fixed where they leaned on the capitalisation.
+35. **[C]** YouTube links open in an in-site popup player instead of a new tab —
+    one global click handler in `AppComponent`, covering the `/projets` buttons,
+    inline links in project descriptions, and anything added later.
+36. **[C]** Extra-large screens: the fixed nav bar spans the full viewport
+    width (was capped at 1920px and centred); above ~1920px the content column
+    is scaled up so it reads like the `lg` layout rather than going fluid.
+    Partly reverses [page is fluid](/decisions/page-is-fluid.md) for XL only.
+
+Still open after this: item 22 (QUI EST CAMILLE redesign), Bootstrap 5, the
+Ongoing list below.
 
 # Ongoing
 

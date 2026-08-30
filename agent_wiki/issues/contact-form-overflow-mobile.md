@@ -4,7 +4,7 @@ title: The contact form iframe overflows on mobile
 description: A hard-coded 440px Google Form forces horizontal scroll on a phone, and has no title attribute.
 tags: [a11y, responsive, p4]
 resource: /src/app/contact/contact.component.html
-status: stable
+status: deprecated
 priority: P4
 verification: confirmed
 generated: { by: claude-code/opus-5, at: 2026-08-26T19:45:00Z }
@@ -14,6 +14,13 @@ sources:
     resource: /references/review-audit-2026-08.md
     title: Code review, 2026-08-21
 ---
+
+**Resolved in Session 8 (2026-08-30).** The form iframe is now
+`class="contact-form-frame"` with `width: 100%; max-width: 680px; border: 0`
+and a `[title]` binding — no fixed pixel width, verified at 375px with no
+horizontal overflow. See [ContactComponent](/components/contact-page.md),
+[roadmap](/plans/remediation-roadmap.md) item 33. The YouTube-iframe half of the
+"Fix" note below is handled separately by roadmap item 35.
 
 # Symptom
 

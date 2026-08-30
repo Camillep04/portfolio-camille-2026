@@ -2,6 +2,22 @@
 
 ## 2026-08-30
 
+* **Work**: Session 8 — owner cleanup pass ([roadmap](/plans/remediation-roadmap.md)
+  items 32–36), ordered trivial → demanding. In progress.
+  * **Item 24 dropped**: the "compétences" / "univers" swap is no longer wanted.
+  * **Item 32 ✅**: `/404` `<h1>` gets `margin-top: 0.8em`.
+  * **Item 33 ✅**: `/contact` restructure — removed the "Camille PROTHIN"
+    title, the "Mes réseaux :" heading (`contact.socials` key deleted) and the
+    five dead `.hm-foot-icon` links; CV button + three real social links moved
+    above the form; form iframe `width="440"` → fluid `max-width: 680px` with a
+    `[title]`; `.contact` gets `padding-top: 140px` to clear the fixed nav.
+    Verified at 1280 / 375px, no overflow. 42/42 tests (was 39, +3 contact
+    specs), build clean.
+  * Items 34–36 (capitalize removal, YouTube popup, XL scaling) pending.
+  * **Rewritten**: [ContactComponent](/components/contact-page.md);
+    [contact form overflow](/issues/contact-form-overflow-mobile.md) → deprecated;
+    [placeholder content](/issues/placeholder-content-contact.md) → deprecated;
+    [not-found-page](/components/not-found-page.md); roadmap.
 * **Work**: Session 7 — the 404 page. Camille built three mocks on branch
   `page_404` (`proto404/proto-{a,b,c}-*.html`); she picked **proto C, "perte de
   signal"**. Ported it to a real component:
