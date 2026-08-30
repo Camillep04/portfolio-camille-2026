@@ -2,8 +2,7 @@
     display: block;
 }
 
-/* Clear the fixed 100px nav bar so the section heading isn't hidden behind it
-   (the theme only padded `.single-contact-box`, which starts below the h2). */
+/* Clear the fixed 100px nav bar so the content isn't hidden behind it. */
 .contact {
     padding-top: 140px;
 }
@@ -21,10 +20,23 @@ a svg:hover {
     fill: red;
 }
 
-/* CV button + social icons, stacked above the form with room to breathe */
+/* CV button (left) + social icons (right) on one row, aligned with the visible
+   Google-form card below.
+
+   The card's edges are NOT the iframe's edges: Google renders the embedded
+   form with its own inner margin inside the iframe, and that margin lives in a
+   cross-origin document we can't touch. So we match it from the outside — same
+   max-width as the iframe, plus side padding on this row (tuned by eye) so the
+   button and icons land on the card's edges, not the iframe's.
+   The padding is a magic number tracking Google Forms' current embed styling;
+   if Google changes that inset, nudge it here. */
 .contact-intro {
+    width: 100%;
+    max-width: 576px;
+    margin: 0 auto 48px;
+    padding: 0 25px;
     gap: 22px;
-    margin-bottom: 48px;
+    flex-wrap: wrap;
 }
 
 .contact-intro .social-links {
@@ -33,12 +45,16 @@ a svg:hover {
     padding: 0;
 }
 
-/* The embedded Google Form: was pinned at 440px, now given the full width
-   Google Forms will actually use for its content (~640px) plus a little slack,
-   and fluid below that so it never forces horizontal scroll on a phone.
-   Google caps the form card itself, so a wider iframe only adds grey margin. */
+/* Drop the last icon's trailing padding so it sits flush with the row's
+   (padded) right edge, i.e. the form card's right edge. */
+.contact-intro .social-links li:last-child {
+    padding-right: 0;
+}
+
+/* Cap the iframe so it never adds dead grey margin around the card, and stays
+   fluid below that so it never forces horizontal scroll on a phone. */
 .contact-form-frame {
     width: 100%;
-    max-width: 680px;
+    max-width: 576px;
     border: 0;
 }
