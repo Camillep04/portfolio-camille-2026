@@ -2,11 +2,12 @@ import { Component, HostListener, inject } from '@angular/core';
 
 import { PHOTOS } from '../data/photos';
 import { LanguageService } from '../i18n/language.service';
+import { ActionHintDirective } from '../ui/action-hint.directive';
 
 @Component({
   selector: 'app-photo',
   standalone: true,
-  imports: [],
+  imports: [ActionHintDirective],
   templateUrl: './photo.component.html',
   styleUrl: './photo.component.css'
 })

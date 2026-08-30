@@ -14,7 +14,7 @@
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/projets">{{ i18n.t('nav.projects') }}</a></li>
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/photo">{{ i18n.t('nav.photos') }}</a></li>
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/contact">{{ i18n.t('nav.contact') }}</a></li>
-                        <li><a target="_blank" href="img/CV_camille_2026.pdf">{{ i18n.t('nav.cv') }}</a></li>
+                        <li><a target="_blank" href="img/CV_camille_2026.pdf" [appActionHint]="i18n.t('hint.newTab')">{{ i18n.t('nav.cv') }}</a></li>
                         <li class="lang-switch">
                             <button type="button" (click)="i18n.toggle()" [attr.aria-label]="i18n.t('lang.switch')">
                                 {{ i18n.t('lang.other') }}

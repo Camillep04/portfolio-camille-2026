@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { TIMELINE } from '../data/cv';
 import { PHOTOS } from '../data/photos';
 import { LanguageService } from '../i18n/language.service';
+import { ActionHintDirective } from '../ui/action-hint.directive';
 
 /** Hero typewriter words, one list per language. Keep the two the same length
  *  so the rotating index never falls off the end when the language changes. */
@@ -18,7 +19,7 @@ const PAUSE_MS = 1000;
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ActionHintDirective],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })

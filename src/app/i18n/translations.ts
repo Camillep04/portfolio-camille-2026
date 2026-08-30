@@ -77,6 +77,11 @@ const FR = {
 
   'footer.madeBy': 'Réalisé par Camille PROTHIN',
 
+  // Pointer hints (desktop): flag a control that leaves the portfolio. Kept as
+  // short as possible. See `ActionHintDirective`.
+  'hint.newTab': 'Nouvel onglet',
+  'hint.download': 'Téléchargement',
+
   // %s is replaced with the project title.
   'projects.link.video': 'Voir la vidéo',
   'projects.link.project': 'Voir le projet',
@@ -142,6 +147,9 @@ const EN: Record<UiKey, string> = {
   'notFound.home': 'Back to home',
 
   'footer.madeBy': 'Made by Camille PROTHIN',
+
+  'hint.newTab': 'New tab',
+  'hint.download': 'Download',
 
   'projects.link.video': 'Watch the video',
   'projects.link.project': 'View the project',

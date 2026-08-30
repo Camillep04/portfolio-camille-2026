@@ -4,6 +4,7 @@ import { PROJECTS, type Project } from '../data/projects';
 import { FavouritesService } from '../favourites.service';
 import { LanguageService } from '../i18n/language.service';
 import type { UiKey } from '../i18n/translations';
+import { ActionHintDirective } from '../ui/action-hint.directive';
 
 const LINK_LABEL_KEY: Record<NonNullable<Project['linkKind']>, UiKey> = {
   video: 'projects.link.video',
@@ -14,7 +15,7 @@ const LINK_LABEL_KEY: Record<NonNullable<Project['linkKind']>, UiKey> = {
 @Component({
   selector: 'app-audiovisuel',
   standalone: true,
-  imports: [],
+  imports: [ActionHintDirective],
   templateUrl: './audiovisuel.component.html',
   styleUrl: './audiovisuel.component.css'
 })
@@ -39,6 +40,13 @@ export class AudiovisuelComponent {
       return this.i18n.tc(project.linkLabel);
     }
     return this.i18n.t(LINK_LABEL_KEY[project.linkKind ?? 'site']);
+  }
+
+  /** Pointer hint for a project's link. Only the ones that leave the site are
+   *  flagged: `video` links open the in-site player (see `AppComponent`), so
+   *  they stay blank; `project` / `site` links open a new tab. */
+  linkHint(project: Project): string {
+    return project.linkKind === 'video' ? '' : this.i18n.t('hint.newTab');
   }
 
   /** Accessible label for the heart toggle, with the project title spliced in

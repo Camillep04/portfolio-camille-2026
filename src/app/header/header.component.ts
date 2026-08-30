@@ -3,11 +3,12 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { Subscription, filter } from 'rxjs';
 
 import { LanguageService } from '../i18n/language.service';
+import { ActionHintDirective } from '../ui/action-hint.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ActionHintDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

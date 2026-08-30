@@ -4,7 +4,7 @@
       <div class="content top" [class.reversed]="odd">
         <div class="image-prev">
           @if (project.link) {
-            <a [href]="project.link" target="_blank">
+            <a [href]="project.link" target="_blank" [appActionHint]="linkHint(project)">
               <img [src]="project.image" [alt]="i18n.tc(project.title)" width="350">
             </a>
           } @else {
@@ -24,7 +24,7 @@
 
           <div class="buttons">
             @if (project.link) {
-              <a class="playstore-button" [href]="project.link" target="_blank">
+              <a class="playstore-button" [href]="project.link" target="_blank" [appActionHint]="linkHint(project)">
                 @switch (project.linkKind) {
                   @case ('project') {
                     <i class="bi bi-vector-pen"></i>

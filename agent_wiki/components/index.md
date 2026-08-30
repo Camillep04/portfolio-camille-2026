@@ -13,6 +13,7 @@ Use `type: Component`.
 * [AppComponent (app-root)](app-root.md) - The header / outlet / footer frame.
 * [HeaderComponent](header.md) - The bootsnav navbar and its five links.
 * [FooterComponent](footer.md) - Copyright line and scroll-to-top.
+* [ActionHintDirective](action-hint-directive.md) - `[appActionHint]` — desktop pointer hint below controls that leave the site (external link / download).
 
 # Pages
 

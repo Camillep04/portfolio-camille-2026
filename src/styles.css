@@ -51,6 +51,43 @@ body.video-modal-open {
   overflow: hidden;
 }
 
+/* Session 10: pointer hint. `[appActionHint]`
+   (src/app/ui/action-hint.directive.ts) floats this label just below a control
+   on hover/focus to flag that a click leaves the portfolio (external link or
+   download). The node is appended to <body>, so the rule has to be global, not
+   scoped to a component. z-index clears the fixed navbar (9999) and the video
+   modal (10000) so the hint is never buried. */
+.action-hint {
+  position: fixed;
+  z-index: 10001;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: #14141c;
+  color: #fff;
+  /* px, not rem — the theme sets the root font-size to 10px. */
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: action-hint-in 110ms ease-out forwards;
+}
+@keyframes action-hint-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .action-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Moved from app.component.css when the Angular CLI starter boilerplate was
    deleted — these two rules were the only ones actually leaking out of
    `:host` onto app-root, so they belong in the global stylesheet instead. */

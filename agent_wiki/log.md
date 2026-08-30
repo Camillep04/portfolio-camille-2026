@@ -2,6 +2,30 @@
 
 ## 2026-08-30
 
+* **Work**: Session 10 — new owner request, not on the roadmap: a desktop
+  pointer hint. New `src/app/ui/action-hint.directive.ts` — `[appActionHint]`,
+  a standalone directive that on hover/focus floats one `<body>`-level
+  `<div class="action-hint">` **below** a control, and removes it on
+  leave/blur/click. Pointer-only (`matchMedia('(hover: hover) and (pointer:
+  fine)')`), `aria-hidden` (hosts already carry text or an `aria-label`).
+  Global `.action-hint` rule in `src/styles.css` (`font-size` in px — theme
+  root is 10px; `z-index: 10001`, above navbar + video modal; entry animation
+  off under `prefers-reduced-motion`).
+  * **Scope, per owner:** only controls that *leave the portfolio* — external
+    links (`hint.newTab` = "Nouvel onglet") and downloads (`hint.download` =
+    "Téléchargement"), two i18n keys, fr + en, kept as short as possible.
+    Applied on: nav CV link, home + contact social icons and CV-download
+    buttons, the photo Instagram CTA, and project `project`/`site` link
+    buttons via `AudiovisuelComponent.linkHint()`. **Not** on in-app routes,
+    the lightbox, the hearts, the scroll-to-top arrow, or `linkKind: 'video'`
+    links (they open the in-site player — `linkHint()` returns `''`).
+  * First cut hinted every actionable control with a full sentence and placed
+    the tip above; narrowed and shortened on owner feedback.
+  * 58/58 tests (+4, `action-hint.directive.spec.ts`), build clean, verified
+    in-browser: CV link / socials / project site links hint, video links and
+    hearts do not, tip sits below.
+* **New**: [ActionHintDirective](/components/action-hint-directive.md).
+
 * **Work**: Session 8 — owner cleanup pass ([roadmap](/plans/remediation-roadmap.md)
   items 32–36), ordered trivial → demanding. In progress.
   * **Item 24 dropped**: the "compétences" / "univers" swap is no longer wanted.
