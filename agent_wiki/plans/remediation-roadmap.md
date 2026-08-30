@@ -182,6 +182,9 @@ Every item here is a direction rather than a specification. **Agree a short
 brief with the owner before writing markup** — that is the rule for this whole
 session, and the open question is recorded next to each item.
 
+**Session 6 is closed as of 2026-08-30**: items 22, 23, 25, 26, 27 and 29 are
+done, 24 and 28 dropped by owner decision.
+
 **Cross-cutting, done 2026-08-27:** the page is now
 [fluid, not 1920px-capped](/decisions/page-is-fluid.md), and **all site buttons**
 share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
@@ -212,25 +215,29 @@ share one corner radius (`border-radius: 16px`, set once in `src/styles.css` for
 24. ~~**[C]** Swap the order of "compétences" and "plonger dans mon univers" on
     the home page.~~ **Dropped 2026-08-30** — the owner decided the current
     order is fine and this is no longer wanted.
-25. **[C]** "COMPETENCES" logos: smaller, and in black and white.
-    *Open: how much smaller, and greyscale at rest with colour on hover, or
-    greyscale always?*
-26. **[C]** `/photo`: add padding at the `lg` and `md` breakpoints.
-    *Open: matching the site's existing section padding, or wider?*
-27. **[C]** Redesign the "Mes réseaux :" block on `/contact`.
-    *Open: this depends on [unlinked stylesheets](/issues/unlinked-stylesheets.md)
-    being fixed first — the icons are invisible today, so the current design has
-    never actually been seen.*
+25. ✅ **[C]** "COMPETENCES" logos: smaller, and in black and white.
+    **Closed 2026-08-30** — the owner checked the live behaviour and accepts it
+    as delivered.
+26. ✅ **[C]** `/photo`: add padding at the `lg` and `md` breakpoints.
+    **Closed 2026-08-30** — the owner checked the page and accepts the current
+    padding.
+27. ✅ **[C]** Redesign the "Mes réseaux :" block on `/contact`.
+    **Closed 2026-08-30.** Delivered by the Session 8 `/contact` restructure
+    (item 33) and the Session 9 CV-row alignment; the owner confirms nothing
+    further is wanted here. The stylesheet dependency it was waiting on was
+    resolved back in Session 2.
 28. ~~**[C]** Digital accessibility pass.~~ **Abandoned 2026-08-30** by owner
     decision — the accessibility idea is not being implemented. (Technical
     a11y nits that ride along with other work — `alt` text, iframe titles —
     still get fixed opportunistically; there is just no dedicated pass or
     conformance target.)
-29. **[C]** English version of the site.
-    *Open: Angular's `@angular/localize` (two builds, two URLs, good for SEO) or
-    a runtime language toggle (simpler, one build)? And who writes the English
-    copy?* This is much cheaper after Session 4 — translating a data file beats
-    translating duplicated markup.
+29. ✅ **[C]** English version of the site. **Closed 2026-08-30.** The open
+    question resolved to the **runtime language toggle**, not
+    `@angular/localize`: one build, `src/app/i18n/language.service.ts` +
+    `translations.ts`, with fr/en strings carried in the typed content data
+    (`projects.ts`, `photos.ts`, `cv.ts`). Every page, the 404 and the newer
+    features (video player, action hints) ship both languages. Session 4's
+    content-data layer is what made this cheap, exactly as predicted.
 
 # Session 7 — the 404 page ✅ done 2026-08-30
 
@@ -263,8 +270,10 @@ bootsnav header rewrite is too big to ride along). Accessibility (item 28) is
     stop mangling into "d'AudioVisuel" → "D'AudioVisuel". ALL-CAPS section
     headings were already `text-transform: uppercase` (more specific), so they
     are unchanged. Six of the nine rules were dead — theme selectors for markup
-    that no longer exists. Two source-copy typos surfaced but were left for the
-    owner: `projects.ts` "Réalisation **Par** Louanne Dronne" (fr + en).
+    that no longer exists. A source-copy typo surfaced and was
+    left for the owner at the time: `projects.ts` "Réalisation **Par** Louanne
+    Dronne". ✅ Fixed 2026-08-30 — lowercased to "par"; the English string
+    already read "Directed by", so only the `fr` line changed.
 35. ✅ **[C]** YouTube links open in an in-site popup player instead of a new
     tab. One `document:click` handler in `AppComponent` +
     [VideoModalComponent](/components/video-modal.md) (`src/app/video/`).

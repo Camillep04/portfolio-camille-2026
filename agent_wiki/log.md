@@ -2,6 +2,18 @@
 
 ## 2026-08-30
 
+* **Work**: Session 6 closed. The owner reviewed the site and reports roadmap
+  items **25** (compétences logos), **26** (`/photo` md/lg padding), **27**
+  ("Mes réseaux :" on `/contact`) and **29** (English version) as satisfied —
+  marked ✅ in [the roadmap](/plans/remediation-roadmap.md) with the open
+  questions resolved. Item 29's design question settled on the **runtime
+  language toggle** (`src/app/i18n/language.service.ts` + `translations.ts`,
+  fr/en in the typed content data), not `@angular/localize`. With 24 and 28
+  dropped earlier, Session 6 has nothing left open.
+* **Work**: Fixed the copy typo left for the owner in Session 8 —
+  `src/app/data/projects.ts:52`, "Réalisation **Par** Louanne Dronne" → "par".
+  The `en` string already read "Directed by", so only the French line changed.
+
 * **Work**: Session 11 — [roadmap](/plans/remediation-roadmap.md) item 22, the
   "QUI EST CAMILLE ?" block redesign, to the owner's written spec (its own
   session, as flagged). Two columns at md/lg with the section heading moved

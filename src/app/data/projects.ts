@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
     image: 'img/portfolio/affiche-stand.png',
     icon: 'img/camera.png',
     description: {
-      fr: `Audiovisuel : Mini web documentaire sur des athlètes calédoniennes atteintes de surdité. Réalisation Par Louanne Dronne et Camille Prothin. “Athlète quel est ton rêve ?” est le second épisode de la série “À vos marques”, voir l’épisode 1 : <a href="https://youtu.be/UcOifiVvQrQ?si=8YIsXwBHDpH1YrbO" target="_blank"><u class="text-white">À vos marques : Loan Ville, à la pointe de la performance</u></a>. <br/>Voir l’épisode 2 :`,
+      fr: `Audiovisuel : Mini web documentaire sur des athlètes calédoniennes atteintes de surdité. Réalisation par Louanne Dronne et Camille Prothin. “Athlète quel est ton rêve ?” est le second épisode de la série “À vos marques”, voir l’épisode 1 : <a href="https://youtu.be/UcOifiVvQrQ?si=8YIsXwBHDpH1YrbO" target="_blank"><u class="text-white">À vos marques : Loan Ville, à la pointe de la performance</u></a>. <br/>Voir l’épisode 2 :`,
       en: `Video: a short web documentary about deaf sportswomen from New Caledonia. Directed by Louanne Dronne and Camille Prothin. “Athlete, what is your dream?” is the second episode of the series “On your marks” — watch episode 1: <a href="https://youtu.be/UcOifiVvQrQ?si=8YIsXwBHDpH1YrbO" target="_blank"><u class="text-white">On your marks: Loan Ville, at the edge of performance</u></a>. <br/>Watch episode 2:`,
     },
     link: 'https://www.youtube.com/watch?v=yZl2QbWaGJA',
