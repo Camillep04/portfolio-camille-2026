@@ -94,7 +94,7 @@ export const PROJECTS: Project[] = [
       fr: `Projet commun master 1 & 2, mon rôle a été de faire le montage sur le tournage mais aussi le montage image.`,
       en: `A joint first- and second-year Master's project. My role was on-set editing as well as picture editing.`,
     },
-    link: 'https://www.youtube.com/watch?v=lTzdhUEXXx0',
+    link: 'https://youtu.be/c7ieikQdoS4',
     linkKind: 'video',
   },
   {
